@@ -6,8 +6,9 @@
 #include "HttpConnection.hpp"
 
 
-const string HEADER_CONTENT_TYPE = "Content-Type";
-const string HEADER_CONTENT_LENGTH = "Content-Length";
+const string HEADER_CONTENT_TYPE("Content-Type");
+const string HEADER_CONTENT_LENGTH("Content-Length");
+const string HEADER_CONNECTION("Connection");
 
 
 const string &getStatusLine(HttpStatusCode code) {
@@ -110,6 +111,10 @@ VecConstBuffers HttpResponse::headerToBuffers(int bodyLength) {
 
     if (getHeaderByName(headers, HEADER_CONTENT_TYPE) == nullptr) {
         headers.insert(headers.end(), {HEADER_CONTENT_TYPE, "text/plain"});
+    }
+
+    if (_connection->isKeepAlive()) {
+        headers.insert(headers.end(), {HEADER_CONNECTION, "Keep-Alive"});
     }
 
     for (auto &header : headers) {

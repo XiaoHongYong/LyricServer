@@ -32,6 +32,7 @@ enum HttpStatusCode {
 
 extern const string HEADER_CONTENT_TYPE;
 extern const string HEADER_CONTENT_LENGTH;
+extern const string HEADER_CONNECTION;
 
 typedef std::vector<StringView> VecConstBuffers;
 typedef std::function<void (int err)> ConnWriteCallback;

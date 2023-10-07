@@ -47,3 +47,26 @@ body: JSON.stringify({
 .then(res => res.json())
 .then(console.log)
 
+
+fetch('/db-api/user', {
+    method: 'POST',
+    body: JSON.stringify({
+    action: 'exec',
+    sql: 'select * from users where UserName="henry_xiao"',
+    "col-names": true,
+    })
+})
+    .then(res => res.json())
+    .then(console.log)
+
+fetch('/db-api/user', {
+    method: 'POST',
+    body: JSON.stringify({
+    action: 'exec',
+    sql: 'select * from users where UserName=?',
+    "col-names": true,
+    "args": ["henry_xiao"],
+    })
+})
+    .then(res => res.json())
+    .then(console.log)

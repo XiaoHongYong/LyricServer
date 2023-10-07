@@ -39,7 +39,11 @@ public:
     uv_tcp_t *uv_tcp_handle() { return &_uv_tcp; }
     uv_stream_t *uv_stream_handle() { return (uv_stream_t *)&_uv_tcp; }
 
+    bool isKeepAlive() const { return _keepAlive; }
+
     static int onUrlCb(http_parser *parser, const char *at, size_t length);
+    static int onHeaderFieldCb(http_parser *parser, const char *at, size_t length);
+    static int onHeaderValueCb(http_parser *parser, const char *at, size_t length);
     static int onHeadersCompleteCb(http_parser *parser);
     static int onBodyCb(http_parser *parser, const char *at, size_t length);
     static int onMessageCompleteCb(http_parser *parser);
@@ -66,6 +70,7 @@ private:
         IN_REQ_HEADER_HANDLING,
         IN_REQ_BODY_HANDLING,
         IN_RESPONSE_HANDLING,
+        IN_KEEP_ALIVE,
     };
 
     static string statusToString(ConnectionStatus status);
@@ -80,6 +85,10 @@ private:
     HttpResponse                                    _response;
 
     ConnectionStatus                                _status;
+    bool                                            _keepAlive = false;
+
+    string                                          _headerName, _headerValue;
+    bool                                            _hasValue = false;
 
 };
 

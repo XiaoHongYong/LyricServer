@@ -12,9 +12,6 @@ public:
 
     int LoginUser(cstr_t szLoginName, cstr_t szUserPwdMask, long &nUserID);
 
-    int IncUserLrcUploadCount(cstr_t szLoginName, int nCount = 1);
-    int IncUserLrcUploadCount(long nID, int nCount = 1);
-
     sqlite3 *db() { return m_db; }
 
 protected:

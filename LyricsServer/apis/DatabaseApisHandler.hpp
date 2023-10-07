@@ -15,6 +15,12 @@
 
 using FuncionWriteJsonField = void (*)(IJsonWriter *writer, sqlite3_stmt *stmt, int colIdx);
 
+struct DbApiCtx {
+    rapidjson::Document             body;
+    string                          result;
+    string                          message;
+};
+
 class DatabaseApisHandler : public IHttpRequestHandler {
 public:
     DatabaseApisHandler(sqlite3 *db, const string &uri);
@@ -24,9 +30,6 @@ public:
     virtual int onRequestBody(HttpConnectionPtr connection) override;
 
 protected:
-    void prepareStmt(const string &sql, string &resultOut, string &messageOut, RapidjsonWriterX &writer);
-    void queryStmt(const rapidjson::Document &body, string &resultOut, string &messageOut, RapidjsonWriterX &writer);
-
     struct Stmt {
         sqlite3_stmt                *stmt;
         string                      sql;
@@ -34,6 +37,12 @@ protected:
     };
 
     using MapStmts = map<string, Stmt>;
+
+    void prepareStmt(DbApiCtx &ctx, RapidjsonWriterX &writer);
+    void querySql(DbApiCtx &ctx, RapidjsonWriterX &writer);
+    void queryStmt(DbApiCtx &ctx, RapidjsonWriterX &writer);
+    void queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterX &writer);
+    void execSql(DbApiCtx &ctx, RapidjsonWriterX &writer);
 
     string                          _uri;
     sqlite3                         *_db = nullptr;

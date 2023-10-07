@@ -40,7 +40,6 @@
 		C0A27D802ACE2F1D00D248A4 /* PrivateProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D632ACE2F1D00D248A4 /* PrivateProfile.cpp */; };
 		C0A27D812ACE2F1D00D248A4 /* SimpleXMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D652ACE2F1D00D248A4 /* SimpleXMLParser.cpp */; };
 		C0A27D822ACE2F1D00D248A4 /* FileEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D6A2ACE2F1D00D248A4 /* FileEx.cpp */; };
-		C0A27D832ACE2F1D00D248A4 /* Looper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D6D2ACE2F1D00D248A4 /* Looper.cpp */; };
 		C0A27D842ACE2F1D00D248A4 /* XMLWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D6E2ACE2F1D00D248A4 /* XMLWriter.cpp */; };
 		C0A27D852ACE2F1D00D248A4 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D6F2ACE2F1D00D248A4 /* Thread.cpp */; };
 		C0A27D862ACE2F1D00D248A4 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D712ACE2F1D00D248A4 /* Log.cpp */; };
@@ -67,11 +66,11 @@
 		C0A27E062ACE516400D248A4 /* HttpProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E002ACE516400D248A4 /* HttpProtocol.cpp */; };
 		C0A27E072ACE516400D248A4 /* MLProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E012ACE516400D248A4 /* MLProtocol.cpp */; };
 		C0A27E0A2ACE51D400D248A4 /* LyricsKeywordFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E082ACE51D400D248A4 /* LyricsKeywordFilter.cpp */; };
-		C0A27E0F2ACE52BF00D248A4 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A27E0E2ACE52BF00D248A4 /* libuv.a */; };
 		C0A27E122ACE530C00D248A4 /* http_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E112ACE530C00D248A4 /* http_parser.c */; };
 		C0A27E182ACEBA0B00D248A4 /* ClientApisHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E152ACEBA0B00D248A4 /* ClientApisHandler.cpp */; };
 		C0A27E192ACEBA0B00D248A4 /* StatusHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E172ACEBA0B00D248A4 /* StatusHandler.cpp */; };
 		C0A27E1C2ACFAC5A00D248A4 /* DatabaseApisHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E1A2ACFAC5A00D248A4 /* DatabaseApisHandler.cpp */; };
+		C0A27E1D2AD146E300D248A4 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A27E0E2ACE52BF00D248A4 /* libuv.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -135,7 +134,6 @@
 		C0A27D3B2ACE2EF900D248A4 /* AllocatorPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AllocatorPool.cpp; path = ../../TinyJS/utils/AllocatorPool.cpp; sourceTree = "<group>"; };
 		C0A27D3C2ACE2EF900D248A4 /* BinaryStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryStream.cpp; path = ../../TinyJS/utils/BinaryStream.cpp; sourceTree = "<group>"; };
 		C0A27D4C2ACE2F1D00D248A4 /* Digest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Digest.cpp; path = ../../Utils/Digest.cpp; sourceTree = "<group>"; };
-		C0A27D4D2ACE2F1D00D248A4 /* Looper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Looper.h; path = ../../Utils/Looper.h; sourceTree = "<group>"; };
 		C0A27D4E2ACE2F1D00D248A4 /* Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Digest.h; path = ../../Utils/Digest.h; sourceTree = "<group>"; };
 		C0A27D502ACE2F1D00D248A4 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		C0A27D512ACE2F1D00D248A4 /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Error.cpp; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 		C0A27D6A2ACE2F1D00D248A4 /* FileEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileEx.cpp; path = ../../Utils/FileEx.cpp; sourceTree = "<group>"; };
 		C0A27D6B2ACE2F1D00D248A4 /* SimpleXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleXMLParser.h; path = ../../Utils/SimpleXMLParser.h; sourceTree = "<group>"; };
 		C0A27D6C2ACE2F1D00D248A4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ../../Utils/Utils.h; sourceTree = "<group>"; };
-		C0A27D6D2ACE2F1D00D248A4 /* Looper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Looper.cpp; path = ../../Utils/Looper.cpp; sourceTree = "<group>"; };
 		C0A27D6E2ACE2F1D00D248A4 /* XMLWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XMLWriter.cpp; path = ../../Utils/XMLWriter.cpp; sourceTree = "<group>"; };
 		C0A27D6F2ACE2F1D00D248A4 /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Thread.cpp; path = ../../Utils/Thread.cpp; sourceTree = "<group>"; };
 		C0A27D702ACE2F1D00D248A4 /* MPAutoPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPAutoPtr.h; path = ../../Utils/MPAutoPtr.h; sourceTree = "<group>"; };
@@ -275,7 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0A27E0F2ACE52BF00D248A4 /* libuv.a in Frameworks */,
+				C0A27E1D2AD146E300D248A4 /* libuv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,8 +393,6 @@
 				C0A27D712ACE2F1D00D248A4 /* Log.cpp */,
 				C0A27D602ACE2F1D00D248A4 /* Log.h */,
 				C0A27D572ACE2F1D00D248A4 /* LogAlias.h */,
-				C0A27D6D2ACE2F1D00D248A4 /* Looper.cpp */,
-				C0A27D4D2ACE2F1D00D248A4 /* Looper.h */,
 				C0A27D4F2ACE2F1D00D248A4 /* mac */,
 				C0A27D762ACE2F1D00D248A4 /* MLBinXMLParser.cpp */,
 				C0A27D702ACE2F1D00D248A4 /* MPAutoPtr.h */,
@@ -700,7 +695,6 @@
 				C0A27E072ACE516400D248A4 /* MLProtocol.cpp in Sources */,
 				C0A27D8A2ACE2F1D00D248A4 /* MLBinXMLParser.cpp in Sources */,
 				C0A27DEB2ACE50AF00D248A4 /* sqlite3.c in Sources */,
-				C0A27D832ACE2F1D00D248A4 /* Looper.cpp in Sources */,
 				C0A27DED2ACE50AF00D248A4 /* md5.cpp in Sources */,
 				C0A27D7C2ACE2F1D00D248A4 /* TextFile.cpp in Sources */,
 				C0A27D852ACE2F1D00D248A4 /* Thread.cpp in Sources */,
@@ -860,6 +854,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = _MAC_OS;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -885,6 +880,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -893,6 +889,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = x86_64;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -12,6 +12,7 @@
 
 
 static http_parser_settings _parserSettings;
+static StringView KeepAlive("Keep-Alive");
 
 struct UvConnectionData {
     UvConnectionData(const HttpConnectionPtr &conn) : connection(conn) { }
@@ -28,6 +29,8 @@ static UvConnectionData *getUvConnectionData(uv_stream_t *stream) {
 
 void initHttpReqParserSettings() {
     _parserSettings.on_url = HttpConnection::onUrlCb;
+    _parserSettings.on_header_field = HttpConnection::onHeaderFieldCb;
+    _parserSettings.on_header_value = HttpConnection::onHeaderValueCb;
     _parserSettings.on_headers_complete = HttpConnection::onHeadersCompleteCb;
     _parserSettings.on_body = HttpConnection::onBodyCb;
     _parserSettings.on_message_complete = HttpConnection::onMessageCompleteCb;
@@ -70,10 +73,22 @@ HttpConnection::~HttpConnection() {
 
 void HttpConnection::reset() {
     _reqHandler = nullptr;
+    _request.method = METHOD_INVALID;
     _request.body.clear();
     _request.headers.clear();
     _request.method.clear();
     _request.uri.clear();
+    _request.versionMajor = _request.versionMinor = 0;
+
+    _headerName.clear();
+    _headerValue.clear();
+    _keepAlive = false;
+
+    _response.body.clear();
+    _response.headers.clear();
+    _response.statusCode = HttpStatusCode::INVALID;
+
+    http_parser_init(&_httpParser, HTTP_REQUEST);
 
     _status = UNKOWN;
 }
@@ -131,8 +146,42 @@ int HttpConnection::onUrlCb(http_parser *parser, const char *at, size_t length) 
     return 0;
 }
 
+int HttpConnection::onHeaderFieldCb(http_parser *parser, const char *at, size_t length) {
+    HttpConnection *conn = (HttpConnection *)parser->data;
+
+    if (conn->_hasValue) {
+        conn->_request.headers.push_back({ conn->_headerName, conn->_headerValue });
+        conn->_headerName.clear();
+        conn->_headerValue.clear();
+        conn->_hasValue = false;
+    }
+
+    conn->_headerName.append(at, length);
+
+    return 0;
+}
+
+int HttpConnection::onHeaderValueCb(http_parser *parser, const char *at, size_t length) {
+    HttpConnection *conn = (HttpConnection *)parser->data;
+
+    conn->_hasValue = true;
+    conn->_headerValue.append(at, length);
+
+    return 0;
+}
+
 int HttpConnection::onHeadersCompleteCb(http_parser *parser) {
     HttpConnection *conn = (HttpConnection *)parser->data;
+
+    if (conn->_hasValue) {
+        conn->_request.headers.push_back({ conn->_headerName, conn->_headerValue });
+        conn->_headerName.clear();
+        conn->_headerValue.clear();
+        conn->_hasValue = false;
+    }
+
+    auto keepAlive = getHeaderByName(conn->_request.headers, HEADER_CONNECTION);
+    conn->_keepAlive = keepAlive && KeepAlive.iEqual(*keepAlive);
 
     conn->_request.uri = uriUnquote(conn->_request.uri.c_str());
     conn->_status = HttpConnection::IN_REQ_BODY_HANDLING;
@@ -167,9 +216,16 @@ int HttpConnection::send(const VecConstBuffers &buffers, bool finished) {
         UvWriteCtx *write_req = new UvWriteCtx;
 
         if (finished) {
-            write_req->callback = [this](int err) {
-                this->stopConnection();
-            };
+            if (this->_keepAlive) {
+                write_req->callback = [this](int err) {
+                    this->reset();
+                    this->_status = IN_KEEP_ALIVE;
+                };
+            } else {
+                write_req->callback = [this](int err) {
+                    this->stopConnection();
+                };
+            }
         }
 
         uv_buf_t *bufs = (uv_buf_t *)alloca(sizeof(uv_buf_t) * buffers.size());
@@ -178,8 +234,7 @@ int HttpConnection::send(const VecConstBuffers &buffers, bool finished) {
             bufs[i] = { s.data, s.len };
         }
 
-        int r = uv_write(write_req, uv_stream_handle(), bufs, (int)buffers.size(), write_cb);
-        assert(r == 0);
+        uv_write(write_req, uv_stream_handle(), bufs, (int)buffers.size(), write_cb);
     });
 
     return ERR_OK;
@@ -190,11 +245,18 @@ int HttpConnection::send(const VecConstBuffers &buffers, ConnWriteCallback callb
         UvWriteCtx *write_req = new UvWriteCtx;
 
         if (finished) {
-            // TODO: 支持 keep-alive
-            write_req->callback = [this, callback](int err) {
-                this->stopConnection();
-                callback(0);
-            };
+            if (this->_keepAlive) {
+                write_req->callback = [this, callback](int err) {
+                    callback(0);
+                    this->reset();
+                    this->_status = IN_KEEP_ALIVE;
+                };
+            } else {
+                write_req->callback = [this, callback](int err) {
+                    callback(0);
+                    this->stopConnection();
+                };
+            }
         } else {
             write_req->callback = callback;
         }
@@ -205,8 +267,7 @@ int HttpConnection::send(const VecConstBuffers &buffers, ConnWriteCallback callb
             bufs[i] = { s.data, s.len };
         }
 
-        int r = uv_write(write_req, uv_stream_handle(), bufs, (int)buffers.size(), write_cb);
-        assert(r == 0);
+        uv_write(write_req, uv_stream_handle(), bufs, (int)buffers.size(), write_cb);
     });
 
     return ERR_OK;

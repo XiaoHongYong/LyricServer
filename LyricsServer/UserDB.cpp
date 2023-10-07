@@ -5,17 +5,17 @@
 
 /**
  CREATE TABLE users (
-         id integer primary key AUTOINCREMENT, MLPasswordHash, PasswordHash text,
-         Email text, EmailLower text, CreateDate date, LastLoginDate date,
-         LastPasswordChangedDate date, UserName text, UserNameLower text
+         id integer primary key AUTOINCREMENT, MLPasswordHash text, PasswordHash text,
+         Email text collate nocase, EmailLower text, CreateDate date, LastLoginDate date,
+         LastPasswordChangedDate date, UserName text collate nocase, UserNameLower text
      );
- 
- CREATE UNIQUE INDEX users_UserNameLower on users (UserNameLower);
- CREATE UNIQUE INDEX users_EmailLower on users (EmailLower);
+
+ CREATE UNIQUE INDEX users_UserName on users (UserName collate nocase);
+ CREATE UNIQUE INDEX users_Email on users (Email collate nocase);
 
  */
 
-#define SQL_LOGIN_WITH_MLPASSWORD   "SELECT id FROM users WHERE UserNameLower=? and MLPasswordHash=?"
+#define SQL_LOGIN_WITH_MLPASSWORD   "SELECT id FROM users WHERE UserName=? and MLPasswordHash=?"
 
 int UserDB::init(const char *fileName) {
     int ret = sqlite3_open(fileName, &m_db);
