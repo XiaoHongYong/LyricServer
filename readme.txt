@@ -1,11 +1,18 @@
-== 目录说明
+## 目录说明
 
 * LyricsServer:
   * 提供给客户端的歌词搜索、上传、登录服务
   * 监听在 127.0.0.1 内部端口，未做鉴权服务
-  * 数据库 API
+    * 展示内部运行状态: http://localhost:8000/status/
+  * 内部 API 通用 JSON 格式定义
+    * 使用 POST JSON 传递参数
+    * 返回值为 json 格式, 包含下面的通用字段
+      * result: string，执行结果，一切正常为 "OK"
+      * message: string，如果有错误时，一般都有更详细的错误信息.
+    * 请求格式参考 tests/chrome-console-db-api.js
+  * 数据库查询 API: 仅仅用于数据查询，不要执行添加、修改、删除.
     * 路径: 
-      * /db-api/user
+      * /db-api/users
       * /db-api/lyrics
     * 参数在 POST 中，json 格式
       * action:
@@ -29,16 +36,48 @@
           * 返回
             * col-names: 所有的字段名
             * rows: 查询的数据结构，如果有值，则是一个二维数组，如果没有值，则是空的一维数组
-    * 返回值为 json 格式, 包含下面的通用字段
-      * result: string，执行结果，一切正常为 "OK"
-      * message: string，如果有错误时，一般都有更详细的错误信息.
-    * 请求格式参考 tests/chrome-console-db-api.js
+  * 数据库修改 API
+    * 路径: 
+      * /db-modify-api/users
+      * /db-modify-api/lyrics
+    * 参数在 POST 中，json 格式
+      * action:
+        * create: 插入新纪录
+        * update: 修改纪录
+        * delete: 删除
+      * fields: create/update 会用到的字段 ID
+      * args: 执行 sql 需要填入的参数
+    * 返回值为 json 格式
+      * id: 当 update 的时候会填入新创建纪录的 ID，其他情况下为 -1
+  * 数据同步 API
+    * 发送和接收的数据都是加密的
+    * 路径:
+      * /api-i/data-sync
+    * 参数在 POST 中，json 格式
+      * filename: 当前同步的文件名，如果为空字符串或者找不到文件，则从第一个文件开始同步
+      * offset: 文件偏移位置
+    * 返回
+      * result: 同步结果字符串
+        * OK: 当前成功
+      * filename: 当前文件名
+      * end: bool, 是否结束
+      * offset: 当前返回数据的偏移位置
+      * data: 返回的数据
+        * 如果已经到结束，则可能无此字段
+      * size: 返回数据的大小
+  * 歌词文件 API
+    * 路径:
+      * /lyrics-api/
+    * 参数在 POST 中，json 格式
+      * action:
+        * delete: 删除
+      * related-link: 待删除歌词文件的位置.
 * product:
   * 线上部署的配置
 * local:
   * 本地测试部署的配置
 
-== Mac 下开发测试
+## Mac 下开发测试
 * 在 xcode 中打开 LyricsServer/LyricsServer.xcodeproj，运行 LyricsServer
   * 需要配置 lyrics-server.ini，保存在 LyricsServer 编译后的目录下
   '''
@@ -51,8 +90,16 @@ port=8000
   * 可以在 chrome console 中模拟发送 LyricsAPI 请求，请求格式参考 tests/chrome-console-db-api.js
 
 * openresty:
-  * install:
-  * /opt/homebrew/opt/openresty/bin/openresty -p `pwd`/ -c conf/nginx.conf 
+  * install: 
+    * brew install openresty/brew/openresty
+  * 依赖其他模块
+    * opm get bungle/lua-resty-template
+    * opm get GUI/lua-resty-mail
+    * opm get ledgetech/lua-resty-http
+  * cd ServerNgx/product
+  * mkdir database logs lyrics temp lu8 data-sync-log
+  * 第一次运行 /opt/homebrew/opt/openresty/bin/openresty -p `pwd` -c conf-test/nginx.conf
+  * 如果修改了 nginx.conf，则重启 ningx: /opt/homebrew/opt/openresty/bin/openresty -s reload
 
 * 其他工具命令
   * 查看端口所运行的进程: sudo lsof -i :8080
@@ -62,3 +109,37 @@ port=8000
     * 只有支持 Connection: KeepAlive，性能才会高.
   * 测试 http 协议: tests/request_body_client.py
 
+## 自动化测试
+* 脚本: tests/test-all.sh
+  * ./build.sh debug
+    * 编译 LyricsServer 和 LyricsClient
+  * ./tests/test-all.sh debug clean
+    * 测试 debug 版本，并清除测试环境
+
+## 服务器升级
+
+* 升级数据库格式
+  * 执行 product/database/upgrade-v1/upgrade.sh
+  * 升级完毕需要手动将 database/lyrics.db, user.db 备份，再使用新的替换.
+* 创建 web SessionKey
+  * product/lua/SessionKey.lua
+
+## 参考开发文档
+* Openresty template 语法
+  * https://github.com/bungle/lua-resty-template
+* Openresty 参考手册
+  * https://openresty-reference.readthedocs.io/en/latest/Lua_Nginx_API/#ngxhttp_time
+* OpenResty 最佳实践 
+  * https://moonbingbing.gitbooks.io/openresty-best-practices/content/
+* Ajax axios
+  * https://github.com/axios/axios
+
+## Ubuntu 下编译：
+    sudo mount -t vboxsf -o uid=1000,gid=1000 zikiplayer /home/henry/zikiplayer
+    Fixing your virtualbox shared folder symlink error: https://ahtik.com/fixing-your-virtualbox-shared-folder-symlink-error/
+        VBoxManage setextradata YOURVMNAME VBoxInternal2/SharedFoldersEnableSymlinksCreate/YOURSHAREFOLDERNAME 1
+
+    sudo apt-get install systemtap-sdt-dev
+    ubuntu: 
+    * Configure before build: third-parties/openresty/config-for-ubuntu.sh
+    * build.sh

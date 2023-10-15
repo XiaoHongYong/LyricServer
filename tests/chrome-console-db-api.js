@@ -1,4 +1,4 @@
-fetch('/db-api/user', {
+fetch('/db-api/users', {
   method: 'POST',
   body: JSON.stringify({
     action: 'prepare',
@@ -10,7 +10,7 @@ fetch('/db-api/user', {
 // 返回 stmt-id
 
 // 使用返回的 stmt-id 用于查询
-fetch('/db-api/user', {
+fetch('/db-api/users', {
 method: 'POST',
 body: JSON.stringify({
     action: 'query',
@@ -25,7 +25,7 @@ body: JSON.stringify({
 
 ////
 
-fetch('/db-api/user', {
+fetch('/db-api/users', {
     method: 'POST',
     body: JSON.stringify({
     action: 'prepare',
@@ -35,7 +35,7 @@ fetch('/db-api/user', {
     .then(res => res.json())
     .then(console.log)
 
-fetch('/db-api/user', {
+fetch('/db-api/users', {
 method: 'POST',
 body: JSON.stringify({
     action: 'query',
@@ -48,7 +48,7 @@ body: JSON.stringify({
 .then(console.log)
 
 
-fetch('/db-api/user', {
+fetch('/db-api/users', {
     method: 'POST',
     body: JSON.stringify({
     action: 'exec',
@@ -59,7 +59,7 @@ fetch('/db-api/user', {
     .then(res => res.json())
     .then(console.log)
 
-fetch('/db-api/user', {
+fetch('/db-api/users', {
     method: 'POST',
     body: JSON.stringify({
     action: 'exec',

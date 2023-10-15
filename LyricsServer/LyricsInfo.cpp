@@ -38,16 +38,19 @@ void LyricsInfo::parse(const StringView &lyrics) {
         } else if (!isLrcFile && parser.parseTxtTag(line)) {
             // txt format
         } else {
-            digest = crc32(digest, (uint8_t *)line.data, line.len);
+            digest = (uint32_t)crc32(digest, (uint8_t *)line.data, line.len);
         }
     }
 
-    digest = crc32(digest, (uint8_t *)artist.c_str(), (uint32_t)artist.size());
-    digest = crc32(digest, (uint8_t *)album.c_str(), (uint32_t)album.size());
-    digest = crc32(digest, (uint8_t *)title.c_str(), (uint32_t)title.size());
-    digest = crc32(digest, (uint8_t *)mediaLength.c_str(), (uint32_t)mediaLength.size());
+    digest = (uint32_t)crc32(digest, (uint8_t *)artist.c_str(), (uint32_t)artist.size());
+    digest = (uint32_t)crc32(digest, (uint8_t *)album.c_str(), (uint32_t)album.size());
+    digest = (uint32_t)crc32(digest, (uint8_t *)title.c_str(), (uint32_t)title.size());
+    digest = (uint32_t)crc32(digest, (uint8_t *)mediaLength.c_str(), (uint32_t)mediaLength.size());
 
     lyrContentType = isLrcFile ? LCT_LRC : LCT_TXT;
+
+    CLyricsKeywordFilter::filter(artist.c_str(), arCmp);
+    CLyricsKeywordFilter::filter(title.c_str(), tiCmp);
 }
 
 #define ENCRYPT_INT_LEN        (sizeof(uint32_t)  + 1)
@@ -98,10 +101,10 @@ string MLIdDecode(cstr_t szIn, int nLen) {
 }
 
 // uint8_t[0] CRC, followed 4 bytes are network uint8_t.
-string encryptLyricsID(uint32_t id) {
+string encryptLyricsID(long id) {
     uint8_t buf[64];
 
-    uint32ToLE(id, buf + 1);
+    uint32ToLE((uint32_t)id, buf + 1);
 
     // Calculate CRC
     buf[0] = ENCRYPT_CRC_EXTRA;

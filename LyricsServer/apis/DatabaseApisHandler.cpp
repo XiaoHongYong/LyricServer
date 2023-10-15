@@ -3,9 +3,7 @@
 //
 
 #include "DatabaseApisHandler.hpp"
-#include "../../../Utils/rapidjson.h"
-#include "../RapidjsonWriter.hpp"
-#include <rapidjson/reader.h>
+#include "Utils/rapidjson.h"
 
 
 cstr_t sqlite3ColumnTypeName(int type) {
@@ -32,63 +30,72 @@ void writeJsonFieldValue(IJsonWriter *writer, sqlite3_stmt *stmt, int colIdx) {
     }
 }
 
-DatabaseApisHandler::DatabaseApisHandler(sqlite3 *db, const string &uri) : _db(db), _uri(uri) {
-}
+bool bindStmtArgs(DbApiCtx &ctx, sqlite3 *db, sqlite3_stmt *stmt, const rapidjson::Value &args) {
+    assert(args.IsArray());
 
-const string &DatabaseApisHandler::getUriPath() const {
-    return _uri;
-}
+    for (int i = 1; i <= args.Size(); i++) {
+        // sqlite3_bind 的索引从 1 开始.
+        auto &arg = args[i - 1];
+        int ret = SQLITE_ERROR;
+        switch (arg.GetType()) {
+            case rapidjson::kNullType:
+                ret = sqlite3_bind_null(stmt, i);
+                break;
+            case rapidjson::kFalseType:
+            case rapidjson::kTrueType:
+                ret = sqlite3_bind_int(stmt, i, arg.GetBool());
+                break;
+            case rapidjson::kObjectType:
+            case rapidjson::kArrayType:
+                ctx.result = "BAD-PARAMS";
+                ctx.message = "Array and Object type is NOT supported in args.";
+                LOG(INFO) << "Array and Object type is NOT supported in args.";
+                return false;
+            case rapidjson::kStringType:
+                ret = sqlite3_bind_text(stmt, i, arg.GetString(), arg.GetStringLength(), SQLITE_STATIC);
+                break;
+            case rapidjson::kNumberType:
+                if (arg.IsInt()) {
+                    ret = sqlite3_bind_int(stmt, i, arg.GetInt());
+                } else if (arg.IsDouble()) {
+                    ret = sqlite3_bind_double(stmt, i, arg.GetDouble());
+                } else {
+                    ret = sqlite3_bind_int64(stmt, i, arg.GetInt64());
+                }
+                break;
+        }
 
-int DatabaseApisHandler::onRequestHeader(HttpConnectionPtr connection) {
-
-    return ERR_OK;
-}
-
-int DatabaseApisHandler::onRequestBody(HttpConnectionPtr connection) {
-    auto &bodyStr = connection->request().body;
-
-    DbApiCtx ctx;
-    RapidjsonWriterX writer;
-
-    writer.startObject();
-
-    rapidjson::Document &body = ctx.body;
-    if (body.Parse(bodyStr.c_str(), bodyStr.size()).HasParseError() || !body.IsObject()) {
-        ctx.result = "BAD-MESSAGE-FORMAT";
-        ctx.message = "Post body should be json format.";
-    } else {
-        ctx.result = "OK";
-
-        string action = getMemberString(body, "action");
-        if (action == "prepare") {
-            // Prepare statement
-            prepareStmt(ctx, writer);
-        } else if (action == "exec") {
-            execSql(ctx, writer);
-        } else if (action == "query") {
-            queryStmt(ctx, writer);
-        } else {
-            ctx.result = "INVALID-ACTION";
-            ctx.message = "Invalid action: " + action;
+        if (ret != SQLITE_OK) {
+            ctx.result = "SQL-BIND-ERROR";
+            ctx.message = stringPrintf("Failed to bind arg at index: %d. Error: %s", i, sqlite3_errmsg(db));
+            LOG(INFO) << "Failed to bind arg at index: " << i << ". Error: " << sqlite3_errmsg(db);
+            return false;
         }
     }
 
-    writer.writePropString("result", ctx.result);
-    if (!ctx.message.empty()) {
-        writer.writePropString("message", ctx.message);
-    }
-
-    writer.endObject();
-
-    auto &response = connection->response();
-    response.statusCode = HttpStatusCode::OK;
-    response.body.assign(writer.getString(), writer.getSize());
-    response.sendAll();
-
-    return ERR_OK;
+    return true;
 }
 
-void DatabaseApisHandler::prepareStmt(DbApiCtx &ctx, RapidjsonWriterX &writer) {
+DatabaseApisHandler::DatabaseApisHandler(sqlite3 *db, const string &uri) : BaseJsonApiHandler(uri), _db(db) {
+}
+
+void DatabaseApisHandler::handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
+    string action = getMemberString(ctx.body, "action");
+    if (action == "prepare") {
+        // Prepare statement
+        prepareStmt(ctx, writer);
+    } else if (action == "exec") {
+        execSql(ctx, writer);
+    } else if (action == "query") {
+        queryStmt(ctx, writer);
+    } else {
+        ctx.result = "INVALID-ACTION";
+        ctx.message = "Invalid action: " + action;
+        LOG(ERROR) << "Invalid action: " << action;
+    }
+}
+
+void DatabaseApisHandler::prepareStmt(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
     sqlite3_stmt *stmt = nullptr;
     string sql = getMemberString(ctx.body, "sql");
 
@@ -107,6 +114,7 @@ void DatabaseApisHandler::prepareStmt(DbApiCtx &ctx, RapidjsonWriterX &writer) {
     if (ret != SQLITE_OK) {
         ctx.result = "SQL_PREPARE_FAILED";
         ctx.message = sqlite3_errmsg(_db);
+        LOG(ERROR) << "Prepare statement failed: " << sql << ", error: " << sqlite3_errmsg(_db);;
         return;
     }
 
@@ -127,20 +135,23 @@ void DatabaseApisHandler::prepareStmt(DbApiCtx &ctx, RapidjsonWriterX &writer) {
     writer.writePropStringArray("col-names", item.cols);
 }
 
-void DatabaseApisHandler::queryStmt(DbApiCtx &ctx, RapidjsonWriterX &writer) {
+void DatabaseApisHandler::queryStmt(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
     // execute statement
     auto digest = getMemberString(ctx.body, "stmt-id");
     auto it = _mapStmts.find(digest);
     if (it == _mapStmts.end()) {
         ctx.result = "STMT-NOT-EXISTS";
         ctx.message = "Can't find statement by id: " + digest;
+        LOG(INFO) << "Can't find statement by id: " << digest;
         return;
     }
 
     queryStmt((*it).second, ctx, writer);
 }
 
-void DatabaseApisHandler::queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterX &writer) {
+void DatabaseApisHandler::queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterEx &writer) {
+    sqlite3_reset(stmt.stmt);
+
     auto itArgs = ctx.body.FindMember("args");
     if (itArgs != ctx.body.MemberEnd()) {
         // 有参数
@@ -148,45 +159,12 @@ void DatabaseApisHandler::queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterX 
         if (!args.IsArray()) {
             ctx.result = "BAD-PARAMS";
             ctx.message = "args should be an array type.";
+            LOG(INFO) << "args should be an array type.";
             return;
         }
 
-        for (int i = 1; i <= args.Size(); i++) {
-            // sqlite3_bind 的索引从 1 开始.
-            auto &arg = args[i - 1];
-            int ret = SQLITE_ERROR;
-            switch (arg.GetType()) {
-                case rapidjson::kNullType:
-                    ret = sqlite3_bind_null(stmt.stmt, i);
-                    break;
-                case rapidjson::kFalseType:
-                case rapidjson::kTrueType:
-                    ret = sqlite3_bind_int(stmt.stmt, i, arg.GetBool());
-                    break;
-                case rapidjson::kObjectType:
-                case rapidjson::kArrayType:
-                    ctx.result = "BAD-PARAMS";
-                    ctx.message = "Array and Object type is NOT supported in args.";
-                    return;
-                case rapidjson::kStringType:
-                    ret = sqlite3_bind_text(stmt.stmt, i, arg.GetString(), arg.GetStringLength(), SQLITE_STATIC);
-                    break;
-                case rapidjson::kNumberType:
-                    if (arg.IsInt()) {
-                        ret = sqlite3_bind_int(stmt.stmt, i, arg.GetInt());
-                    } else if (arg.IsDouble()) {
-                        ret = sqlite3_bind_double(stmt.stmt, i, arg.GetDouble());
-                    } else {
-                        ret = sqlite3_bind_int64(stmt.stmt, i, arg.GetInt64());
-                    }
-                    break;
-            }
-
-            if (ret != SQLITE_OK) {
-                ctx.result = "SQL-BIND-ERROR";
-                ctx.message = stringPrintf("Failed to bind arg at index: %d. Error: %s", i, sqlite3_errmsg(_db));
-                return;
-            }
+        if (!bindStmtArgs(ctx, _db, stmt.stmt, args)) {
+            return;
         }
     }
 
@@ -195,29 +173,43 @@ void DatabaseApisHandler::queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterX 
         writer.writePropStringArray("col-names", stmt.cols);
     }
 
+    bool isDict = getMemberString(ctx.body, "format") == "dict";
+
     // 返回数据, rows 是二维数组[ [col1, col2], [col1, col2], ... ]
     writer.writeKey("rows");
     writer.startArray();
     while (true) {
         int ret = sqlite3_step(stmt.stmt);
         if (ret == SQLITE_ROW) {
-            writer.startArray();
-            for (int i = 0; i < stmt.cols.size(); i++) {
-                writeJsonFieldValue(&writer, stmt.stmt, i);
+            if (isDict) {
+                writer.startObject();
+                for (int i = 0; i < stmt.cols.size(); i++) {
+                    writer.IJsonWriter::writeKey(stmt.cols[i]);
+                    writeJsonFieldValue(&writer, stmt.stmt, i);
+                }
+                writer.endObject();
+            } else {
+                writer.startArray();
+                for (int i = 0; i < stmt.cols.size(); i++) {
+                    writeJsonFieldValue(&writer, stmt.stmt, i);
+                }
+                writer.endArray();
             }
-            writer.endArray();
         } else if (ret == SQLITE_DONE) {
             break;
         } else {
             ctx.result = "SQL_STEP_ERROR";
             ctx.message = sqlite3_errmsg(_db);
+            LOG(INFO) << "Sql step error: " << sqlite3_errmsg(_db);
             break;
         }
     }
     writer.endArray();
+
+    sqlite3_reset(stmt.stmt);
 }
 
-void DatabaseApisHandler::execSql(DbApiCtx &ctx, RapidjsonWriterX &writer) {
+void DatabaseApisHandler::execSql(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
     sqlite3_stmt *stmt = nullptr;
     string sql = getMemberString(ctx.body, "sql");
 
@@ -225,6 +217,7 @@ void DatabaseApisHandler::execSql(DbApiCtx &ctx, RapidjsonWriterX &writer) {
     if (ret != SQLITE_OK) {
         ctx.result = "SQL_PREPARE_FAILED";
         ctx.message = sqlite3_errmsg(_db);
+        LOG(ERROR) << "Prepare statement failed: " << sql << ", error: " << sqlite3_errmsg(_db);;
         return;
     }
 

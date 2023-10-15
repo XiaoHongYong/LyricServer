@@ -1,0 +1,43 @@
+{% layout = "minilyrics/base.html" %}
+
+
+{-content-}
+
+<div class="row">
+    <div class="list-group col-xs-4 col-sm-3" id="download_tab">
+        <a v-for="item in nav_items"
+            v-bind:class="'list-group-item' + (curPath == item.link ? ' active' : '')"
+            v-bind:href="item.link">[[ item.title ]]
+        </a>
+    </div>
+
+    <script>
+        var downloadTabApp = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#download_tab',
+            data: {
+                nav_items: [
+                    // { link: '/minilyrics/faq/', title: 'Premium Services' },
+                    { link: '/minilyrics/faq/#install', title: 'Installation and Startup' },
+                    { link: '/minilyrics/faq/#internet', title: 'Internet connection' },
+                    { link: '/minilyrics/faq/#ipod', title: 'View lyrics on iPod and other devices' },
+                    { link: '/minilyrics/faq/#scroll_lyr', title: 'Scrolling Lyrics' },
+                    { link: '/minilyrics/faq/#lyr_editor', title: 'Lyrics Editor and Upload Lyrics' },
+                    { link: '/minilyrics/faq/#players', title: 'Supported players' },
+                    { link: '/contactus', title: 'Contact us' },
+                ],
+            },
+            computed: {
+                curPath: function () {
+                    return location.pathname;
+                },
+            },
+        });
+    </script>
+
+    <div class="col-xs-8 col-sm-9">
+        {* blocks.sub_content *}
+    </div>
+</div>
+
+{-content-}

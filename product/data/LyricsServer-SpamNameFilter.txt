@@ -1,0 +1,9 @@
+﻿1, www.
+1, .com
+1, .net
+1, http
+1, 文本文档
+1, Text Document
+1, TempTxtLyrics
+1, whatsnew
+1, @!@

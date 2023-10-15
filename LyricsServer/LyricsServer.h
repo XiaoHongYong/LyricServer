@@ -3,19 +3,11 @@
 #include "SpamLyricsFilter.h"
 #include "LyricsDB.h"
 #include "UserDB.h"
-#include "HttpServer/HttpResponse.hpp"
-#include "HttpServer/HttpServer.hpp"
+#include "HttpLib/HttpServer/HttpResponse.hpp"
+#include "HttpLib/HttpServer/HttpServer.hpp"
+#include "SyncRemoteMasterData.hpp"
+#include "ServerConfig.hpp"
 
-
-struct ServerConfig {
-    string              rootDir;
-    string              lyricsDir;
-    string              uploadDirName; // 相对于 lyricsDir 的目录名
-    string              lyricsHttpUrlBase;
-
-    string              address;
-    int                 port;
-};
 
 class LyricsServer : public HttpServer {
 public:
@@ -23,10 +15,15 @@ public:
     virtual ~LyricsServer();
 
 public:
-    int init(ServerConfig &config);
+    int init();
     void process(uint8_t *data, size_t len, HttpResponse &response);
 
+    int deleteLyricsFile(const string &relatedLink);
+    void doDataSync(const string &filename);
+
 protected:
+    bool executeDataSync(const StringView &line);
+
     int processSearchCmd(MLMsgCmdSearch &cmdSearch, MLMsgRetSearch &retSearch);
     int processBatchSearchCmd(MLMsgCmdBatchSearch &cmdSearch, MLMsgRetBatchSearch &retSearch);
     int processUploadCmd(MLMsgCmdUpload &cmdUpload, MLMsgRetUpload &retMsg);
@@ -43,6 +40,21 @@ protected:
 
     int saveLyricsFile(LyricsInfo &lyrInfo, string &strLyrContentUtf8);
 
+    /*
+    static void databaseUpdateHook(void *dataUser, int type, const char *dbName, const char *tableName, sqlite3_int64 rowId);
+
+    struct DbUpdateHookCtx {
+        bool                    logDeleteOnly = false;
+        sqlite3                 *db = nullptr;
+        LyricsServer            *thiz = nullptr;
+        string                  tableName;
+        sqlite3_stmt            *stmt = nullptr;
+        VecStrings              cols;
+    };
+protected:
+     DbUpdateHookCtx             _userDbHookCtx, _lyricsDbHookCtx;
+     */
+
 public:
     CMLPacketWrapper            m_packetWrapper;
 
@@ -58,5 +70,9 @@ public:
     time_t                      m_startTime;
     size_t                      m_countSearch = 0, m_countSearchNotFound = 0;
     size_t                      m_countUpload = 0, m_countUploadExists = 0, m_countUploadFailed = 0;
+    bool                        m_isMaster = true;
+
+    SyncRemoteMasterData        m_syncRemoteMasterData;
+    DatabaseModifier            _dbModifierUsers, _dbModifierLyrics;
 
 };

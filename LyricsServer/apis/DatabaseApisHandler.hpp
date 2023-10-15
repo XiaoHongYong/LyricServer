@@ -7,27 +7,19 @@
 #ifndef DatabaseApisHandler_hpp
 #define DatabaseApisHandler_hpp
 
-#include "../HttpServer/IHttpRequestHandler.hpp"
-#include "../LyricsServer.h"
-#include "../RapidjsonWriter.hpp"
-#include <rapidjson/document.h>
+#include "BaseJsonApiHandler.hpp"
 
 
-using FuncionWriteJsonField = void (*)(IJsonWriter *writer, sqlite3_stmt *stmt, int colIdx);
+void writeJsonFieldValue(IJsonWriter *writer, sqlite3_stmt *stmt, int colIdx);
+bool bindStmtArgs(DbApiCtx &ctx, sqlite3 *db, sqlite3_stmt *stmt, const rapidjson::Value &args);
 
-struct DbApiCtx {
-    rapidjson::Document             body;
-    string                          result;
-    string                          message;
-};
-
-class DatabaseApisHandler : public IHttpRequestHandler {
+/**
+ * 为内部 Web server 提供服务
+ * - 执行 sql 查询，不要执行数据修改
+ */
+class DatabaseApisHandler : public BaseJsonApiHandler {
 public:
     DatabaseApisHandler(sqlite3 *db, const string &uri);
-
-    virtual const string &getUriPath() const override;
-    virtual int onRequestHeader(HttpConnectionPtr connection) override;
-    virtual int onRequestBody(HttpConnectionPtr connection) override;
 
 protected:
     struct Stmt {
@@ -38,13 +30,14 @@ protected:
 
     using MapStmts = map<string, Stmt>;
 
-    void prepareStmt(DbApiCtx &ctx, RapidjsonWriterX &writer);
-    void querySql(DbApiCtx &ctx, RapidjsonWriterX &writer);
-    void queryStmt(DbApiCtx &ctx, RapidjsonWriterX &writer);
-    void queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterX &writer);
-    void execSql(DbApiCtx &ctx, RapidjsonWriterX &writer);
+    void handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) override;
 
-    string                          _uri;
+    void prepareStmt(DbApiCtx &ctx, RapidjsonWriterEx &writer);
+    void querySql(DbApiCtx &ctx, RapidjsonWriterEx &writer);
+    void queryStmt(DbApiCtx &ctx, RapidjsonWriterEx &writer);
+    void queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterEx &writer);
+    void execSql(DbApiCtx &ctx, RapidjsonWriterEx &writer);
+
     sqlite3                         *_db = nullptr;
     MapStmts                        _mapStmts;
 

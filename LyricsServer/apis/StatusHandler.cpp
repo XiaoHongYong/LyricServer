@@ -3,7 +3,7 @@
 //
 
 #include "StatusHandler.hpp"
-#include "../RapidjsonWriter.hpp"
+#include "Utils/rapidjson.h"
 #include <rapidjson/prettywriter.h>
 
 
@@ -16,7 +16,7 @@ const string &StatusHandler::getUriPath() const {
 }
 
 int StatusHandler::onRequestHeader(HttpConnectionPtr connection) {
-    RapidjsonPrettyWriterX writer;
+    RapidjsonPrettyWriterEx writer;
     _server->dumpStatus(&writer);
 
     auto &response = connection->response();

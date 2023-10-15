@@ -7,10 +7,13 @@
 #ifndef StatusHandler_hpp
 #define StatusHandler_hpp
 
-#include "../HttpServer/IHttpRequestHandler.hpp"
+#include "HttpLib/HttpServer/IHttpRequestHandler.hpp"
 #include "../LyricsServer.h"
 
 
+/**
+ * 显示内部运行状态.
+ */
 class StatusHandler : public IHttpRequestHandler {
 public:
     StatusHandler(LyricsServer *server);

@@ -2,6 +2,7 @@
 
 #include "Sqlite3Utils.h"
 #include "LyricsInfo.hpp"
+#include "MLProtocol/MLProtocol.h"
 
 
 class LyricsDB {

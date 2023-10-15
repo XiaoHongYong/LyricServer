@@ -27,6 +27,14 @@
     }                                                           \
     n++;
 
+#define SQLITE3_BIND_INT64(db, stmt, num)                         \
+    ret = sqlite3_bind_int64(stmt, n, num);                       \
+    if (ret != SQLITE_OK) {                                     \
+        LogSqlite3Error(db);                                    \
+        return ERR_FALSE;                                       \
+    }                                                           \
+    n++;
+
 
 #define SQLITE3_GET_TEXT_FIELD(stmt, field)                     \
     text = (const char *)sqlite3_column_text(sqlStmt, n++);     \

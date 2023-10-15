@@ -1,12 +1,17 @@
 #include "Types.h"
 #include "LyricsServer.h"
-#include "../../LyricsLib/LyricsKeywordFilter.h"
+#include "LyricsLib/LyricsKeywordFilter.h"
+#include "Utils/rapidjson.h"
 #include "UserDB.h"
 #include "SpamLyricsFilter.h"
 #include "DataSyncLog.hpp"
 #include "apis/ClientApisHandler.hpp"
 #include "apis/StatusHandler.hpp"
 #include "apis/DatabaseApisHandler.hpp"
+#include "apis/DbModifyHandler.hpp"
+#include "apis/LyricsFileHandler.hpp"
+#include "apis/DataSyncHandler.hpp"
+
 
 CProfile g_profile;
 CLog g_log;
@@ -72,11 +77,9 @@ bool isWinNewLine(const StringView &data) {
     return false;
 }
 
-string setLyricsId(const StringView &data, long lyricsId, bool isLrcTag) {
+string setLyricsId(const StringView &data, const string &lyricsId, bool isLrcTag) {
     static StringView LRC_ID("[id:");
     static StringView TXT_ID("id:");
-
-    string id = encryptLyricsID(lyricsId);
 
     // int pos = -1, end = -1;
     int pos = iFindAtLineStart(data, isLrcTag ? LRC_ID : TXT_ID);
@@ -88,7 +91,7 @@ string setLyricsId(const StringView &data, long lyricsId, bool isLrcTag) {
             if (end1 != -1 && end1 < end2) {
                 // 结束的 ']' 必须在此行内
                 pos += LRC_ID.len;
-                end = end1 + 1;
+                end = end1;
             }
         } else {
             end = data.strchr('\n', pos);
@@ -102,7 +105,7 @@ string setLyricsId(const StringView &data, long lyricsId, bool isLrcTag) {
 
             lyrics.append(data.data, pos);
             lyrics.push_back(' ');
-            lyrics.append(id);
+            lyrics.append(lyricsId);
             lyrics.append(data.data + end, data.len - end);
 
             return lyrics;
@@ -113,7 +116,7 @@ string setLyricsId(const StringView &data, long lyricsId, bool isLrcTag) {
     if (isLrcTag) {
         // 添加到开头
         lyrics.append("[id: ");
-        lyrics.append(id);
+        lyrics.append(lyricsId);
         lyrics.push_back(']');
 
         if (isWinNewLine(data)) {
@@ -133,10 +136,14 @@ string setLyricsId(const StringView &data, long lyricsId, bool isLrcTag) {
         }
 
         lyrics.append("id: ");
-        lyrics.append(id);
+        lyrics.append(lyricsId);
     }
 
     return lyrics;
+}
+
+string setLyricsId(const StringView &data, long lyricsId, bool isLrcTag) {
+    return setLyricsId(data, encryptLyricsID(lyricsId), isLrcTag);
 }
 
 uint32_t VersionNumMake(int nMajor, int nMinor, int nBuild) {
@@ -175,46 +182,69 @@ LyricsServer::LyricsServer() : m_spamFilter("LyricsServer-") {
 LyricsServer::~LyricsServer() {
 }
 
-int LyricsServer::init(ServerConfig &config) {
-    m_lyricsDir = config.lyricsDir;
+int LyricsServer::init() {
+    m_isMaster = g_conf.isMaster;
+    m_lyricsDir = g_conf.lyricsDir;
     dirStringAddSep(m_lyricsDir);
 
-    m_relatedUploadDir = config.uploadDirName;
+    m_relatedUploadDir = g_conf.uploadDirName;
     dirStringAddSep(m_relatedUploadDir);
 
-    m_lyricsHttpLinkBase = config.lyricsHttpUrlBase;
+    m_lyricsHttpLinkBase = g_conf.lyricsHttpUrlBase;
 
-    m_spamFilter.Load(dirStringJoin(config.rootDir, "data/").c_str());
+    m_spamFilter.Load(dirStringJoin(g_conf.rootDir, "data/").c_str());
 
     CLyricsKeywordFilter::init();
 
-    if (!m_fpSyncLog.open(dirStringJoin(config.rootDir, "data-sync.log").c_str(), "a+b")) {
-        LOG("Failed to open data-sync.log");
+    if (!tryToReopenDataSyncLogByDate(m_fpSyncLog)) {
+        LOG(ERROR) << "Failed to open data-sync log";
         return ERR_OPEN_FILE;
     }
 
-    int ret = m_dbLyrics.init(config.rootDir);
+    int ret = m_dbLyrics.init(g_conf.rootDir);
     if (ret != ERR_OK) {
-        LOG("Failed to init lyrics db");
+        LOG(ERROR) << "Failed to init lyrics db";
         return ret;
     }
 
-    auto fn = dirStringJoin(config.rootDir, "database/users.db");
+    auto fn = dirStringJoin(g_conf.rootDir, "database/users.db");
     ret = m_dbUser.init(fn.c_str());
     if (ret != ERR_OK) {
-        LOG("Failed to init users db");
+        LOG(ERROR) << "Failed to init users db";
+        return ret;
     }
+
+    m_syncRemoteMasterData.start(this);
+    if (!g_conf.isMaster) {
+        _dbModifierUsers.init(m_dbUser.db(), "users");
+        _dbModifierLyrics.init(m_dbLyrics.db(), "lyrics");
+    }
+
+    // _userDbHookCtx = { false, m_dbUser.db(), this, "users" };
+    // sqlite3_update_hook(m_dbUser.db(), databaseUpdateHook, &_userDbHookCtx);
+    // _lyricsDbHookCtx = { true, m_dbLyrics.db(), this, "lyrics" };
+    // sqlite3_update_hook(m_dbLyrics.db(), databaseUpdateHook, &_lyricsDbHookCtx);
 
     CMLPacketAccountMgr *pMgr = CMLPacketAccountMgr::getInstance();
     pMgr->addAccount(4, "Mlv1clt4.0");
     pMgr->m_packFlag = MPV_V1_MD5_ID;
 
-    HttpServer::init(config.address, config.port);
+    HttpServer::init(g_conf.address, g_conf.port);
 
     registerRequestHandler(std::make_shared<StatusHandler>(this));
     registerRequestHandler(std::make_shared<ClientApisHandler>(this));
-    registerRequestHandler(std::make_shared<DatabaseApisHandler>(m_dbUser.db(), "/db-api/user"));
+    registerRequestHandler(std::make_shared<DatabaseApisHandler>(m_dbUser.db(), "/db-api/users"));
     registerRequestHandler(std::make_shared<DatabaseApisHandler>(m_dbLyrics.db(), "/db-api/lyrics"));
+
+    if (g_conf.isMaster) {
+        // 只有 master 才能提供修改数据库的接口
+        registerRequestHandler(std::make_shared<DbModifyHandler>(this, m_dbUser.db(), "users", "/db-modify-api/users"));
+        registerRequestHandler(std::make_shared<DbModifyHandler>(this, m_dbLyrics.db(), "lyrics", "/db-modify-api/lyrics"));
+        registerRequestHandler(std::make_shared<LyricsFileHandler>(this));
+
+        // 数据同步服务接口
+        registerRequestHandler(std::make_shared<DataSyncHandler>(this));
+    }
 
     return ERR_OK;
 }
@@ -425,7 +455,7 @@ void LyricsServer::process(uint8_t *data, size_t len, HttpResponse &response) {
         break;
     }
     default:
-        LOG("unsupported command(%d) from client", msgCmd);
+        LOG(INFO) << "unsupported command from client: " << (int)msgCmd;
         break;
     }
 
@@ -480,10 +510,17 @@ int LyricsServer::processSearchCmd(MLMsgCmdSearch &cmdSearch, MLMsgRetSearch &re
 }
 
 int LyricsServer::processUploadCmd(MLMsgCmdUpload &cmdUpload, MLMsgRetUpload &retMsg) {
+    if (!g_conf.isMaster) {
+        LOG(ERROR) << "This server is NOT master, not support upload lyrics.";
+        retMsg.strMessage = "This server do NOT allow upload lyrics, please contact us to report the error.";
+        return ERR_NOT_AUTHORIZED;
+    }
+
     // Get user ID
     long nUploaderId = 0;
     int ret = m_dbUser.LoginUser(cmdUpload.strLoginName.c_str(), cmdUpload.strPwdMask.c_str(), nUploaderId);
     if (ret != ERR_OK) {
+        LOG(INFO) << "Sign in fialed, name: " << cmdUpload.strLoginName << ", passwordMask: " << cmdUpload.strPwdMask;
         return ret;
     }
 
@@ -501,10 +538,12 @@ int LyricsServer::processUploadCmd(MLMsgCmdUpload &cmdUpload, MLMsgRetUpload &re
         int nLevel = 0;
         if (m_spamFilter.IsNameFiltered(props.artist.c_str(), props.album.c_str(),
                 props.title.c_str(), nLevel, &retMsg.strMessage)) {
+            LOG(INFO) << "Failed to upload, one of bad file artist: " << props.artist << ", album: " << props.album << ", title: " << props.title;
             return ERR_BAD_FILE_CONTENT;
         }
         if (m_spamFilter.IsContentFiltered(props.lyrContentType, strLyrContent.c_str(),
             (int)strLyrContent.size(), nLevel, &retMsg.strMessage)) {
+            LOG(INFO) << "Failed to upload, size: " << strLyrContent.size() << ", bad content: "  << strLyrContent.substr(0, 200);
             return ERR_BAD_FILE_CONTENT;
         }
     }
@@ -525,7 +564,7 @@ int LyricsServer::processUploadCmd(MLMsgCmdUpload &cmdUpload, MLMsgRetUpload &re
 
                 if (digestExisting == props.digest) {
                     retMsg.result = ERR_UPLOAD_EXIST;
-                    // retMsg.strMessage = "Lyrics exists already.";
+                    LOG(INFO) << "Failed to upload, lyrics exists already.";
                     return retMsg.result;
                 }
 
@@ -595,6 +634,8 @@ int LyricsServer::updateLyrics(LyricsInfo &lyrInfo, string &strLyrContent) {
     dslWriteLyricsFile(m_fpSyncLog, strLyrContent, lyrInfo.relatedHttpLink, DSA_UPDATE);
     dslWriteDbLyrics(m_fpSyncLog, lyrInfo, DSA_UPDATE);
 
+    DLOG(INFO) << "Update lyrics successfully.";
+
     return ERR_OK;
 }
 
@@ -610,7 +651,9 @@ int LyricsServer::saveLyricsFile(LyricsInfo &lyrInfo, string &strLyrContentUtf8)
         strFile += szTemp;
 
         if (!isDirExist(strFile.c_str())) {
-            createDirectoryAll(strFile.c_str());
+            if (!createDirectoryAll(strFile.c_str())) {
+                LOG(ERROR) << "Failed to create directory: " << strFile;
+            }
         }
     }
 
@@ -625,8 +668,212 @@ int LyricsServer::saveLyricsFile(LyricsInfo &lyrInfo, string &strLyrContentUtf8)
     lyrInfo.relatedHttpLink = szRelatedLink;
 
     if (!writeFile(strFile.c_str(), strLyrContentUtf8)) {
+        LOG(ERROR) << "Failed to saved lyrics file: " << strFile;
         return ERR_OPEN_FILE;
     }
 
+    DLOG(INFO) << "Saved lyrics file successfully at: " << strFile;
+
     return ERR_OK;
 }
+
+int LyricsServer::deleteLyricsFile(const string &relatedLink) {
+    string fn = dirStringJoin(m_lyricsDir, relatedLink);
+    if (isFileExist(fn.c_str())) {
+        deleteFile(fn.c_str());
+
+        DLOG(INFO) << "Delete lyrics file successfully: " << fn;
+
+        dslWriteLyricsFile(m_fpSyncLog, "", relatedLink, DSA_DELETE);
+        return ERR_OK;
+    } else {
+        LOG(INFO) << "Failed to delete lyrics file, not exist: " << fn;
+        return ERR_NOT_FOUND;
+    }
+}
+
+void LyricsServer::doDataSync(const string &filename) {
+    string fn = dirStringJoin(g_conf.dataSyncDir, filename);
+    assert(isFileExist(fn.c_str()));
+
+    FilePtr fp;
+
+    if (!fp.open(fn.c_str(), "rb")) {
+        LOG(ERROR) << "Failed to open data-sync-file: " << fn;
+        return;
+    }
+
+    int pos = g_profile.getInt("data-sync", filename.c_str(), 0);
+
+    auto fileSize = fp.fileSize();
+    if (pos > fileSize) {
+        LOG(ERROR) << "data-sync position: " << pos << " is less than file size: " << fileSize << " file: " << filename;
+        return;
+    } else if (pos == fileSize) {
+        LOG(INFO) << "Already executed sync to latest position.";
+        return;
+    }
+
+    std::array<char, 1024 * 1024> buf;
+
+    while (true) {
+        fp.seek(pos, SEEK_SET);
+        auto len = fp.read(buf.data(), buf.size());
+        StringView str(buf.data(), len);
+        VecStringViews lines;
+        str.split('\n', lines);
+
+        if (!str.endsWith("\n")) {
+            // 最后的数据未包含 '\n'，则说明同步的数据没完成.
+            if (lines.size() <= 1) {
+                g_profile.getInt("data-sync", filename.c_str(), pos);
+                return;
+            }
+
+            // 去掉最后一行不完整的数据
+            lines.pop_back();
+        }
+
+        for (auto &line : lines) {
+            executeDataSync(line);
+            pos += line.len + 1;
+        }
+    }
+}
+
+bool LyricsServer::executeDataSync(const StringView &line) {
+    rapidjson::Document doc;
+    if (doc.Parse(line.data, line.len).HasParseError() || !doc.IsObject()) {
+        LOG(ERROR) << "Failed to parse data sync line: " << line.toString();
+        return false;
+    }
+
+    auto type = getMemberString(doc, "type");
+    auto action = getMemberString(doc, "action");
+
+    static string ACT_CREATE("create"), ACT_UPDATE("udpate"), ACT_DELETE("delete");
+
+    if (type == "file-lyrics") {
+        auto name = getMemberString(doc, "name");
+        if (name.empty()) {
+            LOG(ERROR) << "name field is required.";
+            return false;
+        }
+
+        auto fn = dirStringJoin(m_lyricsDir, name);
+        if (action == ACT_CREATE || action == ACT_UPDATE) {
+            auto content = getMemberString(doc, "content");
+            if (content.empty()) {
+                LOG(ERROR) << "content field is required.";
+                return false;
+            }
+
+            if (!writeFile(fn.c_str(), content)) {
+                auto path = fileGetPath(fn.c_str());
+                if (!isDirExist(path.c_str())) {
+                    createDirectoryAll(path.c_str());
+                    if (!writeFile(fn.c_str(), content)) {
+                        LOG(ERROR) << "Failed to write file:" << fn;
+                        return false;
+                    }
+                }
+            }
+
+            DLOG(INFO) << "executeDataSync, save lyrics file successfully:" << fn;
+        } else if (action == ACT_DELETE) {
+            if (isFileExist(fn.c_str())) {
+                if (!deleteFile(fn.c_str())) {
+                    LOG(ERROR) << "Failed to delete file:" << fn;
+                    return false;
+                }
+            }
+            DLOG(INFO) << "executeDataSync, delete lyrics file successfully:" << fn;
+        } else {
+            assert(0);
+            LOG(ERROR) << "Unkown action:" << action;
+            return false;
+        }
+        return true;
+    } else if (type == "db-lyrics" || type == "db-users") {
+        auto fields = getMemberString(doc, "fields");
+        auto &args = getMember(doc, "args");
+        if (!args.IsArray() || fields.empty()) {
+            LOG(ERROR) << "args and fields are required.";
+            return false;
+        }
+
+        DatabaseModifier &dbModifier = type == "db-lyrics" ? _dbModifierLyrics : _dbModifierUsers;
+        DbApiCtx ctx;
+        int64_t idReturned = -1;
+        return dbModifier.executeAction(ctx, action, fields, args, idReturned);
+    } else {
+        LOG(ERROR) << "Unkown type:" << type;
+        return false;
+    }
+}
+
+/*
+void LyricsServer::databaseUpdateHook(void *dataUser, int type, const char *dbName, const char *tableName, sqlite3_int64 rowId) {
+    DbUpdateHookCtx *ctx = static_cast<DbUpdateHookCtx *>(dataUser);
+    assert(ctx);
+    if (ctx->tableName != tableName) {
+        return;
+    }
+
+    if (ctx->logDeleteOnly && type != SQLITE_DELETE) {
+        return;
+    }
+
+    if (ctx->stmt == nullptr) {
+        int ret = sqlite3_prepare(ctx->db,
+            stringPrintf("select * from %s where id=?", tableName).c_str(),
+            -1, &ctx->stmt, nullptr);
+        if (ret != SQLITE_OK) {
+            return;
+        }
+
+        int countCols = sqlite3_column_count(ctx->stmt);
+        for (int i = 0; i < countCols; i++) {
+            ctx->cols.push_back(sqlite3_column_name(ctx->stmt, i));
+        }
+    }
+
+    RapidjsonWriterEx writer;
+    writer.startObject();
+    writer.writePropString("type", "db-" + string(tableName));
+
+    if (type == SQLITE_DELETE) {
+        writer.writePropString("action", "delete");
+        writer.writePropInt64("id", rowId);
+    } else if (type == SQLITE_UPDATE || type == SQLITE_INSERT) {
+        if (type == SQLITE_INSERT) {
+            writer.writePropString("action", "create");
+        } else {
+            writer.writePropString("action", "update");
+        }
+
+        sqlite3_reset(ctx->stmt);
+        int ret = sqlite3_bind_int64(ctx->stmt, 1, rowId);
+        if (ret != SQLITE_OK) {
+            return;
+        }
+
+        ret = sqlite3_step(ctx->stmt);
+        if (ret == SQLITE_ROW) {
+            auto &cols = ctx->cols;
+            for (int i = 0; i < cols.size(); i++) {
+                writer.IJsonWriter::writeKey(cols[i]);
+                writeJsonFieldValue(&writer, ctx->stmt, i);
+            }
+        }
+    } else {
+        assert(0);
+    }
+
+    writer.endObject();
+
+    auto &sb = writer.getStringBuffer();
+    sb.Put('\n');
+    ctx->thiz->m_fpSyncLog.write(sb.GetString(), sb.GetSize());
+    ctx->thiz->m_fpSyncLog.flush();
+}*/

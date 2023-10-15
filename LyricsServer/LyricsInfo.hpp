@@ -9,7 +9,7 @@
 
 
 int64_t decryptLyricsID(cstr_t id);
-string encryptLyricsID(uint32_t id);
+string encryptLyricsID(long id);
 
 class LyricsInfo : public LyricsProperties {
 public:

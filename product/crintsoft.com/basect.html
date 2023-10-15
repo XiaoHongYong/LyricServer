@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<link href="/static/css/main.css" rel="stylesheet">
+
+	<!-- <meta name="google-translate-customization" content="616bffa317a4cc9c-5cc282dcd72e6bfc-g4e1dcadec65c256d-11"/>
+	<script type="text/javascript">
+	function googleTranslateElementInit() {
+	  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+	}
+	</script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+
+    <script type="text/javascript" src="/static/js/vue.min.js"></script>
+
+	<title>{* blocks.title *}</title>
+	{* blocks.script *}
+</head>
+
+<body>
+    <nav class="navbar navbar-static-top navbar-inverse navbar-crintsoft" role="navigation">
+        <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Crintsoft</a>
+        </div>
+    
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/minilyrics/">MiniLyrics</a></li>
+                <!-- <li><a href="http://www.viewlyrics.com/TopLyrics/">Top Lyrics</a></li> -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                <a href="/contactus">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+	{* blocks.navigation *}
+
+	<br>
+
+    <div class="container" id="content">
+        {* blocks.content *}
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <!-- <div id="lang" class="col-sm-6">
+                    <div id="google_translate_element"></div>
+                </div> -->
+                <div id="copyright" class="col-sm-6">
+                    <p>©2015 Crintsoft LLC - <a href="/contactus">Contact us</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+.navbar-crintsoft {
+	margin-bottom: 0px;
+}
+
+.navbar {
+	font-weight: bold;
+}
+
+h3 {
+	margin-top: 10px;
+}
+/********************************** Footer ************************************/
+#footer {
+	margin-top: 20px;
+	padding: 20px;
+	background: #F0F0F0;
+	border-top: 2px solid #e7e7e7;
+	position: relative;
+}
+
+#footer #copyright {
+	text-align: right;
+}
+
+#footer #lang {
+	font-weight: bold;
+}
+
+ul {list-style-type:none}
+
+#content ul {
+	padding: 0px 10px 10px 10px;
+}
+
+#content ul li {
+	padding: 5px 10px 3px 15px;
+	background: url('../img/arrow.png') no-repeat 0 50%;
+}
+
+#content ol li {
+	padding: 5px 10px 3px 15px;
+}
+
+.indent {
+	padding-left: 20px !important;
+}
+
+.borderless tbody tr th, .borderless tbody tr td { 
+    border-top: none;
+}

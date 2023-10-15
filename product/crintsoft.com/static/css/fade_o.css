@@ -1,0 +1,12 @@
+#imageContainer {
+	position:relative;
+	margin:auto;
+	width:460px;
+	border:0px solid #000;
+}
+
+.copy {
+	width:460px;
+	margin:auto;
+	position:relative;
+}

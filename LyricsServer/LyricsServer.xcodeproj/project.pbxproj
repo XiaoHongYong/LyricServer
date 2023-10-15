@@ -46,12 +46,6 @@
 		C0A27D872ACE2F1D00D248A4 /* rapidjson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D722ACE2F1D00D248A4 /* rapidjson.cpp */; };
 		C0A27D892ACE2F1D00D248A4 /* RegExTool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D752ACE2F1D00D248A4 /* RegExTool.cpp */; };
 		C0A27D8A2ACE2F1D00D248A4 /* MLBinXMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D762ACE2F1D00D248A4 /* MLBinXMLParser.cpp */; };
-		C0A27DA52ACE35BD00D248A4 /* HttpConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D9A2ACE35BD00D248A4 /* HttpConnection.cpp */; };
-		C0A27DA62ACE35BD00D248A4 /* HttpServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D9D2ACE35BD00D248A4 /* HttpServer.cpp */; };
-		C0A27DA72ACE35BD00D248A4 /* HttpResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D9F2ACE35BD00D248A4 /* HttpResponse.cpp */; };
-		C0A27DA82ACE35BD00D248A4 /* HttpRequestDefaultHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27DA12ACE35BD00D248A4 /* HttpRequestDefaultHandler.cpp */; };
-		C0A27DA92ACE35BD00D248A4 /* HttpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27DA42ACE35BD00D248A4 /* HttpRequest.cpp */; };
-		C0A27DAC2ACE491D00D248A4 /* IJsonWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27DAA2ACE491D00D248A4 /* IJsonWriter.cpp */; };
 		C0A27DB22ACE505900D248A4 /* os.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27DB02ACE505900D248A4 /* os.cpp */; };
 		C0A27DB32ACE505900D248A4 /* FileApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27DB12ACE505900D248A4 /* FileApi.cpp */; };
 		C0A27DEB2ACE50AF00D248A4 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = C0A27DB62ACE50AF00D248A4 /* sqlite3.c */; };
@@ -71,6 +65,34 @@
 		C0A27E192ACEBA0B00D248A4 /* StatusHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E172ACEBA0B00D248A4 /* StatusHandler.cpp */; };
 		C0A27E1C2ACFAC5A00D248A4 /* DatabaseApisHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E1A2ACFAC5A00D248A4 /* DatabaseApisHandler.cpp */; };
 		C0A27E1D2AD146E300D248A4 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A27E0E2ACE52BF00D248A4 /* libuv.a */; };
+		C0A27E392AD37A1E00D248A4 /* DbModifyHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E372AD37A1E00D248A4 /* DbModifyHandler.cpp */; };
+		C0A27E3C2AD3D85D00D248A4 /* LyricsFileHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E3A2AD3D85C00D248A4 /* LyricsFileHandler.cpp */; };
+		C0A27E3F2AD3E03D00D248A4 /* BaseJsonApiHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E3D2AD3E03D00D248A4 /* BaseJsonApiHandler.cpp */; };
+		C0A27E422AD4D3A700D248A4 /* SyncRemoteMasterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E402AD4D3A700D248A4 /* SyncRemoteMasterData.cpp */; };
+		C0A27E482AD6401100D248A4 /* ServerConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E462AD6401100D248A4 /* ServerConfig.cpp */; };
+		C0A27E4B2AD641E800D248A4 /* BaseEncryptApiHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E492AD641E800D248A4 /* BaseEncryptApiHandler.cpp */; };
+		C0A27E4F2AD6440800D248A4 /* aes.c in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E4D2AD6440800D248A4 /* aes.c */; };
+		C0A27E522AD6535200D248A4 /* AesUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E502AD6535200D248A4 /* AesUtil.cpp */; };
+		C0A27E552AD66B6900D248A4 /* DataSyncHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E532AD66B6900D248A4 /* DataSyncHandler.cpp */; };
+		C0A27E582AD6E88B00D248A4 /* DatabaseModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E562AD6E88B00D248A4 /* DatabaseModifier.cpp */; };
+		C0A27E6A2AD7847D00D248A4 /* vlog_is_on.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E5C2AD7847D00D248A4 /* vlog_is_on.cc */; };
+		C0A27E6B2AD7847D00D248A4 /* raw_logging.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E5D2AD7847D00D248A4 /* raw_logging.cc */; };
+		C0A27E6C2AD7847D00D248A4 /* utilities.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E602AD7847D00D248A4 /* utilities.cc */; };
+		C0A27E6D2AD7847D00D248A4 /* demangle.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E612AD7847D00D248A4 /* demangle.cc */; };
+		C0A27E6E2AD7847D00D248A4 /* signalhandler.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E652AD7847D00D248A4 /* signalhandler.cc */; };
+		C0A27E6F2AD7847D00D248A4 /* logging.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E672AD7847D00D248A4 /* logging.cc */; };
+		C0A27E702AD7847D00D248A4 /* symbolize.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E692AD7847D00D248A4 /* symbolize.cc */; };
+		C0A27E722AD7ACC700D248A4 /* gtest-all.cc in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E712AD7ACC700D248A4 /* gtest-all.cc */; };
+		C0A27E7B2AD7B28000D248A4 /* IJsonWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E7A2AD7B27F00D248A4 /* IJsonWriter.cpp */; };
+		C0A27E8B2AD7B2D700D248A4 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E7D2AD7B2D700D248A4 /* HttpClient.cpp */; };
+		C0A27E8C2AD7B2D700D248A4 /* HttpConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E802AD7B2D700D248A4 /* HttpConnection.cpp */; };
+		C0A27E8D2AD7B2D700D248A4 /* HttpServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E832AD7B2D700D248A4 /* HttpServer.cpp */; };
+		C0A27E8E2AD7B2D700D248A4 /* HttpResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E852AD7B2D700D248A4 /* HttpResponse.cpp */; };
+		C0A27E8F2AD7B2D700D248A4 /* HttpRequestDefaultHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E872AD7B2D700D248A4 /* HttpRequestDefaultHandler.cpp */; };
+		C0A27E902AD7B2D700D248A4 /* HttpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E8A2AD7B2D700D248A4 /* HttpRequest.cpp */; };
+		C0A27E962AD7E64400D248A4 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E952AD7E64400D248A4 /* client.cpp */; };
+		C0A27E9B2AD8E21100D248A4 /* MLClientSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E972AD8E21100D248A4 /* MLClientSession.cpp */; };
+		C0A27E9C2AD8E21100D248A4 /* MLProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E992AD8E21100D248A4 /* MLProfile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,7 +111,6 @@
 		C0A27CF12ACE2E3B00D248A4 /* LyricsServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LyricsServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A27CFE2ACE2EC600D248A4 /* LyricsServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LyricsServer.cpp; sourceTree = "<group>"; };
 		C0A27D012ACE2EC600D248A4 /* SpamLyricsFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpamLyricsFilter.cpp; sourceTree = "<group>"; };
-		C0A27D022ACE2EC600D248A4 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 		C0A27D032ACE2EC600D248A4 /* LyricsInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LyricsInfo.hpp; sourceTree = "<group>"; };
 		C0A27D042ACE2EC600D248A4 /* SpamLyricsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpamLyricsFilter.h; sourceTree = "<group>"; };
 		C0A27D052ACE2EC600D248A4 /* UserDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserDB.cpp; sourceTree = "<group>"; };
@@ -171,21 +192,6 @@
 		C0A27D732ACE2F1D00D248A4 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ../../Utils/Thread.h; sourceTree = "<group>"; };
 		C0A27D752ACE2F1D00D248A4 /* RegExTool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegExTool.cpp; path = ../../Utils/RegExTool.cpp; sourceTree = "<group>"; };
 		C0A27D762ACE2F1D00D248A4 /* MLBinXMLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLBinXMLParser.cpp; path = ../../Utils/MLBinXMLParser.cpp; sourceTree = "<group>"; };
-		C0A27D9A2ACE35BD00D248A4 /* HttpConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpConnection.cpp; sourceTree = "<group>"; };
-		C0A27D9B2ACE35BD00D248A4 /* HttpRequest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpRequest.hpp; sourceTree = "<group>"; };
-		C0A27D9C2ACE35BD00D248A4 /* HttpResponse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpResponse.hpp; sourceTree = "<group>"; };
-		C0A27D9D2ACE35BD00D248A4 /* HttpServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpServer.cpp; sourceTree = "<group>"; };
-		C0A27D9E2ACE35BD00D248A4 /* HttpRequestDefaultHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpRequestDefaultHandler.hpp; sourceTree = "<group>"; };
-		C0A27D9F2ACE35BD00D248A4 /* HttpResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpResponse.cpp; sourceTree = "<group>"; };
-		C0A27DA02ACE35BD00D248A4 /* HttpServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpServer.hpp; sourceTree = "<group>"; };
-		C0A27DA12ACE35BD00D248A4 /* HttpRequestDefaultHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpRequestDefaultHandler.cpp; sourceTree = "<group>"; };
-		C0A27DA22ACE35BD00D248A4 /* HttpConnection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpConnection.hpp; sourceTree = "<group>"; };
-		C0A27DA32ACE35BD00D248A4 /* IHttpRequestHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IHttpRequestHandler.hpp; sourceTree = "<group>"; };
-		C0A27DA42ACE35BD00D248A4 /* HttpRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpRequest.cpp; sourceTree = "<group>"; };
-		C0A27DAA2ACE491D00D248A4 /* IJsonWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IJsonWriter.cpp; sourceTree = "<group>"; };
-		C0A27DAB2ACE491D00D248A4 /* IJsonWriter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IJsonWriter.hpp; sourceTree = "<group>"; };
-		C0A27DAD2ACE494C00D248A4 /* RapidjsonWriter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RapidjsonWriter.hpp; sourceTree = "<group>"; };
-		C0A27DAE2ACE4B9200D248A4 /* UvAsync.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UvAsync.hpp; sourceTree = "<group>"; };
 		C0A27DAF2ACE505900D248A4 /* FileApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileApi.h; path = ../../TinyJS/utils/FileApi.h; sourceTree = "<group>"; };
 		C0A27DB02ACE505900D248A4 /* os.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = os.cpp; path = ../../TinyJS/utils/os.cpp; sourceTree = "<group>"; };
 		C0A27DB12ACE505900D248A4 /* FileApi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileApi.cpp; path = ../../TinyJS/utils/FileApi.cpp; sourceTree = "<group>"; };
@@ -265,6 +271,64 @@
 		C0A27E172ACEBA0B00D248A4 /* StatusHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StatusHandler.cpp; sourceTree = "<group>"; };
 		C0A27E1A2ACFAC5A00D248A4 /* DatabaseApisHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DatabaseApisHandler.cpp; sourceTree = "<group>"; };
 		C0A27E1B2ACFAC5A00D248A4 /* DatabaseApisHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DatabaseApisHandler.hpp; sourceTree = "<group>"; };
+		C0A27E372AD37A1E00D248A4 /* DbModifyHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DbModifyHandler.cpp; sourceTree = "<group>"; };
+		C0A27E382AD37A1E00D248A4 /* DbModifyHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DbModifyHandler.hpp; sourceTree = "<group>"; };
+		C0A27E3A2AD3D85C00D248A4 /* LyricsFileHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LyricsFileHandler.cpp; sourceTree = "<group>"; };
+		C0A27E3B2AD3D85D00D248A4 /* LyricsFileHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LyricsFileHandler.hpp; sourceTree = "<group>"; };
+		C0A27E3D2AD3E03D00D248A4 /* BaseJsonApiHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseJsonApiHandler.cpp; sourceTree = "<group>"; };
+		C0A27E3E2AD3E03D00D248A4 /* BaseJsonApiHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseJsonApiHandler.hpp; sourceTree = "<group>"; };
+		C0A27E402AD4D3A700D248A4 /* SyncRemoteMasterData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SyncRemoteMasterData.cpp; sourceTree = "<group>"; };
+		C0A27E412AD4D3A700D248A4 /* SyncRemoteMasterData.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SyncRemoteMasterData.hpp; sourceTree = "<group>"; };
+		C0A27E462AD6401100D248A4 /* ServerConfig.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ServerConfig.cpp; sourceTree = "<group>"; };
+		C0A27E472AD6401100D248A4 /* ServerConfig.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ServerConfig.hpp; sourceTree = "<group>"; };
+		C0A27E492AD641E800D248A4 /* BaseEncryptApiHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BaseEncryptApiHandler.cpp; sourceTree = "<group>"; };
+		C0A27E4A2AD641E800D248A4 /* BaseEncryptApiHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BaseEncryptApiHandler.hpp; sourceTree = "<group>"; };
+		C0A27E4C2AD6440800D248A4 /* aes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = aes.hpp; path = "../../third-parties/tiny-AES-c/aes.hpp"; sourceTree = "<group>"; };
+		C0A27E4D2AD6440800D248A4 /* aes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = aes.c; path = "../../third-parties/tiny-AES-c/aes.c"; sourceTree = "<group>"; };
+		C0A27E4E2AD6440800D248A4 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = aes.h; path = "../../third-parties/tiny-AES-c/aes.h"; sourceTree = "<group>"; };
+		C0A27E502AD6535200D248A4 /* AesUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AesUtil.cpp; sourceTree = "<group>"; };
+		C0A27E512AD6535200D248A4 /* AesUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AesUtil.hpp; sourceTree = "<group>"; };
+		C0A27E532AD66B6900D248A4 /* DataSyncHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataSyncHandler.cpp; sourceTree = "<group>"; };
+		C0A27E542AD66B6900D248A4 /* DataSyncHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DataSyncHandler.hpp; sourceTree = "<group>"; };
+		C0A27E562AD6E88B00D248A4 /* DatabaseModifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DatabaseModifier.cpp; sourceTree = "<group>"; };
+		C0A27E572AD6E88B00D248A4 /* DatabaseModifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DatabaseModifier.hpp; sourceTree = "<group>"; };
+		C0A27E5C2AD7847D00D248A4 /* vlog_is_on.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = vlog_is_on.cc; path = "../../third-parties/glog/src/vlog_is_on.cc"; sourceTree = "<group>"; };
+		C0A27E5D2AD7847D00D248A4 /* raw_logging.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = raw_logging.cc; path = "../../third-parties/glog/src/raw_logging.cc"; sourceTree = "<group>"; };
+		C0A27E5E2AD7847D00D248A4 /* mock-log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "mock-log.h"; path = "../../third-parties/glog/src/mock-log.h"; sourceTree = "<group>"; };
+		C0A27E5F2AD7847D00D248A4 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = "../../third-parties/glog/src/config.h"; sourceTree = "<group>"; };
+		C0A27E602AD7847D00D248A4 /* utilities.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utilities.cc; path = "../../third-parties/glog/src/utilities.cc"; sourceTree = "<group>"; };
+		C0A27E612AD7847D00D248A4 /* demangle.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = demangle.cc; path = "../../third-parties/glog/src/demangle.cc"; sourceTree = "<group>"; };
+		C0A27E622AD7847D00D248A4 /* stacktrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stacktrace.h; path = "../../third-parties/glog/src/stacktrace.h"; sourceTree = "<group>"; };
+		C0A27E632AD7847D00D248A4 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = "../../third-parties/glog/src/utilities.h"; sourceTree = "<group>"; };
+		C0A27E642AD7847D00D248A4 /* stacktrace_generic-inl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "stacktrace_generic-inl.h"; path = "../../third-parties/glog/src/stacktrace_generic-inl.h"; sourceTree = "<group>"; };
+		C0A27E652AD7847D00D248A4 /* signalhandler.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = signalhandler.cc; path = "../../third-parties/glog/src/signalhandler.cc"; sourceTree = "<group>"; };
+		C0A27E662AD7847D00D248A4 /* demangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = demangle.h; path = "../../third-parties/glog/src/demangle.h"; sourceTree = "<group>"; };
+		C0A27E672AD7847D00D248A4 /* logging.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = logging.cc; path = "../../third-parties/glog/src/logging.cc"; sourceTree = "<group>"; };
+		C0A27E682AD7847D00D248A4 /* symbolize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = symbolize.h; path = "../../third-parties/glog/src/symbolize.h"; sourceTree = "<group>"; };
+		C0A27E692AD7847D00D248A4 /* symbolize.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = symbolize.cc; path = "../../third-parties/glog/src/symbolize.cc"; sourceTree = "<group>"; };
+		C0A27E712AD7ACC700D248A4 /* gtest-all.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "gtest-all.cc"; path = "../../third-parties/googletest/src/gtest-all.cc"; sourceTree = "<group>"; };
+		C0A27E782AD7B27F00D248A4 /* IJsonWriter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IJsonWriter.hpp; path = ../../Utils/IJsonWriter.hpp; sourceTree = "<group>"; };
+		C0A27E792AD7B27F00D248A4 /* RapidjsonWriterEx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RapidjsonWriterEx.hpp; path = ../../Utils/RapidjsonWriterEx.hpp; sourceTree = "<group>"; };
+		C0A27E7A2AD7B27F00D248A4 /* IJsonWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IJsonWriter.cpp; path = ../../Utils/IJsonWriter.cpp; sourceTree = "<group>"; };
+		C0A27E7D2AD7B2D700D248A4 /* HttpClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HttpClient.cpp; path = ../../HttpLib/HttpClient.cpp; sourceTree = "<group>"; };
+		C0A27E7E2AD7B2D700D248A4 /* HttpClient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HttpClient.hpp; path = ../../HttpLib/HttpClient.hpp; sourceTree = "<group>"; };
+		C0A27E802AD7B2D700D248A4 /* HttpConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpConnection.cpp; sourceTree = "<group>"; };
+		C0A27E812AD7B2D700D248A4 /* HttpRequest.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpRequest.hpp; sourceTree = "<group>"; };
+		C0A27E822AD7B2D700D248A4 /* HttpResponse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpResponse.hpp; sourceTree = "<group>"; };
+		C0A27E832AD7B2D700D248A4 /* HttpServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpServer.cpp; sourceTree = "<group>"; };
+		C0A27E842AD7B2D700D248A4 /* HttpRequestDefaultHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpRequestDefaultHandler.hpp; sourceTree = "<group>"; };
+		C0A27E852AD7B2D700D248A4 /* HttpResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpResponse.cpp; sourceTree = "<group>"; };
+		C0A27E862AD7B2D700D248A4 /* HttpServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpServer.hpp; sourceTree = "<group>"; };
+		C0A27E872AD7B2D700D248A4 /* HttpRequestDefaultHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpRequestDefaultHandler.cpp; sourceTree = "<group>"; };
+		C0A27E882AD7B2D700D248A4 /* HttpConnection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HttpConnection.hpp; sourceTree = "<group>"; };
+		C0A27E892AD7B2D700D248A4 /* IHttpRequestHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IHttpRequestHandler.hpp; sourceTree = "<group>"; };
+		C0A27E8A2AD7B2D700D248A4 /* HttpRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpRequest.cpp; sourceTree = "<group>"; };
+		C0A27E912AD7B31300D248A4 /* UvAsync.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UvAsync.hpp; path = ../../HttpLib/UvAsync.hpp; sourceTree = "<group>"; };
+		C0A27E952AD7E64400D248A4 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = client.cpp; path = ../tests/client.cpp; sourceTree = "<group>"; };
+		C0A27E972AD8E21100D248A4 /* MLClientSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLClientSession.cpp; path = ../../MPlayerUI/MLClientSession.cpp; sourceTree = "<group>"; };
+		C0A27E982AD8E21100D248A4 /* MLClientSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLClientSession.h; path = ../../MPlayerUI/MLClientSession.h; sourceTree = "<group>"; };
+		C0A27E992AD8E21100D248A4 /* MLProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLProfile.cpp; path = ../../MPlayerUI/MLProfile.cpp; sourceTree = "<group>"; };
+		C0A27E9A2AD8E21100D248A4 /* MLProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLProfile.h; path = ../../MPlayerUI/MLProfile.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +346,7 @@
 		C0A27CE82ACE2E3B00D248A4 = {
 			isa = PBXGroup;
 			children = (
+				C0A27E7C2AD7B2C700D248A4 /* HttpLib */,
 				C0A27DB42ACE506D00D248A4 /* 3rd-parties */,
 				C0A27D922ACE2F7100D248A4 /* mlprotocol */,
 				C0A27D8B2ACE2F4300D248A4 /* media-tags */,
@@ -304,25 +369,28 @@
 		C0A27CFB2ACE2EB800D248A4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C0A27E502AD6535200D248A4 /* AesUtil.cpp */,
+				C0A27E512AD6535200D248A4 /* AesUtil.hpp */,
 				C0A27E132ACEB91200D248A4 /* apis */,
-				C0A27DAE2ACE4B9200D248A4 /* UvAsync.hpp */,
-				C0A27DAD2ACE494C00D248A4 /* RapidjsonWriter.hpp */,
-				C0A27DAA2ACE491D00D248A4 /* IJsonWriter.cpp */,
-				C0A27DAB2ACE491D00D248A4 /* IJsonWriter.hpp */,
-				C0A27D992ACE35BD00D248A4 /* HttpServer */,
+				C0A27E952AD7E64400D248A4 /* client.cpp */,
+				C0A27E562AD6E88B00D248A4 /* DatabaseModifier.cpp */,
+				C0A27E572AD6E88B00D248A4 /* DatabaseModifier.hpp */,
 				C0A27D062ACE2EC600D248A4 /* DataSyncLog.cpp */,
 				C0A27D0B2ACE2EC600D248A4 /* DataSyncLog.hpp */,
-				C0A27D022ACE2EC600D248A4 /* Debug.h */,
 				C0A27D102ACE2EC600D248A4 /* LyricsDB.cpp */,
 				C0A27D0C2ACE2EC600D248A4 /* LyricsDB.h */,
 				C0A27D122ACE2EC600D248A4 /* LyricsInfo.cpp */,
 				C0A27D032ACE2EC600D248A4 /* LyricsInfo.hpp */,
-				C0A27D0F2ACE2EC600D248A4 /* main.cpp */,
 				C0A27CFE2ACE2EC600D248A4 /* LyricsServer.cpp */,
 				C0A27D0D2ACE2EC600D248A4 /* LyricsServer.h */,
+				C0A27D0F2ACE2EC600D248A4 /* main.cpp */,
+				C0A27E462AD6401100D248A4 /* ServerConfig.cpp */,
+				C0A27E472AD6401100D248A4 /* ServerConfig.hpp */,
 				C0A27D012ACE2EC600D248A4 /* SpamLyricsFilter.cpp */,
 				C0A27D042ACE2EC600D248A4 /* SpamLyricsFilter.h */,
 				C0A27D092ACE2EC600D248A4 /* Sqlite3Utils.h */,
+				C0A27E402AD4D3A700D248A4 /* SyncRemoteMasterData.cpp */,
+				C0A27E412AD4D3A700D248A4 /* SyncRemoteMasterData.hpp */,
 				C0A27D0A2ACE2EC600D248A4 /* Types.h */,
 				C0A27D052ACE2EC600D248A4 /* UserDB.cpp */,
 				C0A27D072ACE2EC600D248A4 /* UserDB.h */,
@@ -390,6 +458,8 @@
 				C0A27D5D2ACE2F1D00D248A4 /* FileEx.h */,
 				C0A27D592ACE2F1D00D248A4 /* IdString.cpp */,
 				C0A27D5C2ACE2F1D00D248A4 /* IdString.h */,
+				C0A27E7A2AD7B27F00D248A4 /* IJsonWriter.cpp */,
+				C0A27E782AD7B27F00D248A4 /* IJsonWriter.hpp */,
 				C0A27D712ACE2F1D00D248A4 /* Log.cpp */,
 				C0A27D602ACE2F1D00D248A4 /* Log.h */,
 				C0A27D572ACE2F1D00D248A4 /* LogAlias.h */,
@@ -400,6 +470,7 @@
 				C0A27D542ACE2F1D00D248A4 /* Profile.h */,
 				C0A27D722ACE2F1D00D248A4 /* rapidjson.cpp */,
 				C0A27D672ACE2F1D00D248A4 /* rapidjson.h */,
+				C0A27E792AD7B27F00D248A4 /* RapidjsonWriterEx.hpp */,
 				C0A27D752ACE2F1D00D248A4 /* RegExTool.cpp */,
 				C0A27D582ACE2F1D00D248A4 /* RegExTool.h */,
 				C0A27D5E2ACE2F1D00D248A4 /* SimpleXML.cpp */,
@@ -448,6 +519,10 @@
 		C0A27D922ACE2F7100D248A4 /* mlprotocol */ = {
 			isa = PBXGroup;
 			children = (
+				C0A27E972AD8E21100D248A4 /* MLClientSession.cpp */,
+				C0A27E982AD8E21100D248A4 /* MLClientSession.h */,
+				C0A27E992AD8E21100D248A4 /* MLProfile.cpp */,
+				C0A27E9A2AD8E21100D248A4 /* MLProfile.h */,
 				C0A27E082ACE51D400D248A4 /* LyricsKeywordFilter.cpp */,
 				C0A27E092ACE51D400D248A4 /* LyricsKeywordFilter.h */,
 				C0A27DF92ACE516300D248A4 /* ClientCom.cpp */,
@@ -465,29 +540,16 @@
 			name = mlprotocol;
 			sourceTree = "<group>";
 		};
-		C0A27D992ACE35BD00D248A4 /* HttpServer */ = {
-			isa = PBXGroup;
-			children = (
-				C0A27D9A2ACE35BD00D248A4 /* HttpConnection.cpp */,
-				C0A27DA22ACE35BD00D248A4 /* HttpConnection.hpp */,
-				C0A27DA42ACE35BD00D248A4 /* HttpRequest.cpp */,
-				C0A27D9B2ACE35BD00D248A4 /* HttpRequest.hpp */,
-				C0A27DA12ACE35BD00D248A4 /* HttpRequestDefaultHandler.cpp */,
-				C0A27D9E2ACE35BD00D248A4 /* HttpRequestDefaultHandler.hpp */,
-				C0A27D9F2ACE35BD00D248A4 /* HttpResponse.cpp */,
-				C0A27D9C2ACE35BD00D248A4 /* HttpResponse.hpp */,
-				C0A27D9D2ACE35BD00D248A4 /* HttpServer.cpp */,
-				C0A27DA02ACE35BD00D248A4 /* HttpServer.hpp */,
-				C0A27DA32ACE35BD00D248A4 /* IHttpRequestHandler.hpp */,
-			);
-			path = HttpServer;
-			sourceTree = "<group>";
-		};
 		C0A27DB42ACE506D00D248A4 /* 3rd-parties */ = {
 			isa = PBXGroup;
 			children = (
+				C0A27E712AD7ACC700D248A4 /* gtest-all.cc */,
+				C0A27E5B2AD7835D00D248A4 /* glog */,
 				C0A27E112ACE530C00D248A4 /* http_parser.c */,
 				C0A27E102ACE530C00D248A4 /* http_parser.h */,
+				C0A27E4D2AD6440800D248A4 /* aes.c */,
+				C0A27E4E2AD6440800D248A4 /* aes.h */,
+				C0A27E4C2AD6440800D248A4 /* aes.hpp */,
 				C0A27DEE2ACE50C100D248A4 /* crc32.c */,
 				C0A27DEF2ACE50C100D248A4 /* crc32.h */,
 				C0A27DBE2ACE50AF00D248A4 /* md5 */,
@@ -611,14 +673,75 @@
 		C0A27E132ACEB91200D248A4 /* apis */ = {
 			isa = PBXGroup;
 			children = (
+				C0A27E3D2AD3E03D00D248A4 /* BaseJsonApiHandler.cpp */,
+				C0A27E3E2AD3E03D00D248A4 /* BaseJsonApiHandler.hpp */,
+				C0A27E492AD641E800D248A4 /* BaseEncryptApiHandler.cpp */,
+				C0A27E4A2AD641E800D248A4 /* BaseEncryptApiHandler.hpp */,
 				C0A27E152ACEBA0B00D248A4 /* ClientApisHandler.cpp */,
 				C0A27E142ACEBA0B00D248A4 /* ClientApisHandler.hpp */,
 				C0A27E1A2ACFAC5A00D248A4 /* DatabaseApisHandler.cpp */,
 				C0A27E1B2ACFAC5A00D248A4 /* DatabaseApisHandler.hpp */,
+				C0A27E372AD37A1E00D248A4 /* DbModifyHandler.cpp */,
+				C0A27E382AD37A1E00D248A4 /* DbModifyHandler.hpp */,
+				C0A27E532AD66B6900D248A4 /* DataSyncHandler.cpp */,
+				C0A27E542AD66B6900D248A4 /* DataSyncHandler.hpp */,
+				C0A27E3A2AD3D85C00D248A4 /* LyricsFileHandler.cpp */,
+				C0A27E3B2AD3D85D00D248A4 /* LyricsFileHandler.hpp */,
 				C0A27E172ACEBA0B00D248A4 /* StatusHandler.cpp */,
 				C0A27E162ACEBA0B00D248A4 /* StatusHandler.hpp */,
 			);
 			path = apis;
+			sourceTree = "<group>";
+		};
+		C0A27E5B2AD7835D00D248A4 /* glog */ = {
+			isa = PBXGroup;
+			children = (
+				C0A27E5F2AD7847D00D248A4 /* config.h */,
+				C0A27E612AD7847D00D248A4 /* demangle.cc */,
+				C0A27E662AD7847D00D248A4 /* demangle.h */,
+				C0A27E672AD7847D00D248A4 /* logging.cc */,
+				C0A27E5E2AD7847D00D248A4 /* mock-log.h */,
+				C0A27E5D2AD7847D00D248A4 /* raw_logging.cc */,
+				C0A27E652AD7847D00D248A4 /* signalhandler.cc */,
+				C0A27E642AD7847D00D248A4 /* stacktrace_generic-inl.h */,
+				C0A27E622AD7847D00D248A4 /* stacktrace.h */,
+				C0A27E692AD7847D00D248A4 /* symbolize.cc */,
+				C0A27E682AD7847D00D248A4 /* symbolize.h */,
+				C0A27E602AD7847D00D248A4 /* utilities.cc */,
+				C0A27E632AD7847D00D248A4 /* utilities.h */,
+				C0A27E5C2AD7847D00D248A4 /* vlog_is_on.cc */,
+			);
+			name = glog;
+			sourceTree = "<group>";
+		};
+		C0A27E7C2AD7B2C700D248A4 /* HttpLib */ = {
+			isa = PBXGroup;
+			children = (
+				C0A27E7D2AD7B2D700D248A4 /* HttpClient.cpp */,
+				C0A27E7E2AD7B2D700D248A4 /* HttpClient.hpp */,
+				C0A27E7F2AD7B2D700D248A4 /* HttpServer */,
+				C0A27E912AD7B31300D248A4 /* UvAsync.hpp */,
+			);
+			name = HttpLib;
+			sourceTree = "<group>";
+		};
+		C0A27E7F2AD7B2D700D248A4 /* HttpServer */ = {
+			isa = PBXGroup;
+			children = (
+				C0A27E802AD7B2D700D248A4 /* HttpConnection.cpp */,
+				C0A27E882AD7B2D700D248A4 /* HttpConnection.hpp */,
+				C0A27E8A2AD7B2D700D248A4 /* HttpRequest.cpp */,
+				C0A27E812AD7B2D700D248A4 /* HttpRequest.hpp */,
+				C0A27E872AD7B2D700D248A4 /* HttpRequestDefaultHandler.cpp */,
+				C0A27E842AD7B2D700D248A4 /* HttpRequestDefaultHandler.hpp */,
+				C0A27E852AD7B2D700D248A4 /* HttpResponse.cpp */,
+				C0A27E822AD7B2D700D248A4 /* HttpResponse.hpp */,
+				C0A27E832AD7B2D700D248A4 /* HttpServer.cpp */,
+				C0A27E862AD7B2D700D248A4 /* HttpServer.hpp */,
+				C0A27E892AD7B2D700D248A4 /* IHttpRequestHandler.hpp */,
+			);
+			name = HttpServer;
+			path = ../../HttpLib/HttpServer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -678,15 +801,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A27E9B2AD8E21100D248A4 /* MLClientSession.cpp in Sources */,
+				C0A27E422AD4D3A700D248A4 /* SyncRemoteMasterData.cpp in Sources */,
+				C0A27E6E2AD7847D00D248A4 /* signalhandler.cc in Sources */,
 				C0A27D162ACE2EC600D248A4 /* UserDB.cpp in Sources */,
+				C0A27E6B2AD7847D00D248A4 /* raw_logging.cc in Sources */,
 				C0A27D802ACE2F1D00D248A4 /* PrivateProfile.cpp in Sources */,
+				C0A27E6D2AD7847D00D248A4 /* demangle.cc in Sources */,
+				C0A27E482AD6401100D248A4 /* ServerConfig.cpp in Sources */,
 				C0A27D772ACE2F1D00D248A4 /* Digest.cpp in Sources */,
-				C0A27DA92ACE35BD00D248A4 /* HttpRequest.cpp in Sources */,
 				C0A27D472ACE2EF900D248A4 /* StringEx.cpp in Sources */,
-				C0A27DA72ACE35BD00D248A4 /* HttpResponse.cpp in Sources */,
+				C0A27E702AD7847D00D248A4 /* symbolize.cc in Sources */,
+				C0A27E552AD66B6900D248A4 /* DataSyncHandler.cpp in Sources */,
 				C0A27DB32ACE505900D248A4 /* FileApi.cpp in Sources */,
-				C0A27DAC2ACE491D00D248A4 /* IJsonWriter.cpp in Sources */,
 				C0A27D462ACE2EF900D248A4 /* StringView.cpp in Sources */,
+				C0A27E8F2AD7B2D700D248A4 /* HttpRequestDefaultHandler.cpp in Sources */,
+				C0A27E8B2AD7B2D700D248A4 /* HttpClient.cpp in Sources */,
 				C0A27DEC2ACE50AF00D248A4 /* Sqlite3.cpp in Sources */,
 				C0A27D892ACE2F1D00D248A4 /* RegExTool.cpp in Sources */,
 				C0A27D7E2ACE2F1D00D248A4 /* Error.cpp in Sources */,
@@ -694,11 +824,16 @@
 				C0A27DF62ACE514300D248A4 /* LyricsData.cpp in Sources */,
 				C0A27E072ACE516400D248A4 /* MLProtocol.cpp in Sources */,
 				C0A27D8A2ACE2F1D00D248A4 /* MLBinXMLParser.cpp in Sources */,
+				C0A27E392AD37A1E00D248A4 /* DbModifyHandler.cpp in Sources */,
+				C0A27E962AD7E64400D248A4 /* client.cpp in Sources */,
+				C0A27E902AD7B2D700D248A4 /* HttpRequest.cpp in Sources */,
 				C0A27DEB2ACE50AF00D248A4 /* sqlite3.c in Sources */,
 				C0A27DED2ACE50AF00D248A4 /* md5.cpp in Sources */,
 				C0A27D7C2ACE2F1D00D248A4 /* TextFile.cpp in Sources */,
 				C0A27D852ACE2F1D00D248A4 /* Thread.cpp in Sources */,
 				C0A27D3E2ACE2EF900D248A4 /* StringParser.cpp in Sources */,
+				C0A27E7B2AD7B28000D248A4 /* IJsonWriter.cpp in Sources */,
+				C0A27E4B2AD641E800D248A4 /* BaseEncryptApiHandler.cpp in Sources */,
 				C0A27E052ACE516400D248A4 /* NetSDK.cpp in Sources */,
 				C0A27D822ACE2F1D00D248A4 /* FileEx.cpp in Sources */,
 				C0A27D402ACE2EF900D248A4 /* XCharSeparatedValues.cpp in Sources */,
@@ -707,16 +842,20 @@
 				C0A27D172ACE2EC600D248A4 /* DataSyncLog.cpp in Sources */,
 				C0A27D492ACE2EF900D248A4 /* AllocatorPool.cpp in Sources */,
 				C0A27D432ACE2EF900D248A4 /* CharEncodingMac.mm in Sources */,
+				C0A27E8C2AD7B2D700D248A4 /* HttpConnection.cpp in Sources */,
+				C0A27E6F2AD7847D00D248A4 /* logging.cc in Sources */,
 				C0A27D4A2ACE2EF900D248A4 /* BinaryStream.cpp in Sources */,
 				C0A27D7D2ACE2F1D00D248A4 /* SimpleXML.cpp in Sources */,
-				C0A27DA62ACE35BD00D248A4 /* HttpServer.cpp in Sources */,
+				C0A27E3F2AD3E03D00D248A4 /* BaseJsonApiHandler.cpp in Sources */,
 				C0A27D422ACE2EF900D248A4 /* BinaryFileStream.cpp in Sources */,
-				C0A27DA82ACE35BD00D248A4 /* HttpRequestDefaultHandler.cpp in Sources */,
 				C0A27D792ACE2F1D00D248A4 /* Profile.cpp in Sources */,
 				C0A27D7A2ACE2F1D00D248A4 /* Event.mm in Sources */,
 				C0A27D412ACE2EF900D248A4 /* unittest.cpp in Sources */,
+				C0A27E9C2AD8E21100D248A4 /* MLProfile.cpp in Sources */,
 				C0A27DF02ACE50C100D248A4 /* crc32.c in Sources */,
+				C0A27E8D2AD7B2D700D248A4 /* HttpServer.cpp in Sources */,
 				C0A27D442ACE2EF900D248A4 /* Hash.cpp in Sources */,
+				C0A27E3C2AD3D85D00D248A4 /* LyricsFileHandler.cpp in Sources */,
 				C0A27E1C2ACFAC5A00D248A4 /* DatabaseApisHandler.cpp in Sources */,
 				C0A27E182ACEBA0B00D248A4 /* ClientApisHandler.cpp in Sources */,
 				C0A27D452ACE2EF900D248A4 /* LinkedString.cpp in Sources */,
@@ -728,18 +867,24 @@
 				C0A27DF72ACE514300D248A4 /* LrcParser.cpp in Sources */,
 				C0A27D872ACE2F1D00D248A4 /* rapidjson.cpp in Sources */,
 				C0A27D3F2ACE2EF900D248A4 /* CharEncoding.cpp in Sources */,
+				C0A27E6C2AD7847D00D248A4 /* utilities.cc in Sources */,
 				C0A27D192ACE2EC600D248A4 /* main.cpp in Sources */,
+				C0A27E582AD6E88B00D248A4 /* DatabaseModifier.cpp in Sources */,
 				C0A27E122ACE530C00D248A4 /* http_parser.c in Sources */,
+				C0A27E522AD6535200D248A4 /* AesUtil.cpp in Sources */,
 				C0A27E192ACEBA0B00D248A4 /* StatusHandler.cpp in Sources */,
 				C0A27D782ACE2F1D00D248A4 /* Error.cpp in Sources */,
+				C0A27E6A2AD7847D00D248A4 /* vlog_is_on.cc in Sources */,
 				C0A27D812ACE2F1D00D248A4 /* SimpleXMLParser.cpp in Sources */,
 				C0A27DB22ACE505900D248A4 /* os.cpp in Sources */,
 				C0A27D7F2ACE2F1D00D248A4 /* url.cpp in Sources */,
 				C0A27D482ACE2EF900D248A4 /* Base64.cpp in Sources */,
 				C0A27D3D2ACE2EF900D248A4 /* DateTime.cpp in Sources */,
 				C0A27D152ACE2EC600D248A4 /* SpamLyricsFilter.cpp in Sources */,
-				C0A27DA52ACE35BD00D248A4 /* HttpConnection.cpp in Sources */,
+				C0A27E722AD7ACC700D248A4 /* gtest-all.cc in Sources */,
+				C0A27E4F2AD6440800D248A4 /* aes.c in Sources */,
 				C0A27D142ACE2EC600D248A4 /* LyricsServer.cpp in Sources */,
+				C0A27E8E2AD7B2D700D248A4 /* HttpResponse.cpp in Sources */,
 				C0A27D7B2ACE2F1D00D248A4 /* IdString.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,6 +937,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 					_MAC_OS,
+					UNIT_TEST,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -805,6 +951,10 @@
 					"$SRCROOT/../../third-parties/libuv/include",
 					"$SRCROOT/../../third-parties/rapidjson",
 					"$SRCROOT/../../third-parties/glog/mac",
+					"$SRCROOT/../../third-parties/tiny-AES-c",
+					$SRCROOT/../../TinyJS,
+					"$SRCROOT/../../third-parties/googletest",
+					$SRCROOT/../../,
 				);
 				LIBRARY_SEARCH_PATHS = "$SRCROOT/../../third-parties/libuv/build";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
@@ -867,6 +1017,10 @@
 					"$SRCROOT/../../third-parties/libuv/include",
 					"$SRCROOT/../../third-parties/rapidjson",
 					"$SRCROOT/../../third-parties/glog/mac",
+					"$SRCROOT/../../third-parties/tiny-AES-c",
+					$SRCROOT/../../TinyJS,
+					"$SRCROOT/../../third-parties/googletest",
+					$SRCROOT/../../,
 				);
 				LIBRARY_SEARCH_PATHS = "$SRCROOT/../../third-parties/libuv/build";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;

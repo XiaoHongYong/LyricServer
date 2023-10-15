@@ -1,6 +1,6 @@
 #pragma once
 
+#include <glog/logging.h>
 #include "../../Utils/Utils.h"
-#include "../../MLProtocol/MLProtocol.h"
-#include "Debug.h"
+#include "MLProtocol/MLProtocol.h"
 

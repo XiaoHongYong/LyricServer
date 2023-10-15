@@ -1,0 +1,18 @@
+
+.content_container {
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+
+.remove-btn {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAAmJLR0QA/4ePzL8AAAB8SURBVDjLY2AYCFDE8J7hPxC+B7JwgsNgJfjgYYhCJoZBDCbj9cFEmDKEHx7jNe4xpoZHpGrAb8Mjsm1AAGaG3zi9/Bsoi2HDX4bnOM1/CpRlwIzpR8Q4iAm/OzGNopENdHUSMuBl+IE1Fr4z8OAyKYnhDYby1wwJ9M02AFnZX16TSgvEAAAAAElFTkSuQmCC') no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.download-btn {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAAmJLR0QA/4ePzL8AAABASURBVDjLY2AYGHCU4T8QHiZew38oHNUwMBrK4UqRYT1pWupJs6WeGB+Uk6YcoaWelPTaAIRDC/wnEpKvgZYAAOflbu+ldTeLAAAAAElFTkSuQmCC') no-repeat;
+  width: 24px;
+  height: 24px;
+}

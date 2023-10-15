@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<KeywordFilter>
+  <Remove>︰︱︳︴︵︶︷︸︹︺︻︼︽︾︿﹀﹁﹂﹃﹄﹉﹊﹋﹌﹍﹎﹏﹐﹑﹒﹔﹕﹖﹗﹛﹜﹝﹞﹟﹠﹡﹢﹣﹤﹥﹦﹨﹩﹪﹫！＂＃＄％＆＇＊＋，－．／</Remove>
+  <Remove>：；＜＝＞？＠＼＾＿｀｛｜｝～￠￡￢￣￤￥</Remove>
+  <Remove>̩̃̌̈̊̊</Remove>
+  <Replace src="【】［］﹙﹚（）０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ=" dst="()()()()0123456789abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"/>
+  <Replace dst="a" src="ÁáÀàĂăẮắẰằẴẵẲẳÂâẤấẦầẪẫẨẩǍǎÅåǺǻÄäǞǟÃãȦȧǠǡĄąĀāẢảȀȁȂȃẠạẶặẬậḀḁȺⱥᶏⱯɐⱭɑ"/>
+  <Replace dst="b" src="ḂḃḄḅḆḇɃƀƁɓƂƃᵬᶀ"/>
+  <Replace dst="c" src="ĆćĈĉČčĊċÇçḈḉȻȼƇƈɕ"/>
+  <Replace dst="d" src="ĎďḊḋḐḑḌḍḒḓḎḏĐđƉɖƊɗƋƌᵭᶁᶑȡ∂"/>
+  <Replace dst="e" src="ÉéÈèĔĕÊêẾếỀềỄễỂểĚěËëẼẽĖėȨȩḜḝĘęĒēḖḗḔḕẺẻȄȅȆȇẸẹỆệḘḙḚḛɆɇᶒⱸ"/>
+  <Replace dst="f" src="ḞḟƑƒᵮᶂ"/>
+  <Replace dst="g" src="ǴǵĞğĜĝǦǧĠġĢģḠḡǤǥƓɠᶃ"/>
+  <Replace dst="h" src="ĤĥȞȟḦḧḢḣḨḩḤḥḪḫH̱ẖĦħⱧⱨ"/>
+  <Replace dst="i" src="ÍíÌìĬĭÎîǏǐÏïḮḯĨĩĮįĪīỈỉȈȉȊȋỊịḬḭƗɨᵻᶖİiIıꟾ"/>
+  <Replace dst="j" src="ĴĵɈɉǰȷʝɟʄ"/>
+  <Replace dst="k" src="ḰḱǨǩĶķḲḳḴḵƘƙⱩⱪᶄꝀꝁ"/>
+  <Replace dst="l" src="ĹĺĽľĻļḶḷḸḹḼḽḺḻŁłĿŀȽƚⱠⱡⱢɫɬᶅɭȴ"/>
+  <Replace dst="m" src="ḾḿṀṁṂṃᵯᶆⱮɱ"/>
+  <Replace dst="n" src="ŃńǸǹŇňÑñṄṅŅņṆṇṊṋṈṉN̈n̈ƝɲȠƞŊŋꞐꞑᵰᶇɳȵ"/>
+  <Replace dst="o" src="ÓóÒòŎŏÔôỐốỒồỖỗỔổǑǒÖöȪȫŐőÕõṌṍṎṏȬȭȮȯO͘o͘ȰȱØøǾǿǪǫǬǭŌōṒṓṐṑỎỏȌȍȎȏƠơỚớỜờỠỡỞởỢợỌọỘộƟɵƆɔⱺ"/>
+  <Replace dst="p" src="ṔṕṖṗⱣᵽƤƥᵱᶈ"/>
+  <Replace dst="q" src="ɊɋƢƣʠ"/>
+  <Replace dst="r" src="ŔŕŘřṘṙŖŗȐȑȒȓṚṛṜṝṞṟɌɍⱤɽᵲᶉɼɾᵳ"/>
+  <Replace dst="s" src="ŚśṤṥŜŝŠšṦṧṠṡẛŞşṢṣṨṩȘșᵴᶊʂȿ"/>
+  <Replace dst="t" src="ŤťṪṫŢţṬṭȚțṰṱṮṯŦŧȾⱦƬƭƮʈẗᵵƫȶ"/>
+  <Replace dst="u" src="ÚúÙùŬŭÛûǓǔŮůÜüǗǘǛǜǙǚǕǖŰűŨũṸṹŲųŪūṺṻỦủȔȕȖȗƯưỨứỪừỮữỬửỰựỤụṲṳṶṷṴṵɄʉᵾᶙ"/>
+  <Replace dst="v" src="ṼṽṾṿƲʋᶌⱱⱴ"/>
+  <Replace dst="w" src="ẂẃẀẁŴŵẄẅẆẇẈẉẘⱲⱳ"/>
+  <Replace dst="x" src="ẌẍẊẋᶍ"/>
+  <Replace dst="y" src="ÝýỲỳŶŷẙŸÿỸỹẎẏȲȳỶỷỴỵɎɏƳƴʏ"/>
+  <Replace dst="z" src="ŹźẐẑŽžŻżẒẓẔẕƵƶȤȥⱫⱬᵶᶎʐʑɀ"/>  
+</KeywordFilter>

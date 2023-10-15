@@ -4,32 +4,13 @@
 #include "../../TinyJS/utils/StringEx.h"
 
 
-bool TextFileToVStr(cstr_t szFile, vector<string> &vStr)
-{
-    FILE    *fp;
-    char    szBuff[1024];
-
-    fp = fopen(szFile, "rt");
-    if (!fp)
+bool TextFileToVStr(cstr_t fn, vector<string> &vStr) {
+    string data;
+    if (!readFile(fn, data)) {
         return false;
-
-    while (fgets(szBuff, CountOf(szBuff) - 1, fp))
-    {
-        int        nLen;
-        nLen = strlen(szBuff);
-        if (nLen > 0)
-        {
-            while (szBuff[nLen - 1] == '\r'
-                || szBuff[nLen - 1] == '\n')
-                nLen--;
-            if (nLen > 0)
-            {
-                szBuff[nLen] = '\0';
-                vStr.push_back(szBuff);
-            }
-        }
     }
-    fclose(fp);
+
+    StringView(data).splitLines(vStr);
 
     return true;
 }
@@ -168,7 +149,7 @@ bool SpamLyricsFilter::Load(cstr_t dataDir) {
 
     strFile = dirStringJoin(dataDir, strCfgFilePrefix + "SpamNameFilter.txt");
     if (!readFile(strFile.c_str(), m_strNameFilter)) {
-        LOG("Can't Open Filter File: %s", strFile.c_str());
+        LOG(ERROR) << "Can't Open Filter File: " << strFile;
         return false;
     }
 
@@ -181,7 +162,7 @@ bool SpamLyricsFilter::Load(cstr_t dataDir) {
 
     strFile = dirStringJoin(dataDir, strCfgFilePrefix + "SpamContentFilter.txt");
     if (!readFile(strFile.c_str(), m_strContentFilter)) {
-        LOG("Can't Open Filter File: %s", strFile.c_str());
+        LOG(ERROR) << "Can't Open Filter File: " << strFile;
         return false;
     }
 

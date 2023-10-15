@@ -9,9 +9,9 @@
 
  CREATE TABLE lyrics (
          id integer primary key AUTOINCREMENT, content_type integer, media_length integer,
-         rate_total integer, rate_count integer, uploader_id integer, dl_count integer,
-         upload_time integer, artist text, artistcmp text, album text, title text,
-         titlecmp text, related_link text, edited_by text, digest integer
+         rate_total integer DEFAULT 0, rate_count integer DEFAULT 0, dl_count integer DEFAULT 0,
+         uploader_id integer, upload_time integer, artist text, artistcmp text, album text,
+         title text, titlecmp text, related_link text, edited_by text, digest integer
      );
 
  CREATE INDEX lyrics_artistcmp on lyrics (artistcmp);
@@ -68,6 +68,7 @@ void SqlGetLyrics(sqlite3_stmt *sqlStmt, RetLyrInfo &lyricsInfo) {
 
 int LyricsDB::init(const string &dataPath) {
     string fileName = dirStringJoin(dataPath, "database/lyrics.db");
+    LOG(INFO) << "Open lyrics data base: " << fileName;
     int ret = sqlite3_open(fileName.c_str(), &m_db);
     if (ret != SQLITE_OK) {
         printf("Open user db FAILED: %s", fileName.c_str());
@@ -107,6 +108,8 @@ void LyricsDB::Quit() {
 int LyricsDB::AddLyrics(LyricsInfo &lyrInfo) {
     int ret = ERR_OK, n = 1;
 
+    lyrInfo.uploadDate = time(nullptr);
+
     sqlite3_reset(m_stmtAddLyrics);
 
     SQLITE3_BIND_TEXT(m_db, m_stmtAddLyrics, lyrInfo.artist.c_str());
@@ -119,9 +122,9 @@ int LyricsDB::AddLyrics(LyricsInfo &lyrInfo) {
     SQLITE3_BIND_INT(m_db, m_stmtAddLyrics, (int)lyrInfo.rateCount);
     SQLITE3_BIND_INT(m_db, m_stmtAddLyrics, (int)lyrInfo.downloadCount);
     SQLITE3_BIND_INT(m_db, m_stmtAddLyrics, (int)lyrInfo.rateTotal);
-    SQLITE3_BIND_INT(m_db, m_stmtAddLyrics, (int)lyrInfo.uploaderId);
+    SQLITE3_BIND_INT64(m_db, m_stmtAddLyrics, lyrInfo.uploaderId);
     SQLITE3_BIND_INT(m_db, m_stmtAddLyrics, lyrInfo.lyrContentType);
-    SQLITE3_BIND_INT(m_db, m_stmtAddLyrics, (int)lyrInfo.uploadDate);
+    SQLITE3_BIND_INT64(m_db, m_stmtAddLyrics, lyrInfo.uploadDate);
 
     SQLITE3_BIND_TEXT(m_db, m_stmtAddLyrics, lyrInfo.arCmp.c_str());
     SQLITE3_BIND_TEXT(m_db, m_stmtAddLyrics, lyrInfo.tiCmp.c_str());
@@ -130,11 +133,12 @@ int LyricsDB::AddLyrics(LyricsInfo &lyrInfo) {
 
     ret = sqlite3_step(m_stmtAddLyrics);
     if (ret == SQLITE_ERROR) {
-        LogSqlite3Error(m_db);
-        ret = ERR_FALSE;
+        LOG(ERROR) << "Failed to add lyrics, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
     } else {
         lyrInfo.lyricsID = sqlite3_last_insert_rowid(m_db);
         ret = ERR_OK;
+        DLOG(INFO) << "Add lyrics successfully, artist: " << lyrInfo.artist << ", title: " << lyrInfo.title << ", id: " << lyrInfo.lyricsID;
     }
 
     sqlite3_reset(m_stmtAddLyrics);
@@ -145,6 +149,8 @@ int LyricsDB::AddLyrics(LyricsInfo &lyrInfo) {
 int LyricsDB::UpdateLyricsPropById(long nId, LyricsInfo &lyrInfo) {
     int ret = ERR_OK, n = 1;
 
+    lyrInfo.uploadDate = time(nullptr);
+
     sqlite3_reset(m_stmtUpdateLyrPropsById);
 
     SQLITE3_BIND_TEXT(m_db, m_stmtUpdateLyrPropsById, lyrInfo.artist.c_str());
@@ -152,17 +158,18 @@ int LyricsDB::UpdateLyricsPropById(long nId, LyricsInfo &lyrInfo) {
     SQLITE3_BIND_TEXT(m_db, m_stmtUpdateLyrPropsById, lyrInfo.album.c_str());
 
     SQLITE3_BIND_INT(m_db, m_stmtUpdateLyrPropsById, lyrInfo.getMediaLengthInt());
-    SQLITE3_BIND_INT(m_db, m_stmtUpdateLyrPropsById, (int)time(NULL));
+    SQLITE3_BIND_INT64(m_db, m_stmtUpdateLyrPropsById, lyrInfo.uploadDate);
     SQLITE3_BIND_INT(m_db, m_stmtUpdateLyrPropsById, lyrInfo.digest);
 
     SQLITE3_BIND_INT(m_db, m_stmtUpdateLyrPropsById, (int)nId);
 
     ret = sqlite3_step(m_stmtUpdateLyrPropsById);
     if (ret == SQLITE_ERROR) {
-        LogSqlite3Error(m_db);
-        ret = ERR_FALSE;
+        LOG(ERROR) << "Failed to update lyrics info, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
     } else {
         ret = ERR_OK;
+        DLOG(INFO) << "Update lyrics info successfully, artist: " << lyrInfo.artist << ", title: " << lyrInfo.title << ", id: " << lyrInfo.lyricsID;
     }
 
     sqlite3_reset(m_stmtUpdateLyrPropsById);
@@ -181,10 +188,11 @@ int LyricsDB::UpdateLyricsLinkById(long nId, cstr_t szLink) {
 
     ret = sqlite3_step(m_stmtUpdateLyrLinkById);
     if (ret == SQLITE_ERROR) {
-        LogSqlite3Error(m_db);
-        ret = ERR_FALSE;
+        LOG(ERROR) << "Failed to update lyrics link, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
     } else {
         ret = ERR_OK;
+        DLOG(INFO) << "Update lyrics link successfully, link: " << szLink << ", id: " << nId;
     }
 
     sqlite3_reset(m_stmtUpdateLyrLinkById);
@@ -201,10 +209,11 @@ int LyricsDB::getLyricsDigest(long id, uint32_t &digestOut) {
 
     ret = sqlite3_step(m_stmtGetLyricsDigestById);
     if (ret == SQLITE_ERROR) {
-        LogSqlite3Error(m_db);
-        ret = ERR_FALSE;
+        LOG(ERROR) << "Failed to get lyrics digest, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
     } else {
         digestOut = sqlite3_column_int(m_stmtGetLyricsDigestById, 0);
+        DLOG(INFO) << "Get lyrics digest successfully, digest: " << digestOut << ", id: " << id;
         ret = ERR_OK;
     }
 
@@ -223,9 +232,10 @@ int LyricsDB::updateLyricsDigest(long id, uint32_t digest) {
 
     ret = sqlite3_step(m_stmtUpdateLyricsDigestById);
     if (ret == SQLITE_ERROR) {
-        LogSqlite3Error(m_db);
-        ret = ERR_FALSE;
+        LOG(ERROR) << "Failed to update lyrics digest, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
     } else {
+        DLOG(INFO) << "Update lyrics digest successfully, digest: " << digest << ", id: " << id;
         ret = ERR_OK;
     }
 
@@ -246,8 +256,8 @@ int LyricsDB::SearchLyricsByArtistTitleID(cstr_t szArtist, cstr_t szTitle, long 
 
     ret = sqlite3_step(m_stmtSearchLyrByArtistTitleId);
     if (ret == SQLITE_ERROR) {
-        LogSqlite3Error(m_db);
-        ret = ERR_FALSE;
+        LOG(ERROR) << "Failed to search lyrics, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
     } else if (ret == SQLITE_ROW) {
         SqlGetLyrics(m_stmtSearchLyrByArtistTitleId, lyrInfo);
         ret = ERR_OK;
@@ -338,7 +348,7 @@ int LyricsDB::LoadTitleAliasDb(cstr_t szFile) {
     string strOrg, strAlias;
 
     if (!xml.parseFile(szFile)) {
-        LOG("Parse xml file: %s, FAILED!", szFile);
+        LOG(ERROR) << "Parse xml file FAILED: " << szFile;
         return ERR_PARSE_XML;
     }
     if (strcmp(xml.m_pRoot->name.c_str(), "stralias") != 0) {
@@ -367,7 +377,7 @@ int LyricsDB::LoadArtistAliasDb(cstr_t szFile) {
     string strOrg, strAlias;
 
     if (!xml.parseFile(szFile)) {
-        LOG("Parse xml file: %s, FAILED!", szFile);
+        LOG(ERROR) << "Parse xml file FAILED: " << szFile;
         return ERR_PARSE_XML;
     }
     if (strcmp(xml.m_pRoot->name.c_str(), "stralias") != 0) {
@@ -397,8 +407,8 @@ int LyricsDB::getSearchLyricsResults(sqlite3_stmt *stmt, RetLyrInfoList &vLyrics
     while (true) {
         ret = sqlite3_step(stmt);
         if (ret == SQLITE_ERROR) {
-            LogSqlite3Error(m_db);
-            ret = ERR_FALSE;
+            LOG(ERROR) << "Failed to get lyrics result, error: " << sqlite3_errmsg(m_db);
+            ret = ERR_DATABASE_ERROR;
             break;
         } else if (ret == SQLITE_ROW) {
             RetLyrInfo lyrInfo;
