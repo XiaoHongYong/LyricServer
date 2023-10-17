@@ -23,7 +23,8 @@
 
 #define SELECT_LYR_FIELDS   "SELECT artist, title, album, edited_by, related_link, media_length, rate_count, dl_count, rate_total, uploader_id, id, content_type"
 
-#define SQL_SEARCH_LYR_BY_ARTIST_TITLE_ID SELECT_LYR_FIELDS  " FROM lyrics WHERE id = ? AND artistcmp = ? AND titlecmp = ?"
+#define SQL_SEARCH_LYR_BY_ARTIST_TITLE_ID  SELECT_LYR_FIELDS " FROM lyrics WHERE id = ? AND artistcmp = ? AND titlecmp = ?"
+#define SQL_SEARCH_LYR_BY_ARTIST_TITLE_DIGEST SELECT_LYR_FIELDS " FROM lyrics WHERE artistcmp = ? AND titlecmp = ? AND digest = ?"
 #define SQL_SEARCH_LYR_BY_ARTIST SELECT_LYR_FIELDS           " FROM lyrics WHERE artistcmp = ? LIMIT 50"
 #define SQL_SEARCH_LYR_BY_TITLE SELECT_LYR_FIELDS            " FROM lyrics WHERE titlecmp = ? LIMIT 50"
 #define SQL_SEARCH_LYR_BY_ARTIST_TITLE SELECT_LYR_FIELDS     " FROM lyrics WHERE artistcmp = ? and titlecmp = ? LIMIT 50"
@@ -63,8 +64,9 @@ void SqlGetLyrics(sqlite3_stmt *sqlStmt, RetLyrInfo &lyricsInfo) {
     }
 }
 
-
-//////////////////////////////////////////////////////////////////////
+LyricsDB::~LyricsDB() {
+    sqlite3_close(m_db);
+}
 
 int LyricsDB::init(const string &dataPath) {
     string fileName = dirStringJoin(dataPath, "database/lyrics.db");
@@ -93,6 +95,7 @@ int LyricsDB::init(const string &dataPath) {
     SQLIT3_STMT_PREPARE(m_db, SQL_GET_LYR_DIGEST_BY_ID, m_stmtGetLyricsDigestById);
     SQLIT3_STMT_PREPARE(m_db, SQL_UPDATE_LYR_DIGEST_BY_ID, m_stmtUpdateLyricsDigestById);
 
+    SQLIT3_STMT_PREPARE(m_db, SQL_SEARCH_LYR_BY_ARTIST_TITLE_DIGEST, m_stmtSearchLyrByArtistTitleDigest);
     SQLIT3_STMT_PREPARE(m_db, SQL_SEARCH_LYR_BY_ARTIST_TITLE_ID, m_stmtSearchLyrByArtistTitleId);
     SQLIT3_STMT_PREPARE(m_db, SQL_SEARCH_LYR_BY_ARTIST, m_stmtSearchLyrByArtist);
     SQLIT3_STMT_PREPARE(m_db, SQL_SEARCH_LYR_BY_TITLE, m_stmtSearchLyrByTitle);
@@ -244,7 +247,30 @@ int LyricsDB::updateLyricsDigest(long id, uint32_t digest) {
     return ret;
 }
 
-// Search lyrics by id
+int LyricsDB::isLyricsExist(cstr_t szArtist, cstr_t szTitle, uint32_t digest) {
+    int ret = ERR_OK, n = 1;
+
+    sqlite3_reset(m_stmtSearchLyrByArtistTitleDigest);
+
+    SQLITE3_BIND_TEXT(m_db, m_stmtSearchLyrByArtistTitleDigest, szArtist);
+    SQLITE3_BIND_TEXT(m_db, m_stmtSearchLyrByArtistTitleDigest, szTitle);
+    SQLITE3_BIND_INT(m_db, m_stmtSearchLyrByArtistTitleDigest, digest);
+
+    ret = sqlite3_step(m_stmtSearchLyrByArtistTitleDigest);
+    if (ret == SQLITE_ERROR) {
+        LOG(ERROR) << "Failed to search lyrics, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
+    } else if (ret == SQLITE_ROW) {
+        ret = ERR_OK;
+    } else {
+        ret = ERR_NOT_FOUND;
+    }
+
+    sqlite3_reset(m_stmtSearchLyrByArtistTitleDigest);
+
+    return ret;
+}
+
 int LyricsDB::SearchLyricsByArtistTitleID(cstr_t szArtist, cstr_t szTitle, long nID, RetLyrInfo &lyrInfo) {
     int ret = ERR_OK, n = 1;
 

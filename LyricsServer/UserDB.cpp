@@ -17,6 +17,10 @@
 
 #define SQL_LOGIN_WITH_MLPASSWORD   "SELECT id FROM users WHERE UserName=? and MLPasswordHash=?"
 
+UserDB::~UserDB() {
+    sqlite3_close(m_db);
+}
+
 int UserDB::init(const char *fileName) {
     int ret = sqlite3_open(fileName, &m_db);
     if (ret != SQLITE_OK) {

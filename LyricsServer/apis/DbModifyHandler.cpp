@@ -14,6 +14,8 @@ DbModifyHandler::DbModifyHandler(LyricsServer *server, sqlite3 *db, const string
 }
 
 void DbModifyHandler::handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
+    _countRequests++;
+
     string action = getMemberString(ctx.body, "action");
     string fields = getMemberString(ctx.body, "fields");
 
@@ -22,6 +24,7 @@ void DbModifyHandler::handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
         ctx.result = "BAD-PARAMS";
         ctx.message = "args should be an array type.";
         LOG(ERROR) << "DbModifyHandler::handleApi, incorrect params 'args'" << action << ", fields: " << fields;
+        _countErrors++;
         return;
     }
 
@@ -39,6 +42,14 @@ void DbModifyHandler::handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
             args.PushBack(idReturned, ctx.body.GetAllocator());
         }
 
-        dslWriteDbAction(_server->m_fpSyncLog, _dbModifier.tableName(), action, fields, args);
+        dslWriteDbAction(_server->_fpSyncLog, _dbModifier.tableName(), action, fields, args);
     }
+}
+
+void DbModifyHandler::dumpStatus(StatusLog &log) {
+    log.writeInt("db-api-errors", _countErrors);
+    log.writeInt("db-api-request", _countRequests);
+
+    _countErrors = 0;
+    _countRequests = 0;
 }

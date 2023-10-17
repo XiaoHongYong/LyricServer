@@ -8,7 +8,7 @@
 #include "AesUtil.hpp"
 
 
-#define FOOTER_LEN (AES_BLOCKLEN + sizeof(uint32_t) + sizeof(uint32_t))
+#define FOOTER_LEN (sizeof(uint32_t) + sizeof(uint32_t))
 #define CRC32_START 0xFFFFFFFF
 
 void randArray(uint8_t *arr, size_t size) {
@@ -60,7 +60,7 @@ string aesEncrypt(AES_ctx &ctx, const StringView &input) {
 string aesDecrypt(AES_ctx &ctx, const StringView &input) {
     string output;
 
-    if (input.len % AES_BLOCKLEN != 0 || input.len <= AES_BLOCKLEN) {
+    if (input.len % AES_BLOCKLEN != 0 || input.len < AES_BLOCKLEN * 2) {
         DLOG(INFO) << "aesDecrypt, invalid input length: " << input.len;
         return output;
     }
@@ -68,6 +68,7 @@ string aesDecrypt(AES_ctx &ctx, const StringView &input) {
     uint8_t *iv = (uint8_t *)input.data;
     AES_ctx_set_iv(&ctx, iv);
 
+    // 去掉 iv
     output.assign(input.data + AES_BLOCKLEN, input.len - AES_BLOCKLEN);
 
     AES_CBC_decrypt_buffer(&ctx, (uint8_t *)output.data(), output.size());
@@ -76,14 +77,42 @@ string aesDecrypt(AES_ctx &ctx, const StringView &input) {
     uint32_t len = uint32FromBE(p); p += sizeof(uint32_t);
     uint32_t crcExpected = uint32FromBE(p);
 
-    output.resize(output.size() - FOOTER_LEN);
-    auto crc = (uint32_t)crc32(CRC32_START, (uint8_t *)output.data(), (uint32_t)output.size());
-    if (len != output.size() || crcExpected != crc) {
-        // 长度或者 crc 不正确
-        DLOG(INFO) << "Incorrect length or crc32, crc: " << crc << ", expected crc: " << crcExpected
-            << ", length: " << output.size() << ", expected length: " << len;
+    if (len > output.size() - FOOTER_LEN) {
+        DLOG(ERROR) << "Length is larger than received: " << len << ", received size: " << output.size() - FOOTER_LEN;
+        return "";
+    }
+
+    output.resize(len);
+    auto crc = (uint32_t)crc32(CRC32_START, (uint8_t *)output.data(), len);
+    if (crcExpected != crc) {
+        // crc 不正确
+        DLOG(ERROR) << "Incorrect crc32, crc: " << crc << ", expected crc: " << crcExpected;
         return "";
     }
 
     return output;
 }
+
+
+#if UNIT_TEST
+
+#include "utils/unittest.h"
+
+TEST(AesUtil, crypt) {
+    AES_ctx ctx;
+
+    const char *KEY = "TNDGZYU8NT9HPNFS3B190ZSEOLUBOBFQ";
+
+    AES_init_ctx(&ctx, (const uint8_t *)KEY);
+
+    string data = "UCCTGOGML4Q7V1AK7CORUYZQVMPYU58G25UYU3L6UJZXJT3X2R8LUTVD4YIAK9NK";
+    for (int i = 0; i < data.size(); i++) {
+        printf("Round: %d\n", i);
+        StringView in(data.data(), i);
+        auto encrypted = aesEncrypt(ctx, in);
+        auto out = aesDecrypt(ctx, encrypted);
+        ASSERT_EQ(in.toString(), out);
+    }
+}
+
+#endif

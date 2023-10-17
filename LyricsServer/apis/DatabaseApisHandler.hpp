@@ -31,6 +31,7 @@ protected:
     using MapStmts = map<string, Stmt>;
 
     void handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) override;
+    void dumpStatus(StatusLog &log) override;
 
     void prepareStmt(DbApiCtx &ctx, RapidjsonWriterEx &writer);
     void querySql(DbApiCtx &ctx, RapidjsonWriterEx &writer);
@@ -40,6 +41,8 @@ protected:
 
     sqlite3                         *_db = nullptr;
     MapStmts                        _mapStmts;
+
+    int64_t                         _countErrors = 0, _countRequests = 0;
 
 };
 

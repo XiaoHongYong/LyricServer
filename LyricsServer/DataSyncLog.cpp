@@ -15,8 +15,8 @@ VecStrings enumDataSyncFileNames() {
     if (finder.openDir(g_conf.dataSyncDir.c_str())) {
         while (finder.findNext()) {
             if (!finder.isCurDir()) {
-                StringView name(finder.getCurName());
-                if (name.len == 4 && name.isNumeric()) {
+                string title = fileGetTitle(finder.getCurName());
+                if (title.size() == 4 && StringView(title).isNumeric()) {
                     // 只接受以 year 命名的文件
                     names.push_back(finder.getCurName());
                 }

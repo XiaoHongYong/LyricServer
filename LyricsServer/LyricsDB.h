@@ -7,6 +7,8 @@
 
 class LyricsDB {
 public:
+    ~LyricsDB();
+
     int init(const string &dataPath);
     void Quit();
 
@@ -17,6 +19,7 @@ public:
     int getLyricsDigest(long id, uint32_t &digestOut);
     int updateLyricsDigest(long id, uint32_t digest);
 
+    int isLyricsExist(cstr_t szArtist, cstr_t szTitle, uint32_t digest);
     int SearchLyricsByArtistTitleID(cstr_t szArtist, cstr_t szTitle, long nID, RetLyrInfo &lyrInfo);
     int SearchLyricsByArtist(cstr_t szArtist, RetLyrInfoList &vLyrics);
     int SearchLyricsByTitle(cstr_t szTitle, RetLyrInfoList &vLyrics);
@@ -63,5 +66,6 @@ protected:
     sqlite3_stmt                *m_stmtSearchLyrByTitle = nullptr;
     sqlite3_stmt                *m_stmtSearchLyrByArtistTitle = nullptr;
     sqlite3_stmt                *m_stmtSearchLyrByArtistTitleContentType = nullptr;
+    sqlite3_stmt                *m_stmtSearchLyrByArtistTitleDigest = nullptr;
 
 };

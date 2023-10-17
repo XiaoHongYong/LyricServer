@@ -7,6 +7,8 @@
 
 class UserDB {
 public:
+    ~UserDB();
+
     int init(const char *fileName);
     void Quit();
 

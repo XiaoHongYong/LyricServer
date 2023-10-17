@@ -115,6 +115,8 @@ port=8000
     * 编译 LyricsServer 和 LyricsClient
   * ./tests/test-all.sh debug clean
     * 测试 debug 版本，并清除测试环境
+* Unittest
+  * 编译: ./build.sh ut
 
 ## 服务器升级
 

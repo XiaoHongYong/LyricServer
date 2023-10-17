@@ -90,9 +90,9 @@
 		C0A27E8E2AD7B2D700D248A4 /* HttpResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E852AD7B2D700D248A4 /* HttpResponse.cpp */; };
 		C0A27E8F2AD7B2D700D248A4 /* HttpRequestDefaultHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E872AD7B2D700D248A4 /* HttpRequestDefaultHandler.cpp */; };
 		C0A27E902AD7B2D700D248A4 /* HttpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E8A2AD7B2D700D248A4 /* HttpRequest.cpp */; };
-		C0A27E962AD7E64400D248A4 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E952AD7E64400D248A4 /* client.cpp */; };
 		C0A27E9B2AD8E21100D248A4 /* MLClientSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E972AD8E21100D248A4 /* MLClientSession.cpp */; };
 		C0A27E9C2AD8E21100D248A4 /* MLProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E992AD8E21100D248A4 /* MLProfile.cpp */; };
+		C0A27E9F2ADD2D5100D248A4 /* StatusLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E9D2ADD2D5100D248A4 /* StatusLog.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -329,6 +329,8 @@
 		C0A27E982AD8E21100D248A4 /* MLClientSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLClientSession.h; path = ../../MPlayerUI/MLClientSession.h; sourceTree = "<group>"; };
 		C0A27E992AD8E21100D248A4 /* MLProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLProfile.cpp; path = ../../MPlayerUI/MLProfile.cpp; sourceTree = "<group>"; };
 		C0A27E9A2AD8E21100D248A4 /* MLProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLProfile.h; path = ../../MPlayerUI/MLProfile.h; sourceTree = "<group>"; };
+		C0A27E9D2ADD2D5100D248A4 /* StatusLog.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StatusLog.cpp; sourceTree = "<group>"; };
+		C0A27E9E2ADD2D5100D248A4 /* StatusLog.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StatusLog.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -739,6 +741,8 @@
 				C0A27E832AD7B2D700D248A4 /* HttpServer.cpp */,
 				C0A27E862AD7B2D700D248A4 /* HttpServer.hpp */,
 				C0A27E892AD7B2D700D248A4 /* IHttpRequestHandler.hpp */,
+				C0A27E9D2ADD2D5100D248A4 /* StatusLog.cpp */,
+				C0A27E9E2ADD2D5100D248A4 /* StatusLog.hpp */,
 			);
 			name = HttpServer;
 			path = ../../HttpLib/HttpServer;
@@ -825,7 +829,6 @@
 				C0A27E072ACE516400D248A4 /* MLProtocol.cpp in Sources */,
 				C0A27D8A2ACE2F1D00D248A4 /* MLBinXMLParser.cpp in Sources */,
 				C0A27E392AD37A1E00D248A4 /* DbModifyHandler.cpp in Sources */,
-				C0A27E962AD7E64400D248A4 /* client.cpp in Sources */,
 				C0A27E902AD7B2D700D248A4 /* HttpRequest.cpp in Sources */,
 				C0A27DEB2ACE50AF00D248A4 /* sqlite3.c in Sources */,
 				C0A27DED2ACE50AF00D248A4 /* md5.cpp in Sources */,
@@ -839,6 +842,7 @@
 				C0A27D402ACE2EF900D248A4 /* XCharSeparatedValues.cpp in Sources */,
 				C0A27E0A2ACE51D400D248A4 /* LyricsKeywordFilter.cpp in Sources */,
 				C0A27D1A2ACE2EC600D248A4 /* LyricsDB.cpp in Sources */,
+				C0A27E9F2ADD2D5100D248A4 /* StatusLog.cpp in Sources */,
 				C0A27D172ACE2EC600D248A4 /* DataSyncLog.cpp in Sources */,
 				C0A27D492ACE2EF900D248A4 /* AllocatorPool.cpp in Sources */,
 				C0A27D432ACE2EF900D248A4 /* CharEncodingMac.mm in Sources */,

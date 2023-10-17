@@ -24,10 +24,12 @@ public:
 
 protected:
     void handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) override;
+    void dumpStatus(StatusLog &log) override;
 
     LyricsServer                    *_server;
     DatabaseModifier                _dbModifier;
 
+    int64_t                         _countErrors = 0, _countRequests = 0;
 };
 
 #endif /* DbModifyHandler_hpp */

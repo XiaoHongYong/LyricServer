@@ -29,6 +29,9 @@ struct ServerConfig {
     int                 dataSyncLogYearCur = -1; // 当前的数据同步 year
     int                 syncDurationInSec = 60; // 数据同步的时间间隔
 
+    int                 statusLogDurationInSec = 60; // 记录状态日志的时间间隔
+
+    int                 statusLogRotateSize = 1024 * 1024 * 128, statusLogCount = 5;
 };
 
 extern ServerConfig g_conf;

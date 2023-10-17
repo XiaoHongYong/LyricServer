@@ -80,6 +80,7 @@ DatabaseApisHandler::DatabaseApisHandler(sqlite3 *db, const string &uri) : BaseJ
 }
 
 void DatabaseApisHandler::handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
+    _countRequests++;
     string action = getMemberString(ctx.body, "action");
     if (action == "prepare") {
         // Prepare statement
@@ -92,6 +93,7 @@ void DatabaseApisHandler::handleApi(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
         ctx.result = "INVALID-ACTION";
         ctx.message = "Invalid action: " + action;
         LOG(ERROR) << "Invalid action: " << action;
+        _countErrors++;
     }
 }
 
@@ -114,7 +116,8 @@ void DatabaseApisHandler::prepareStmt(DbApiCtx &ctx, RapidjsonWriterEx &writer) 
     if (ret != SQLITE_OK) {
         ctx.result = "SQL_PREPARE_FAILED";
         ctx.message = sqlite3_errmsg(_db);
-        LOG(ERROR) << "Prepare statement failed: " << sql << ", error: " << sqlite3_errmsg(_db);;
+        LOG(ERROR) << "Prepare statement failed: " << sql << ", error: " << sqlite3_errmsg(_db);
+        _countErrors++;
         return;
     }
 
@@ -143,6 +146,7 @@ void DatabaseApisHandler::queryStmt(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
         ctx.result = "STMT-NOT-EXISTS";
         ctx.message = "Can't find statement by id: " + digest;
         LOG(INFO) << "Can't find statement by id: " << digest;
+        _countErrors++;
         return;
     }
 
@@ -159,7 +163,8 @@ void DatabaseApisHandler::queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterEx
         if (!args.IsArray()) {
             ctx.result = "BAD-PARAMS";
             ctx.message = "args should be an array type.";
-            LOG(INFO) << "args should be an array type.";
+            LOG(ERROR) << "args should be an array type.";
+            _countErrors++;
             return;
         }
 
@@ -200,7 +205,8 @@ void DatabaseApisHandler::queryStmt(Stmt &stmt, DbApiCtx &ctx, RapidjsonWriterEx
         } else {
             ctx.result = "SQL_STEP_ERROR";
             ctx.message = sqlite3_errmsg(_db);
-            LOG(INFO) << "Sql step error: " << sqlite3_errmsg(_db);
+            LOG(ERROR) << "Sql step error: " << sqlite3_errmsg(_db);
+            _countErrors++;
             break;
         }
     }
@@ -218,6 +224,7 @@ void DatabaseApisHandler::execSql(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
         ctx.result = "SQL_PREPARE_FAILED";
         ctx.message = sqlite3_errmsg(_db);
         LOG(ERROR) << "Prepare statement failed: " << sql << ", error: " << sqlite3_errmsg(_db);;
+        _countErrors++;
         return;
     }
 
@@ -233,4 +240,12 @@ void DatabaseApisHandler::execSql(DbApiCtx &ctx, RapidjsonWriterEx &writer) {
     queryStmt(item, ctx, writer);
 
     sqlite3_finalize(item.stmt);
+}
+
+void DatabaseApisHandler::dumpStatus(StatusLog &log) {
+    log.writeInt("db-api-errors", _countErrors);
+    log.writeInt("db-api-request", _countRequests);
+
+    _countErrors = 0;
+    _countRequests = 0;
 }

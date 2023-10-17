@@ -24,12 +24,8 @@ void SyncRemoteMasterData::start(LyricsServer *server) {
 void SyncRemoteMasterData::onTimer(uv_timer_t *timer) {
     SyncRemoteMasterData *thiz = static_cast<SyncRemoteMasterData *>(timer->data);
 
-    if (g_conf.isMaster) {
-        // 定期检查，根据时间重命名当前同步日志文件
-        tryToReopenDataSyncLogByDate(thiz->_server->m_fpSyncLog);
-    } else {
-        thiz->sendSyncRequest();
-    }
+    assert(!g_conf.isMaster);
+    thiz->sendSyncRequest();
 }
 
 void SyncRemoteMasterData::sendSyncRequest() {
@@ -37,7 +33,12 @@ void SyncRemoteMasterData::sendSyncRequest() {
     int64_t offset = 0;
 
     if (!filename.empty()) {
-        offset = getFileLength(filename.c_str());
+        auto fn = dirStringJoin(g_conf.dataSyncDir, filename);
+        offset = getFileLength(fn.c_str());
+        if (offset == -1) {
+            LOG(ERROR) << "Failed to get file length: " << fn;
+            return;
+        }
     }
 
     RapidjsonWriterEx writer;
@@ -48,7 +49,7 @@ void SyncRemoteMasterData::sendSyncRequest() {
 
     string body = aesEncrypt(_aesCtx, StringView(writer.getString(), writer.getSize()));
 
-    DLOG(INFO) << "Send sync request: " << g_conf.syncMasterUrl;
+    DLOG(INFO) << "Send sync request: " << g_conf.syncMasterUrl << "body: " << writer.getString();
 
     _client.post(g_conf.syncMasterUrl,
             {}, body, [this](int statusCode, const ListHttpHeaders &headers, const string &body) {
@@ -59,7 +60,7 @@ void SyncRemoteMasterData::sendSyncRequest() {
                 return;
             }
 
-            DLOG(INFO) << "onSync: " << body;
+            DLOG(INFO) << "onSync: " << decrypted;
 
             rapidjson::Document doc;
             if (doc.Parse(decrypted.c_str(), decrypted.size()).HasParseError() || !doc.IsObject()) {
@@ -120,8 +121,9 @@ void SyncRemoteMasterData::onSync(rapidjson::Value &body) {
         return;
     }
 
-    _server->doDataSync(filename);
     fp.close();
+
+    _server->doDataSync(filename);
 
     if (!end) {
         // 继续同步.

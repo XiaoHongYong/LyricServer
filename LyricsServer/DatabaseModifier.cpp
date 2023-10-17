@@ -110,8 +110,11 @@ bool DatabaseModifier::executeAction(DbApiCtx &ctx, const string &action, const 
     } else {
         ctx.result = "SQL_STEP_ERROR";
         ctx.message = sqlite3_errmsg(_db);
+        LOG(ERROR) << "sqlite3_step failed: " << sqlite3_errmsg(_db);
         return false;
     }
+
+    sqlite3_reset(stmt);
 
     return true;
 }

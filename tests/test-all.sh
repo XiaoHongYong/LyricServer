@@ -66,7 +66,7 @@ root-dir=${dst_dir}
 upload-dir-name=lu8
 http-lyrics-url-base=http://localhost/l/
 port=810${is_master}
-sync-duration=5
+sync-duration=1
 sync-master-url=http://search.crintsoft.com:8201/api-i/data-sync
 master=${is_master}" >> lyrics-server.ini
 
@@ -130,7 +130,8 @@ function start_all_services() {
 function stop_services() {
     pkill -9 -f LyricsServer
     openresty -s stop
-    # kill -9 $(lsof -ti:8201,8200)
+    # for mac
+    kill -9 $(lsof -ti:8201,8200)
 }
 
 function run_lua_ut() {
@@ -152,6 +153,30 @@ function create_client_user_account() {
 function test_lyrics_client() {
     $dir_server_master/client 8201 test-upload-lyrics.lrc
     exit_if_err "Failed test lyrics client."
+}
+
+function compare_database() {
+    db_name=$1
+    fn_sql1=$dir_server_master/database/$db_name.sql
+    fn_sql2=$dir_server_slave/database/$db_name.sql
+    sqlite3 $dir_server_master/database/$db_name .dump > $fn_sql1
+    sqlite3 $dir_server_master/database/$db_name .dump > $fn_sql2
+
+    diff $fn_sql1 $fn_sql2
+    exit_if_err "Database is NOT same: $fn_sql1 $fn_sql2"
+}
+
+function compare_all_databases() {
+    compare_database lyrics.db
+    compare_database users.db
+}
+
+function compare_lyrics_dir() {
+    dir1=$dir_server_master/lyrics
+    dir2=$dir_server_slave/lyrics
+
+    diff $dir1 $dir2
+    exit_if_err "Lyrics directory is NOT same: $dir1 $dir2"
 }
 
 if test -d test_env; then
@@ -182,8 +207,20 @@ echo "== Test lyrics client..."
 test_lyrics_client
 echo "== OK"
 
+echo "== Wait for 5 seconds for sync..."
+sleep 5
+echo "== OK"
+
 echo "== Stop services..."
 stop_services
+echo "== OK"
+
+echo "== Compare master/slave databases..."
+compare_all_databases
+echo "== OK"
+
+echo "== Compare master/slave lyrics folder..."
+compare_lyrics_dir
 echo "== OK"
 
 echo "== Done all tests successfully. =="

@@ -13,6 +13,9 @@
 
 class LyricsServer;
 
+/**
+ * SyncRemoteMasterData 负责从 master 同步 data-sync-log
+ */
 class SyncRemoteMasterData {
 public:
     void start(LyricsServer *server);
