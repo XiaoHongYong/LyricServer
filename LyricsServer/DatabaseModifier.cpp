@@ -2,6 +2,7 @@
 //  DatabaseModifier.cpp
 //
 
+#include <memory>
 #include "DatabaseModifier.hpp"
 #include "apis/DatabaseApisHandler.hpp"
 

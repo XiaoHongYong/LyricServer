@@ -22,6 +22,7 @@ int BaseEncryptApiHandler::onRequestHeader(HttpConnectionPtr connection) {
         response.statusCode = HttpStatusCode::NOT_FOUND;
         response.body = "404 NOT-FOUND-CRYPT";
         response.sendAll();
+        LOG(INFO) << "Encryption API accepts POST method only, not: " << connection->request().methodID;
     }
     return ERR_OK;
 }

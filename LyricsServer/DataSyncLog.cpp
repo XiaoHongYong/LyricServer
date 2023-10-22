@@ -2,6 +2,7 @@
 //  DataSyncLog.cpp
 //
 
+#include  <algorithm>
 #include "DataSyncLog.hpp"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"

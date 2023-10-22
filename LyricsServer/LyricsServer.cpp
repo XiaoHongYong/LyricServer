@@ -179,7 +179,7 @@ int LyricsServer::init() {
 
     if (g_conf.isMaster) {
         if (!tryToReopenDataSyncLogByDate(_fpSyncLog)) {
-            LOG(ERROR) << "Failed to open data-sync log";
+            LOG(ERROR) << "Failed to open data-sync log: " << getToSyncDataFilename();
             return ERR_OPEN_FILE;
         }
     } else {
@@ -200,7 +200,6 @@ int LyricsServer::init() {
 
     registerRequestHandler(std::make_shared<DatabaseApisHandler>(_dbUser.db(), "/db-api/users"));
     registerRequestHandler(std::make_shared<DatabaseApisHandler>(_dbLyrics.db(), "/db-api/lyrics"));
-    registerRequestHandler(std::make_shared<StatusHandler>(this));
 
     if (g_conf.isMaster) {
         // 只有 master 才能提供修改数据库的接口
@@ -211,6 +210,9 @@ int LyricsServer::init() {
         // 数据同步服务接口
         registerRequestHandler(std::make_shared<DataSyncHandler>(this));
     }
+
+    registerRequestHandler(std::make_shared<StatusHandler>(this));
+    registerRequestHandler(std::make_shared<RunningHandler>());
 
     uv_timer_init(uv_default_loop(), &_timerLogStatus);
     _timerLogStatus.data = this;

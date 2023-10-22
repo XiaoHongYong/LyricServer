@@ -1,7 +1,6 @@
 local json = require "cjson"
 local conf = require 'conf'
 local http = require "resty.http"
-local httpc = http.new()
 
 local _M = {}
 
@@ -10,84 +9,123 @@ local _M = {}
 ngx.db_api = {}
 ngx.db_api_col_names = {}
 
+local function api_request(path, body)
+    local httpc = http.new()
+    local ok, err = httpc:connect({
+        scheme = "http",
+        host = conf.server,
+        port = conf.port,
+    })
+    if not ok then
+        ngx.log(ngx.ERR, "Failed to connect to server: ", conf.server, ", port: ", conf.port)
+        return nil
+    end
+
+    body = json.encode(body)
+    local res, err = httpc:request({
+        method = "POST",
+        path = path,
+        body = body
+    })
+    if not res then
+        ngx.log(ngx.ERR, "api_request failed: ", err, ", path: ", path, ", body: ", body)
+        return nil
+    end
+
+    if 200 == res.status then
+        local res_body, err = res:read_body()
+        if res_body then
+            return json.decode(res_body)
+        else
+            ngx.log(ngx.ERR, "api_request failed to read response body", err)
+        end
+    else
+        ngx.log(ngx.ERR, "api_request response status code is: ", res.status, " sql: ", sql)
+    end
+
+    return nil
+end
+
+-- return result == 'OK' only
+local function api_request_rok(path, req_body)
+    local body = api_request(path, req_body)
+    if body then
+        if body.result == "OK" then
+            return body
+        else
+            ngx.log(ngx.INFO, "api_request result is not OK: ", body.result, " sql: ", sql, body.message)
+        end
+    end
+
+    return nil
+end
+
+local function db_api_key(path, sql)
+    return path .. sql
+end
+
 local function prepare_sql(path, sql)
-    local key = path .. sql
+    local key = db_api_key(path, sql)
     local stmtId = ngx.db_api[key]
 
     if stmtId ~= nil then
         return stmtId, ngx.db_api_col_names[key]
     end
 
-    local res, err = httpc:request_uri(
-        conf.server .. "/db-api/" .. path,
-        {
-            method = "POST",
-            body = json.encode({action="prepare", sql=sql}),
+    local body = api_request_rok("/db-api/" .. path, {
+            action="prepare",
+            sql=sql,
         }
     )
-
-    if err ~= nil then
-        ngx.log(ngx.INFO, 'request_uri got no response, error: ', err)
+    if not body then
         return nil, nil
     end
 
-    if 200 == res.status then
-        local body = json.decode(res.body)
-        if body.result == "OK" then
-            local stmtId = body["stmt-id"]
-            local col_names = body["col-names"]
+    local stmtId = body["stmt-id"]
+    local col_names = body["col-names"]
 
-            ngx.log(ngx.INFO, "Db api prepared stmt-id: ", stmtId, ", sql: ", sql)
+    ngx.log(ngx.INFO, "Db api prepared stmt-id: ", stmtId, ", sql: ", sql)
 
-            ngx.db_api[key] = stmtId
-            ngx.db_api_col_names[key] = col_names
+    ngx.db_api[key] = stmtId
+    ngx.db_api_col_names[key] = col_names
 
-            return stmtId, col_names
-        else
-            ngx.log(ngx.INFO, "Db api return result is not OK: ", body.result, " sql: ", sql, body.message)
-        end
-    else
-        ngx.log(ngx.INFO, "Db api status code is: ", res.status, " sql: ", sql)
-    end
-
-    return nil, nil
+    return stmtId, col_names
 end
 
-local function run_sql(path, format, sql, args)
+local function _run_sql(path, format, sql, args, retry_count)
     local stmtId, col_names = prepare_sql(path, sql)
 
     if stmtId == nil then
         return nil
     end
 
-    local res, err = httpc:request_uri(
-        conf.server .. "/db-api/" .. path,
-        {
-            method="POST",
-            body=json.encode({action="query", ["stmt-id"]=stmtId, format=format, args=args}),
-        }
-    )
+    -- ngx.log(ngx.INFO, 'request_uri: ', conf.server .. "/db-api/" .. path)
 
-    if err ~= nil then
-        ngx.log(ngx.INFO, 'request_uri got no response, error: ', err)
+    local body = api_request("/db-api/" .. path, {
+        action="query",
+        ["stmt-id"]=stmtId, format=format, args=args
+    })
+    if not body then
         return nil
     end
 
-    if 200 == res.status then
-        local body = json.decode(res.body)
-        if body.result == "OK" then
-            return body.rows
-        elseif body.result == "STMT-NOT-EXISTS" then
-            -- 可能 API service 重启了，需要重新 prepare，让这次任务失败
-            prepare_sql(path, sql)
-        else
-            ngx.log(ngx.INFO, "Db api return result is not OK: ", body.result, " sql: ", sql, body.message)
+    if body.result == "OK" then
+        return body.rows
+    elseif body.result == "STMT-NOT-EXISTS" then
+        -- 可能 API service 重启了，需要重新 prepare
+        ngx.db_api[db_api_key(path, sql)] = nil
+        if retry_count > 0 then
+            return _run_sql(path, format, sql, args, retry_count - 1)
         end
     else
-        ngx.log(ngx.INFO, "Db api status code is: ", res.status, " sql: ", sql)
+        ngx.log(ngx.INFO, "Db api return result is not OK: ", body.result, " sql: ", sql, body.message)
     end
 
     return nil
+end
+
+local function run_sql(path, format, sql, args)
+    return _run_sql(path, format, sql, args, 1)
 end
 
 function _M.users_column_names(sql)
@@ -118,31 +156,12 @@ function _M.users_r1_1(sql, args)
 end
 
 function _M.users_create_account(args)
-    local res, err = httpc:request_uri(
-        conf.server .. "/db-api/users/create-account",
-        {
-            method = "POST",
-            body = json.encode(args),
-        }
-    )
-
-    if err ~= nil then
-        ngx.log(ngx.INFO, 'request_uri got no response, error: ', err)
+    local body = api_request_rok("/db-api/users/create-account", args)
+    if not body then
         return nil
     end
 
-    if 200 == res.status then
-        local body = json.decode(res.body)
-        if body.result == "OK" then
-            return body.id
-        else
-            ngx.log(ngx.INFO, "Db api users/create-account return result is not OK: ", body.result)
-        end
-    else
-        ngx.log(ngx.INFO, "Db api status code is: ", res.status)
-    end
-
-    return nil
+    return body.id
 end
 
 function _M.lyrics_column_names(sql)
@@ -179,31 +198,16 @@ end
 --- 下面的 API 由 DbModifyHandler.cpp 提供
 
 local function db_modify_api_request(table_name, action, fields, args)
-    local res, err = httpc:request_uri(
-        conf.server .. "/db-modify-api/" .. table_name,
-        {
-            method = "POST",
-            body = json.encode({action=action, fields=fields, args=args}),
-        }
-    )
-
-    if err ~= nil then
-        ngx.log(ngx.INFO, 'request_uri got no response, error: ', err)
+    local body = api_request_rok("/db-modify-api/" .. table_name, {
+        action=action,
+        fields=fields,
+        args=args,
+    })
+    if not body then
         return nil
     end
 
-    if 200 == res.status then
-        local body = json.decode(res.body)
-        if body.result == "OK" then
-            return body.id or -1
-        else
-            ngx.log(ngx.INFO, "Db api return result is not OK: ", body.result, " sql: ", sql, body.message)
-        end
-    else
-        ngx.log(ngx.INFO, "Db api status code is: ", res.status, " sql: ", sql)
-    end
-
-    return nil
+    return body.id or -1
 end
 
 function _M.users_create(fields, args)
@@ -230,31 +234,8 @@ local function lyrics_api_request(action, args)
         body[k] = v
     end
 
-    local res, err = httpc:request_uri(
-        conf.server .. "/lyrics-api/",
-        {
-            method = "POST",
-            body = json.encode(body),
-        }
-    )
-
-    if err ~= nil then
-        ngx.log(ngx.INFO, 'request_uri got no response, error: ', err)
-        return nil
-    end
-
-    if 200 == res.status then
-        local body = json.decode(res.body)
-        if body.result == "OK" then
-            return true
-        else
-            ngx.log(ngx.INFO, "lyrics_api_request result is not OK: ", body.result, " sql: ", sql, body.message)
-        end
-    else
-        ngx.log(ngx.INFO, "lyrics_api_request status code is: ", res.status, action)
-    end
-
-    return false
+    local res_body = api_request_rok("/lyrics-api/", body)
+    return res_body ~= nil
 end
 
 function _M.lyrics_file_delete(related_link)

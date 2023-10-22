@@ -1,0 +1,8 @@
+.vscode
+.DS_Store
+/database
+/logs
+/lyrics
+/lyrics.bin
+/temp
+/data-sync-log

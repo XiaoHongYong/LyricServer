@@ -20,6 +20,7 @@ int BaseJsonApiHandler::onRequestHeader(HttpConnectionPtr connection) {
         response.statusCode = HttpStatusCode::NOT_FOUND;
         response.body = "404 NOT-FOUND-JSON";
         response.sendAll();
+        LOG(INFO) << "JSON API accepts POST method only, not: " << connection->request().methodID;
     }
     return ERR_OK;
 }
@@ -36,7 +37,7 @@ int BaseJsonApiHandler::onRequestBody(HttpConnectionPtr connection) {
     if (body.Parse(bodyStr.c_str(), bodyStr.size()).HasParseError() || !body.IsObject()) {
         ctx.result = "BAD-MESSAGE-FORMAT";
         ctx.message = "Post body should be json format.";
-        LOG(INFO) << "";
+        LOG(INFO) << "Invalid JSON API request format: " << bodyStr;
     } else {
         ctx.result = "OK";
         handleApi(ctx, writer);

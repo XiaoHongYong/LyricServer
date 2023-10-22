@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 
+if(UNIX AND NOT APPLE)
+    set(LINUX TRUE)
+endif()
+
 set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,12 +19,9 @@ elseif (LINUX)
     add_definitions(-D_LINUX)
 endif (APPLE)
 
-option(DEBUG "debug" OFF)
-if (DEBUG)
-    add_definitions(-DDEBUG)
-endif(DEBUG)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 
-PROJECT(LyricsServer)
+PROJECT(lyrics-server)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}
@@ -65,9 +66,12 @@ aux_source_directory(${PROJECT_SOURCE_DIR}/../../third-parties/md5 SRC)
 aux_source_directory(${PROJECT_SOURCE_DIR}/../../third-parties/sqlite SRC)
 # message(SRC="${SRC}")
 
+set(LINK_OPT_FRAME_WORK)
+
 if (APPLE)
     aux_source_directory(${PROJECT_SOURCE_DIR}/../../Utils/mac SRC)
     aux_source_directory(${PROJECT_SOURCE_DIR}/../../TinyJS/utils/mac SRC)
+    set(LINK_OPT_FRAME_WORK "-framework CoreFoundation" "-framework Cocoa")
 elseif (LINUX)
     aux_source_directory(${PROJECT_SOURCE_DIR}/../../Utils/linux SRC)
     aux_source_directory(${PROJECT_SOURCE_DIR}/../../TinyJS/utils/linux SRC)
@@ -83,7 +87,7 @@ set(SRC_SERVER
     ${PROJECT_SOURCE_DIR}/main.cpp
 )
 add_executable(${PROJECT_NAME} ${SRC_SERVER})
-target_link_libraries(${PROJECT_NAME} PRIVATE pthread glog uv_a -static-libstdc++ "-framework CoreFoundation" "-framework Cocoa")
+target_link_libraries(${PROJECT_NAME} PRIVATE pthread glog uv_a -static-libstdc++ ${LINK_OPT_FRAME_WORK})
 
 set(SRC_CLIENT
     ${SRC}
@@ -92,4 +96,4 @@ set(SRC_CLIENT
     ${PROJECT_SOURCE_DIR}/../../MPlayerUI/MLProfile.cpp
 )
 add_executable(client ${SRC_CLIENT})
-target_link_libraries(client PRIVATE pthread glog uv_a -static-libstdc++ "-framework CoreFoundation" "-framework Cocoa")
+target_link_libraries(client PRIVATE pthread glog uv_a -static-libstdc++ ${LINK_OPT_FRAME_WORK})

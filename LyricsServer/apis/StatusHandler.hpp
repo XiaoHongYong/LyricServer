@@ -27,4 +27,12 @@ protected:
 
 };
 
+class RunningHandler : public IHttpRequestHandler {
+public:
+    virtual const string &getUriPath() const override { static string path = "/r/"; return path; }
+    virtual int onRequestHeader(HttpConnectionPtr connection) override;
+    virtual int onRequestBody(HttpConnectionPtr connection) override { return ERR_OK; }
+
+};
+
 #endif /* StatusHandler_hpp */

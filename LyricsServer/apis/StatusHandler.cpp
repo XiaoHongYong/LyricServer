@@ -30,3 +30,12 @@ int StatusHandler::onRequestHeader(HttpConnectionPtr connection) {
 int StatusHandler::onRequestBody(HttpConnectionPtr connection) {
     return ERR_OK;
 }
+
+int RunningHandler::onRequestHeader(HttpConnectionPtr connection) {
+    auto &response = connection->response();
+    response.body = "Service is online.";
+    response.statusCode = HttpStatusCode::OK;
+    response.sendAll();
+
+    return ERR_OK;
+}

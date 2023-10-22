@@ -70,22 +70,22 @@ LyricsDB::~LyricsDB() {
 
 int LyricsDB::init(const string &dataPath) {
     string fileName = dirStringJoin(dataPath, "database/lyrics.db");
-    LOG(INFO) << "Open lyrics data base: " << fileName;
     int ret = sqlite3_open(fileName.c_str(), &m_db);
     if (ret != SQLITE_OK) {
-        printf("Open user db FAILED: %s", fileName.c_str());
+        LOG(ERROR) << "Failed to open user db file: " << fileName;
         return ERR_FALSE;
     }
+    LOG(INFO) << "Open lyrics data base successfully: " << fileName;
 
     string fn = dirStringJoin(dataPath, "data/dxTitleAlias.xml");
     if (LoadTitleAliasDb(fn.c_str()) != ERR_OK) {
-        printf("LoadTitleAlias file: %s FAILED!", fn.c_str());
+        LOG(ERROR) << "Failed to loadTitleAlias file: " << fn;
     }
 
     // Alias artist
     fn = dirStringJoin(dataPath, "data/dxArtistAlias.xml");
     if (LoadArtistAliasDb(fn.c_str()) != ERR_OK) {
-        printf("LoadArtistAlias file: %s FAILED!", fn.c_str());
+        LOG(ERROR) << "Failed to LoadArtistAlias file: " << fn;
     }
 
     SQLIT3_STMT_PREPARE(m_db, SQL_ADD_LYRICS, m_stmtAddLyrics);

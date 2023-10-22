@@ -3,6 +3,7 @@
 //
 
 #include <gtest/gtest.h>
+#include <csignal>
 #include "Types.h"
 #include "../../../Utils/Profile.h"
 #include "../../../LyricsLib/LyricsKeywordFilter.h"
@@ -62,6 +63,11 @@ int main(int argc, char *argv[]) {
 #ifdef _MAC_OS
     FLAGS_alsologtostderr = 1;
 #endif
+
+    std::signal(SIGTERM, [](int signal) {
+        LOG(INFO) << "Got SIGTERM signal, quitting...";
+        uv_stop(uv_default_loop());
+    });
 
     LOG(INFO) << "Start " << argv[0];
 

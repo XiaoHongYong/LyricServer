@@ -50,7 +50,7 @@ function copy_server() {
     cp -r ${prod_src}/lua ${dst_dir}/
     cp -r ${prod_src}/conf-test ${dst_dir}/
     cp ${prod_src}/database/upgrade-v1/create*.sql ${dst_dir}/
-    cp "${CUR_DIR}/../build/$target/LyricsServer" ${dst_dir}/
+    cp "${CUR_DIR}/../build/$target/lyrics-server" ${dst_dir}/
     cp "${CUR_DIR}/../build/$target/client" ${dst_dir}/
 
     cd ${dst_dir}
@@ -70,7 +70,7 @@ sync-duration=1
 sync-master-url=http://search.crintsoft.com:8201/api-i/data-sync
 master=${is_master}" >> lyrics-server.ini
 
-    # LyricsServer
+    # lyrics-server
     # master port: 8101
     # slave  port: 8100
 
@@ -105,22 +105,22 @@ function start_services() {
 
     cd $dst_dir
 
-    $dst_dir/LyricsServer &
-    exit_if_err "Failed to start LyricsServer master service."
+    $dst_dir/lyrics-server &
+    exit_if_err "Failed to start lyrics-server master service."
     sleep 1
     nc -z -w2 127.0.0.1 "810${is_master}"
-    exit_if_err "LyricsServer service port is NOT open."
+    exit_if_err "lyrics-server service port is NOT open."
 
     # 必须切换到 $dst_dir，lua 代码才能正常工作.
 
     openresty -p $dst_dir -c conf-test/nginx.conf
     exit_if_err "Failed to start openresty master service."
-    # $dir_server_slave/LyricsServer &
+    # $dir_server_slave/lyrics-server &
     cd -
 }
 
 function start_all_services() {
-    pkill -9 -f LyricsServer
+    pkill -9 -f lyrics-server
     openresty -s stop
 
     start_services $dir_server_master 1
@@ -128,7 +128,7 @@ function start_all_services() {
 }
 
 function stop_services() {
-    pkill -9 -f LyricsServer
+    pkill -9 -f lyrics-server
     openresty -s stop
     # for mac
     kill -9 $(lsof -ti:8201,8200)

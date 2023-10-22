@@ -1,0 +1,18 @@
+[Unit]
+Description=Internal lyrics-server service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+
+Restart=always
+RestartSec=3
+StartLimitBurst=5
+StartLimitIntervalSec=10
+
+User=root
+ExecStart=/usr/bin/env /mlserver/bin/lyrics-server
+
+[Install]
+WantedBy=multi-user.target

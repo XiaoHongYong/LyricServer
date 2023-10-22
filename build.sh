@@ -54,7 +54,7 @@ fi
 
 build_dir="build/$target"
 
-mkdirs $build_dir
+mkdir -p $build_dir
 cd $build_dir
 cmake ../../LyricsServer -DCMAKE_BUILD_TYPE=$target -DUT=$ut
 exit_if_err "Failed to generate cmake file of LyricsServer."

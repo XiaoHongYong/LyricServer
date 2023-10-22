@@ -5,11 +5,13 @@ local staticPages = {
     ["/"] = 'minilyrics/default.html',
 }
 
+local _M = {}
+
 local function starts_with(str, start)
     return str:sub(1, #start) == start
 end
 
-local function handleAll()
+_M.handleAll = function ()
 
     local templateFn = staticPages[ngx.var.uri]
     if templateFn then
@@ -26,4 +28,5 @@ local function mergeUriHandlers(handlers, additionHandlers)
 end
 
 mergeUriHandlers(staticPages, autoStaticUris)
-handleAll()
+
+return _M;
