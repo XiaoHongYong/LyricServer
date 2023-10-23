@@ -13,11 +13,13 @@ public:
     void Quit();
 
     int LoginUser(cstr_t szLoginName, cstr_t szUserPwdMask, long &nUserID);
+    int getUserId(cstr_t userName, long &userIdOut);
 
     sqlite3 *db() { return m_db; }
 
 protected:
     sqlite3                     *m_db = nullptr;
     sqlite3_stmt                *m_sqlLoginWithMLPassword = nullptr;
+    sqlite3_stmt                *m_stmtGetUserIdByName = nullptr;
 
 };

@@ -109,6 +109,13 @@ port=8000
     * 只有支持 Connection: KeepAlive，性能才会高.
   * 测试 http 协议: tests/request_body_client.py
 
+## Ubuntu 下编译
+
+```
+sudo apt install cmake
+./build.sh release
+```
+
 ## 自动化测试
 * 脚本: tests/test-all.sh
   * ./build.sh debug
@@ -118,13 +125,6 @@ port=8000
 * Unittest
   * 编译: ./build.sh ut
 
-## 服务器升级
-
-* 升级数据库格式
-  * 执行 product/database/upgrade-v1/upgrade.sh
-  * 升级完毕需要手动将 database/lyrics.db, user.db 备份，再使用新的替换.
-* 创建 web SessionKey
-  * product/lua/SessionKey.lua
 
 ## 参考开发文档
 * Openresty template 语法

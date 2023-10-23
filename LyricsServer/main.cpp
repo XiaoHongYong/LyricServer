@@ -9,11 +9,44 @@
 #include "../../../LyricsLib/LyricsKeywordFilter.h"
 #include "../../../MediaTags/LrcParser.h"
 #include "LyricsServer.h"
+#include "tool/LyricsTool.hpp"
 
 
 extern CProfile g_profile;
 
+struct CmdOptions {
+    bool                    isToolMode = false;
+    bool                    isUpdateDigest = true;
+    bool                    isCompressLyrics = true;
+    bool                    isAddMissingLyrics = true;
+};
+
+bool parseCmdLine(int argc, char *argv[], CmdOptions &optsOut) {
+    for (int i = 1; i < argc; i++) {
+        StringView name(argv[i]);
+        if (name.equal("--tool") || name.equal("-t")) {
+            optsOut.isToolMode = true;
+        } else if (name.equal("--no-digest")) {
+            optsOut.isUpdateDigest = false;
+        } else if (name.equal("--no-compress")) {
+            optsOut.isCompressLyrics = false;
+        } else if (name.equal("--no-add-missing")) {
+            optsOut.isAddMissingLyrics = false;
+        } else {
+            printf("Unkown parameter: %s\n", argv[i]);
+            return false;
+        }
+    }
+
+    return true;
+}
+
 int main(int argc, char *argv[]) {
+    CmdOptions opts;
+    if (!parseCmdLine(argc, argv, opts)) {
+        return 1;
+    }
+
     string path = fileGetPath(argv[0]);
 
     g_profile.init(dirStringJoin(path.c_str(), "lyrics-server.ini").c_str(), "main");
@@ -45,7 +78,8 @@ int main(int argc, char *argv[]) {
     g_conf.dataSyncDir = dirStringJoin(g_conf.rootDir, "data-sync-log");
     g_conf.syncDurationInSec = g_profile.getInt("sync-duration", 60);
 
-    g_conf.fnLog = dirStringJoin(g_conf.rootDir, "logs/lyrics-server/lyrics-server.log");
+    g_conf.fnLog = dirStringJoin(g_conf.rootDir,
+        opts.isToolMode ? "logs/lyrics-tool.log" : "logs/lyrics-server/lyrics-server.log");
     createDirectoryAll(fileGetPath(g_conf.fnLog.c_str()).c_str());
 
     google::SetLogDestination(google::INFO, g_conf.fnLog.c_str());
@@ -71,13 +105,18 @@ int main(int argc, char *argv[]) {
 
     LOG(INFO) << "Start " << argv[0];
 
-    LyricsServer server;
-    int ret = server.init();
-    if (ret != ERR_OK) {
-        return ret;
-    }
+    if (opts.isToolMode) {
+        LyricsTool tool;
+        return tool.run(opts.isUpdateDigest, opts.isCompressLyrics, opts.isAddMissingLyrics);
+    } else {
+        LyricsServer server;
+        int ret = server.init();
+        if (ret != ERR_OK) {
+            return ret;
+        }
 
-    server.run();
+        server.run();
+    }
 
     return 0;
 }

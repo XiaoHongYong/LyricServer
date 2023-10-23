@@ -31,6 +31,7 @@
 #define SQL_SEARCH_LYR_BY_ARTIST_TITLE_CONTENT_TYPE SELECT_LYR_FIELDS " FROM lyrics WHERE artistcmp = ? and titlecmp = ? and content_type = ? LIMIT 50"
 
 #define SQL_GET_LYR_DIGEST_BY_ID "SELECT digest FROM lyrics WHERE id = ?"
+#define SQL_GET_LYR_DIGEST_BY_AR_TI_ID "SELECT digest FROM lyrics WHERE id = ? and artistcmp = ? and titlecmp = ?"
 #define SQL_UPDATE_LYR_DIGEST_BY_ID "UPDATE lyrics SET digest = ? WHERE id = ?"
 
 #define SQL_ADD_LYRICS  "INSERT INTO lyrics (artist, title, album, edited_by, related_link, media_length, rate_count, dl_count, rate_total, uploader_id, content_type, upload_time, artistcmp, titlecmp, digest) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
@@ -93,6 +94,7 @@ int LyricsDB::init(const string &dataPath) {
     SQLIT3_STMT_PREPARE(m_db, SQL_UPDATE_LYRICS_PROPS_BY_ID, m_stmtUpdateLyrPropsById);
 
     SQLIT3_STMT_PREPARE(m_db, SQL_GET_LYR_DIGEST_BY_ID, m_stmtGetLyricsDigestById);
+    SQLIT3_STMT_PREPARE(m_db, SQL_GET_LYR_DIGEST_BY_AR_TI_ID, m_stmtGetLyricsDigestByArtistTitleId);
     SQLIT3_STMT_PREPARE(m_db, SQL_UPDATE_LYR_DIGEST_BY_ID, m_stmtUpdateLyricsDigestById);
 
     SQLIT3_STMT_PREPARE(m_db, SQL_SEARCH_LYR_BY_ARTIST_TITLE_DIGEST, m_stmtSearchLyrByArtistTitleDigest);
@@ -221,6 +223,31 @@ int LyricsDB::getLyricsDigest(long id, uint32_t &digestOut) {
     }
 
     sqlite3_reset(m_stmtGetLyricsDigestById);
+
+    return ret;
+}
+
+int LyricsDB::getLyricsDigest(cstr_t arCmp, cstr_t tiCmp, long id, uint32_t &digestOut) {
+    int ret = ERR_OK, n = 1;
+
+    sqlite3_reset(m_stmtGetLyricsDigestByArtistTitleId);
+
+    SQLITE3_BIND_INT64(m_db, m_stmtGetLyricsDigestByArtistTitleId, id);
+    SQLITE3_BIND_TEXT(m_db, m_stmtGetLyricsDigestByArtistTitleId, arCmp);
+    SQLITE3_BIND_TEXT(m_db, m_stmtGetLyricsDigestByArtistTitleId, tiCmp);
+
+    ret = sqlite3_step(m_stmtGetLyricsDigestByArtistTitleId);
+    if (ret == SQLITE_ERROR) {
+        LOG(ERROR) << "Failed to search lyrics, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
+    } else if (ret == SQLITE_ROW) {
+        digestOut = sqlite3_column_int(m_stmtGetLyricsDigestByArtistTitleId, 0);
+        ret = ERR_OK;
+    } else {
+        ret = ERR_NOT_FOUND;
+    }
+
+    sqlite3_reset(m_stmtGetLyricsDigestByArtistTitleId);
 
     return ret;
 }

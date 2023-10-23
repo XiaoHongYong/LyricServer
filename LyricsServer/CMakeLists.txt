@@ -56,6 +56,7 @@ endif(UT)
 aux_source_directory(${PROJECT_SOURCE_DIR} SRC)
 list(REMOVE_ITEM SRC "${PROJECT_SOURCE_DIR}/main.cpp") # 此文件需要被排除
 aux_source_directory(${PROJECT_SOURCE_DIR}/apis SRC)
+aux_source_directory(${PROJECT_SOURCE_DIR}/tool SRC)
 aux_source_directory(${PROJECT_SOURCE_DIR}/../../HttpLib SRC)
 aux_source_directory(${PROJECT_SOURCE_DIR}/../../HttpLib/HttpServer SRC)
 aux_source_directory(${PROJECT_SOURCE_DIR}/../../Utils SRC)

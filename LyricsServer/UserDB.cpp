@@ -16,6 +16,7 @@
  */
 
 #define SQL_LOGIN_WITH_MLPASSWORD   "SELECT id FROM users WHERE UserName=? and MLPasswordHash=?"
+#define SQL_GET_USER_ID_BY_NAME     "SELECT id FROM users WHERE UserName=?"
 
 UserDB::~UserDB() {
     sqlite3_close(m_db);
@@ -31,12 +32,14 @@ int UserDB::init(const char *fileName) {
     LOG(INFO) << "Open users database successfully: " << fileName;
 
     SQLIT3_STMT_PREPARE(m_db, SQL_LOGIN_WITH_MLPASSWORD, m_sqlLoginWithMLPassword);
+    SQLIT3_STMT_PREPARE(m_db, SQL_GET_USER_ID_BY_NAME, m_stmtGetUserIdByName);
 
     return ERR_OK;
 }
 
 void UserDB::Quit() {
     sqlite3_finalize(m_sqlLoginWithMLPassword);
+    sqlite3_finalize(m_stmtGetUserIdByName);
 }
 
 int UserDB::LoginUser(cstr_t szLoginName, cstr_t szUserPwdMask, long &nUserID) {
@@ -63,6 +66,31 @@ int UserDB::LoginUser(cstr_t szLoginName, cstr_t szUserPwdMask, long &nUserID) {
     }
 
     sqlite3_reset(m_sqlLoginWithMLPassword);
+
+    return ret;
+}
+
+int UserDB::getUserId(cstr_t userName, long &userIdOut) {
+    int ret = ERR_OK, n = 1;
+
+    sqlite3_reset(m_stmtGetUserIdByName);
+
+    SQLITE3_BIND_TEXT(m_db, m_stmtGetUserIdByName, userName);
+
+    // Check for password
+    ret = sqlite3_step(m_stmtGetUserIdByName);
+    if (ret == SQLITE_ERROR) {
+        LOG(ERROR) << "Failed to sign in, error: " << sqlite3_errmsg(m_db);
+        ret = ERR_DATABASE_ERROR;
+    } else if (ret == SQLITE_ROW) {
+        userIdOut = sqlite3_column_int(m_stmtGetUserIdByName, 0);
+        ret = ERR_OK;
+    } else {
+        ret = ERR_NOT_FOUND;
+        LOG(INFO) << "Failed to get user id by name: " << userName;
+    }
+
+    sqlite3_reset(m_stmtGetUserIdByName);
 
     return ret;
 }

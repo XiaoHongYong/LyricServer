@@ -17,14 +17,15 @@ public:
     int UpdateLyricsLinkById(long nId, cstr_t szLink);
 
     int getLyricsDigest(long id, uint32_t &digestOut);
+    int getLyricsDigest(cstr_t arCmp, cstr_t tiCmp, long id, uint32_t &digestOut);
     int updateLyricsDigest(long id, uint32_t digest);
 
-    int isLyricsExist(cstr_t szArtist, cstr_t szTitle, uint32_t digest);
-    int SearchLyricsByArtistTitleID(cstr_t szArtist, cstr_t szTitle, long nID, RetLyrInfo &lyrInfo);
-    int SearchLyricsByArtist(cstr_t szArtist, RetLyrInfoList &vLyrics);
-    int SearchLyricsByTitle(cstr_t szTitle, RetLyrInfoList &vLyrics);
-    int SearchLyricsByArtistTitle(cstr_t szArtist, cstr_t szTitle, RetLyrInfoList &vLyrics);
-    int SearchLyricsByArtistTitleContentType(cstr_t szArtist, cstr_t szTitle, RetLyrInfoList &vLyrics, uint32_t contentType);
+    int isLyricsExist(cstr_t arCmp, cstr_t tiCmp, uint32_t digest);
+    int SearchLyricsByArtistTitleID(cstr_t arCmp, cstr_t tiCmp, long nID, RetLyrInfo &lyrInfo);
+    int SearchLyricsByArtist(cstr_t arCmp, RetLyrInfoList &vLyrics);
+    int SearchLyricsByTitle(cstr_t tiCmp, RetLyrInfoList &vLyrics);
+    int SearchLyricsByArtistTitle(cstr_t arCmp, cstr_t tiCmp, RetLyrInfoList &vLyrics);
+    int SearchLyricsByArtistTitleContentType(cstr_t arCmp, cstr_t tiCmp, RetLyrInfoList &vLyrics, uint32_t contentType);
 
     sqlite3 *db() { return m_db; }
 
@@ -59,6 +60,7 @@ protected:
     sqlite3_stmt                *m_stmtUpdateLyrLinkById = nullptr;
     sqlite3_stmt                *m_stmtUpdateLyrPropsById = nullptr;
     sqlite3_stmt                *m_stmtGetLyricsDigestById = nullptr;
+    sqlite3_stmt                *m_stmtGetLyricsDigestByArtistTitleId = nullptr;
     sqlite3_stmt                *m_stmtUpdateLyricsDigestById = nullptr;
 
     sqlite3_stmt                *m_stmtSearchLyrByArtistTitleId = nullptr;

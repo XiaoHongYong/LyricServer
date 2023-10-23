@@ -4,6 +4,7 @@
 
 #include "ClientApisHandler.hpp"
 #include "LyricsLib/LyricsKeywordFilter.h"
+#include "../../../MediaTags/LrcParser.h"
 
 
 uint32_t VersionNumMake(int nMajor, int nMinor, int nBuild) {
@@ -349,6 +350,8 @@ int ClientApisHandler::processUploadCmd(MLMsgCmdUpload &cmdUpload, MLMsgRetUploa
     string &strLyrContent = cmdUpload.strFileContent;
     auto szUploader = cmdUpload.strLoginName.c_str();
     LyricsInfo props;
+
+    compressLyrics(strLyrContent);
 
     props.parse(strLyrContent);
     if (props.title.empty()) {

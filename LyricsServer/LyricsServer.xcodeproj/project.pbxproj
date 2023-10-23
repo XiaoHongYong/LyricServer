@@ -93,6 +93,7 @@
 		C0A27E9B2AD8E21100D248A4 /* MLClientSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E972AD8E21100D248A4 /* MLClientSession.cpp */; };
 		C0A27E9C2AD8E21100D248A4 /* MLProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E992AD8E21100D248A4 /* MLProfile.cpp */; };
 		C0A27E9F2ADD2D5100D248A4 /* StatusLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27E9D2ADD2D5100D248A4 /* StatusLog.cpp */; };
+		C0A27EA52AE4F7A900D248A4 /* LyricsTool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27EA32AE4F7A900D248A4 /* LyricsTool.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -331,6 +332,8 @@
 		C0A27E9A2AD8E21100D248A4 /* MLProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLProfile.h; path = ../../MPlayerUI/MLProfile.h; sourceTree = "<group>"; };
 		C0A27E9D2ADD2D5100D248A4 /* StatusLog.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StatusLog.cpp; sourceTree = "<group>"; };
 		C0A27E9E2ADD2D5100D248A4 /* StatusLog.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StatusLog.hpp; sourceTree = "<group>"; };
+		C0A27EA32AE4F7A900D248A4 /* LyricsTool.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LyricsTool.cpp; sourceTree = "<group>"; };
+		C0A27EA42AE4F7A900D248A4 /* LyricsTool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LyricsTool.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +374,7 @@
 		C0A27CFB2ACE2EB800D248A4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C0A27EA02AE4F78500D248A4 /* tool */,
 				C0A27E502AD6535200D248A4 /* AesUtil.cpp */,
 				C0A27E512AD6535200D248A4 /* AesUtil.hpp */,
 				C0A27E132ACEB91200D248A4 /* apis */,
@@ -748,6 +752,15 @@
 			path = ../../HttpLib/HttpServer;
 			sourceTree = "<group>";
 		};
+		C0A27EA02AE4F78500D248A4 /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				C0A27EA32AE4F7A900D248A4 /* LyricsTool.cpp */,
+				C0A27EA42AE4F7A900D248A4 /* LyricsTool.hpp */,
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -852,6 +865,7 @@
 				C0A27D7D2ACE2F1D00D248A4 /* SimpleXML.cpp in Sources */,
 				C0A27E3F2AD3E03D00D248A4 /* BaseJsonApiHandler.cpp in Sources */,
 				C0A27D422ACE2EF900D248A4 /* BinaryFileStream.cpp in Sources */,
+				C0A27EA52AE4F7A900D248A4 /* LyricsTool.cpp in Sources */,
 				C0A27D792ACE2F1D00D248A4 /* Profile.cpp in Sources */,
 				C0A27D7A2ACE2F1D00D248A4 /* Event.mm in Sources */,
 				C0A27D412ACE2EF900D248A4 /* unittest.cpp in Sources */,

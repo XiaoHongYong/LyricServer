@@ -16,7 +16,7 @@ public:
     string                      arCmp, tiCmp;
     string                      relatedHttpLink;
 
-    long                        uploaderId;
+    long                        uploaderId = 0;
     long                        lyricsID = 0;
     long                        rateTotal = 0;
     long                        rateCount = 0;
