@@ -32,6 +32,12 @@ struct ServerConfig {
     int                 statusLogDurationInSec = 60; // 记录状态日志的时间间隔
 
     int                 statusLogRotateSize = 1024 * 1024 * 128, statusLogCount = 5;
+
+    bool                isQuit = false;  // 是否收到退出信号.
+
+    string              toolProcessLyrDirs; // 处理 指定歌词目录中的歌词文件，压缩歌词，更新其 digest, 添加没有在数据库中的歌词
+    string              toolProcessLogDirs; // 处理 toolProcessLyrDirs 生成的日志文件中出问题的歌词文件
+
 };
 
 extern ServerConfig g_conf;

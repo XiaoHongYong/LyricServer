@@ -15,23 +15,61 @@
 extern CProfile g_profile;
 
 struct CmdOptions {
-    bool                    isToolMode = false;
-    bool                    isUpdateDigest = true;
-    bool                    isCompressLyrics = true;
-    bool                    isAddMissingLyrics = true;
+    bool                isQuit = false;
 };
+
+
+const char *USAGE = R"(Usage: lyrics-server [-h, --help]
+                        [--decode-id ID-STR]
+                        [--parse-tags FILE]
+
+if no parameter is specified, it's running in service mode, or it will run once and quit.
+
+Option arguments:
+  -h, --help             show this message
+  --decode-id ID-STR     decode lyrics id of ID-STR
+  --parse-tags FILE      parse tag of lyrics FILE
+)";
+
 
 bool parseCmdLine(int argc, char *argv[], CmdOptions &optsOut) {
     for (int i = 1; i < argc; i++) {
         StringView name(argv[i]);
-        if (name.equal("--tool") || name.equal("-t")) {
-            optsOut.isToolMode = true;
-        } else if (name.equal("--no-digest")) {
-            optsOut.isUpdateDigest = false;
-        } else if (name.equal("--no-compress")) {
-            optsOut.isCompressLyrics = false;
-        } else if (name.equal("--no-add-missing")) {
-            optsOut.isAddMissingLyrics = false;
+        if (name.equal("--decode-id")) {
+            i++;
+            if (i >= argc) {
+                printf("Missing parameter ID-STR for --decode-id");
+                return false;
+            }
+
+            auto id = decryptLyricsID(argv[i]);
+            printf("Decode lyrics id: %s => %ld\n", argv[i], id);
+
+            optsOut.isQuit = true;
+        } else if (name.equal("--parse-tags")) {
+            i++;
+            if (i >= argc) {
+                printf("Missing parameter FILE for --parse-tags");
+                return false;
+            }
+
+            auto fn = argv[i];
+            string content;
+            if (!readFile(fn, content)) {
+                printf("Failed to read file: %s\n", fn);
+                return false;
+            }
+
+            content = convertBinLyricsToUtf8(content, false, ED_SYSDEF);
+
+            LyricsInfo lyrInfo;
+            lyrInfo.parse(content);
+
+            LyrTagParser tagParser(lyrInfo);
+            printf("== Tags of file: %s\n", fn);
+            printf("%s\n", tagParser.toLrcTags().c_str());
+
+            optsOut.isQuit = true;
         } else {
             printf("Unkown parameter: %s\n", argv[i]);
             return false;
@@ -45,6 +83,10 @@ int main(int argc, char *argv[]) {
     CmdOptions opts;
     if (!parseCmdLine(argc, argv, opts)) {
         return 1;
+    }
+
+    if (opts.isQuit) {
+        return 0;
     }
 
     string path = fileGetPath(argv[0]);
@@ -78,8 +120,12 @@ int main(int argc, char *argv[]) {
     g_conf.dataSyncDir = dirStringJoin(g_conf.rootDir, "data-sync-log");
     g_conf.syncDurationInSec = g_profile.getInt("sync-duration", 60);
 
+    g_conf.toolProcessLyrDirs = g_profile.getString("tool-process-lyr-dir", "");
+    g_conf.toolProcessLogDirs = g_profile.getString("tool-process-log-dir", "");
+    bool isToolOn = !g_conf.toolProcessLyrDirs.empty() || !g_conf.toolProcessLogDirs.empty();
+
     g_conf.fnLog = dirStringJoin(g_conf.rootDir,
-        opts.isToolMode ? "logs/lyrics-tool.log" : "logs/lyrics-server/lyrics-server.log");
+        isToolOn ? "logs/lyrics-tool.log" : "logs/lyrics-server/lyrics-server.log");
     createDirectoryAll(fileGetPath(g_conf.fnLog.c_str()).c_str());
 
     google::SetLogDestination(google::INFO, g_conf.fnLog.c_str());
@@ -100,23 +146,25 @@ int main(int argc, char *argv[]) {
 
     std::signal(SIGTERM, [](int signal) {
         LOG(INFO) << "Got SIGTERM signal, quitting...";
+        printf("Got SIGTERM signal, quitting...");
+        g_conf.isQuit = true;
         uv_stop(uv_default_loop());
     });
 
     LOG(INFO) << "Start " << argv[0];
 
-    if (opts.isToolMode) {
-        LyricsTool tool;
-        return tool.run(opts.isUpdateDigest, opts.isCompressLyrics, opts.isAddMissingLyrics);
-    } else {
-        LyricsServer server;
-        int ret = server.init();
-        if (ret != ERR_OK) {
-            return ret;
-        }
-
-        server.run();
+    LyricsTool tool;
+    if (isToolOn) {
+        tool.start();
     }
+
+    LyricsServer server;
+    int ret = server.init();
+    if (ret != ERR_OK) {
+        return ret;
+    }
+
+    server.run();
 
     return 0;
 }

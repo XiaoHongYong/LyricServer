@@ -30,17 +30,16 @@ cstr_t GenRandLyrFilePrefix() {
     return str;
 };
 
-void getRelatedDir(cstr_t szDir, cstr_t szBaseDir, char *szRelatedDir) {
-    auto nBaseLen = strlen(szBaseDir);
-    if (strncasecmp(szBaseDir, szDir, nBaseLen) == 0) {
-        if (szDir[nBaseLen] == PATH_SEP_CHAR) {
-            nBaseLen++;
-        }
-        strcpy(szRelatedDir, szDir + nBaseLen);
-    } else {
-        assert(0 && "GetRelatedPath()");
-        strcpy(szRelatedDir, szDir);
+cstr_t getRelatedLink(const string &file, const string &baseDir) {
+    assert(file.size() >= baseDir.size());
+    assert(strncasecmp(file.c_str(), baseDir.c_str(), baseDir.size()) == 0);
+
+    auto pos = baseDir.size();
+    if (file[pos] == PATH_SEP_CHAR) {
+        pos++;
     }
+
+    return file.c_str() + pos;
 }
 
 cstr_t GenRandLyrFilePrefix();
@@ -288,10 +287,7 @@ int LyricsServer::saveLyricsFile(LyricsInfo &lyrInfo, string &strLyrContentUtf8)
     strFile += lyrInfo.lyrContentType == LCT_TXT ? ".txt" : ".lrc";
 
     // Update file link in lyrics db.
-    char szRelatedLink[MAX_PATH];
-    getRelatedDir(strFile.c_str(), g_conf.lyricsDir.c_str(), szRelatedLink);
-    strrep(szRelatedLink, '\\', '/');
-    lyrInfo.relatedHttpLink = szRelatedLink;
+    lyrInfo.relatedHttpLink = getRelatedLink(strFile, g_conf.lyricsDir);
 
     if (!writeFile(strFile.c_str(), strLyrContentUtf8)) {
         LOG(ERROR) << "Failed to saved lyrics file: " << strFile;

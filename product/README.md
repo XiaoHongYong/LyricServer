@@ -94,6 +94,7 @@ echo "/mlserver/lyrics.bin /mlserver/lyrics ext4 defaults 0 1" >> /etc/fstab
     * Add crontab:
         sudo crontab -e
         0   1  1   *   *     /mlserver/bin/renew-https.sh > /var/log/renew_https.log 2>&1
+        0   2  *   *   *     /mlserver/bin/commit-lyrics.sh > /var/log/renew_https.log 2>&1
 
 ## 升级部署
 

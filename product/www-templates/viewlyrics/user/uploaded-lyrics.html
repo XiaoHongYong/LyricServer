@@ -22,7 +22,7 @@
             <tr v-for="(row, index) in rows">
                 <th scope="row">[[ index + offset + 1 ]]</th>
                 <td v-for="(col, indexCol) in row">
-                    <a v-if="indexCol === indexLink" v-bind:href="lyricsBaseLink + row[indexLink]"
+                    <a v-if="indexCol === indexLink" v-bind:href="lyricsBaseLink + row[indexLink]" :download="row.fileName"
                         class="btn download-btn">
                     </a>
                     <button v-else-if="indexCol === indexId" type="button" class="btn remove-btn"
@@ -69,12 +69,16 @@ var indexRating = fieldHeaders.indexOf('rate_total');
 var indexId = fieldHeaders.indexOf('id');
 var indexTime = fieldHeaders.indexOf('upload_time');
 var indexMediaLength = fieldHeaders.indexOf('media_length');
+var indexArtist = fieldHeaders.indexOf('artist');
+var indexTitle = fieldHeaders.indexOf('title');
 assert(indexLink !== -1);
 assert(indexRateCount !== -1);
 assert(indexRating !== -1);
 assert(indexId !== -1);
 assert(indexTime !== -1);
 assert(indexMediaLength !== -1);
+assert(indexTitle !== -1);
+assert(indexArtist !== -1);
 
 renameFieldHeaders(fieldHeaders);
 preprocessRows(rows);
@@ -92,7 +96,7 @@ var profileApp = new Vue({
         offset: offset,
         indexLink: indexLink,
         indexId: indexId,
-        lyricsBaseLink: lyricsBaseLink,
+        lyricsBaseLink: '/lyrics/',
         lyricsCount: lyricsCount,
     },
 	methods: {
@@ -156,6 +160,14 @@ function preprocessRows(rows) {
         }
         row[indexTime] = new Date(row[indexTime] * 1000).toLocaleString();
         row[indexMediaLength] = formatDuration(row[indexMediaLength]);
+
+        var fileName;
+        if (row[indexArtist]) {
+            fileName = row[indexArtist] + ' - ' + row[indexTitle];
+        } else {
+            fileName = row[indexTitle];
+        }
+        row.fileName = fileName + row[indexLink].substring(row[indexLink].lastIndexOf('.'));
     }
 }
 
