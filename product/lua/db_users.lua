@@ -1,5 +1,6 @@
 local resty_md5 = require "resty.md5"
 local db_api = require "database_api"
+local _TLM = require("locale")._TLM
 
 local function hashUserPassword(password)
     local md5 = resty_md5:new()
@@ -50,12 +51,12 @@ function _M.create_account(ctx)
     ctx.username = string_trim(ctx.username)
     ctx.email = string_trim(ctx.email)
     if string.len(ctx.username) < 3 then
-        ctx.error = 'Username must be at least 3 chars.'
+        ctx.error = _TLM('Username must be at least 3 characters long.')
         return false;
     end
 
     if #ctx.email < 6 or string.find(ctx.email, '@') == nil then
-        ctx.error = 'Invalid email address format.'
+        ctx.error = _TLM('Invalid email address format.')
         return false;
     end
 
@@ -64,7 +65,7 @@ function _M.create_account(ctx)
 
     local user = db_api.users_r1("SELECT id, UserName, Email, PasswordHash FROM users WHERE UserName=? or Email=?", {username, email})
     if user ~= nil then
-        ctx.error = 'User with the same name or email exists already.'
+        ctx.error = _TLM('User with the same name or email exists already.')
         return false;
     end
 
@@ -74,7 +75,7 @@ function _M.create_account(ctx)
     )
 
     if ctx.user_id == nil then
-        ctx.error = 'Failed to create account. Please contact us to solve the problem.'
+        ctx.error = _TLM('Failed to create account. Please contact us to solve the problem.')
         return false
     end
 

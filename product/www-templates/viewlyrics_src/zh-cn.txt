@@ -1,0 +1,245 @@
+__language__
+     =简体中文
+
+__contact__
+     =showbrave
+
+Username must be at least 3 characters long.
+     =用户名至少需要 3 个字符长。
+
+Invalid email address format.
+     =无效的邮件地址格式。
+
+User with the same name or email exists already.
+     =已经存在相同的用户名、或者邮件地址。
+
+Failed to create account. Please contact us to solve the problem.
+     =创建账号失败，请联系我们解决此问题。
+
+Lyrics were NOT found.
+     =未找到歌词。
+
+Wrong user name/email or password.
+     =错误的用户名/邮件地址，或者密码。
+
+[ViewLyrics] Please reset your password
+     =[ViewLyrics] 请重置您的密码
+
+We heard that you lost your ViewLyrics.com password. Sorry about that!
+     =很抱歉，我们得知您丢失了 ViewLyrics.com 的密码。
+
+But don’t worry! You can use the following link to reset your password:
+     =但是别担心，您可以使用下面的链接重置您的密码：
+
+If you don’t use this link within 3 hours, it will expire. To get a new password reset link, visit
+     =此链接的有效时间为 3 小时。如果要重新获取重置密码的链接，请访问：
+
+Thanks,
+     =谢谢，
+
+Check your email for a link to reset your password. If it doesn’t appear in a few minutes, check your spam folder.
+     =一封重置密码的邮件将发送给您。如果在几分钟内仍然没有收到，请检查一下您的垃圾收件箱。
+
+Failed to send email, please contact us to solve this problem.
+     =发送邮件失败，请联系我们解决此问题。
+
+Can't find that email, sorry.
+     =抱歉，无法找到此邮件。
+
+It looks like you clicked on an invalid password reset link. Please try again.
+     =好像您点击了无效的重置密码链接，请重试。
+
+The link can only be used in 30 minutes, please try again.
+     =此链接的有效期为 30 分钟，请重试。
+
+Please input new password.
+     =请输入新密码。
+
+You have reset your password successfully, you can sign in now.
+     =您已经成功重置密码，您现在可以登录了。
+
+Invalid session information, please sign out, then sign in again.
+     =无效的会话信息，请登出，再重新登录。
+
+An account is already associated with the email address: 
+     =有一个账号已经和此邮件地址关联：
+
+Incorrect password.
+     =密码不正确
+
+Email address hasn't been changed.
+     =邮件地址未更改。
+
+Home
+     =主页
+
+Account
+     =账号
+
+Sign in
+     =登录
+
+Sign up
+     =注册
+
+The password must be at least 6 characters long.
+     =密码至少 6 个字符长
+
+ViewLyrics.com
+     =ViewLyrics.com
+
+Top Lyrics
+     =歌词排行
+
+Top Artist
+     =歌手排行
+
+MiniLyrics
+     =MiniLyrics
+
+Profile
+     =简介
+
+My Uploaded Lyrics
+     =我上传的歌词
+
+Change Password
+     =修改密码
+
+Sign out
+     =登出
+
+Name
+     =名字
+
+Member since
+     =加入时间
+
+Email address
+     =邮件地址
+
+Confirm password
+     =确认密码
+
+Confirm password to change profile
+     =输入密码以修改自我介绍
+
+Update profile
+     =更新自我介绍
+
+Please input valid email address.
+     =请输入有效邮件地址。
+
+Please input password.
+     =请输入密码。
+
+Profile was updated successfully.
+     =自我介绍更新成功。
+
+Reset your password
+     =重置密码
+
+Enter your email address and we will send you a link to reset your password.
+     =输入邮件地址，我们会发送一个链接来重置您的密码。
+
+Send password reset email
+     =发送重置密码邮件
+
+Reset password successfully
+     =重置密码成功
+
+New password
+     =新密码
+
+Confirm new password
+     =确认新密码
+
+Update password
+     =更新密码
+
+Please input password and confirm new password.
+     =请输入密码和新确认密码。
+
+The password inputed doesn't match.
+     =输入的密码不一致
+
+Old password
+     =旧密码
+
+Password
+     =密码
+
+Please input old password.
+     =请输入旧密码。
+
+Password was updated successfully.
+     =成功密码更改。
+
+My uploaded lyrics
+     =我上传的歌词
+
+Please use MiniLyrics client to upload or update lyrics.
+     =请使用 MiniLyrics 客户端上传、更新歌词。
+
+You have uploaded [[ lyricsCount ]] lyrics.
+     =你已经上传了 [[ lyricsCount ]] 首歌词。
+
+Artist
+     =歌手
+
+Title
+     =歌曲
+
+Album
+     =专辑
+
+Download count
+     =下载数量
+
+Media length
+     =歌曲时长
+
+Rating count
+     =打分数量
+
+Rating
+     =打分
+
+Upload time
+     =更新时间
+
+Click "OK" to delete the lyrics permanently.
+     =请点击“确定”将会彻底删除歌词。
+
+Lyrics was deleted successfully.
+     =歌词删除成功。
+
+Sign in to ViewLyrics.com
+     =登录到 ViewLyrics.com
+
+User name or email
+     =用户名或者邮箱
+
+User name or email address
+     =用户名或者邮箱地址
+
+Create an account
+     =创建账号
+
+Forgot password?
+     =忘记密码?
+
+Sign up to ViewLyrics.com
+     =在 ViewLyrics.com 注册账号
+
+Username
+     =用户名
+
+Email
+     =邮件
+
+Please input email address.
+     =请输入邮件地址
+
+Please input password and confirm password.
+     =清输入密码和确认密码

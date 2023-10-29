@@ -1,4 +1,4 @@
-local template = require "resty.template"
+local utils = require "utils"
 local autoStaticUris = require "crintsoftStaticUris"
 
 local staticPages = {
@@ -15,7 +15,7 @@ _M.handleAll = function ()
 
     local templateFn = staticPages[ngx.var.uri]
     if templateFn then
-        template.render(templateFn, ctx)
+        utils.render_template(templateFn, ctx)
     else
         ngx.say('404 not found: ' .. ngx.var.uri)
     end

@@ -1,0 +1,71 @@
+__language__
+     =English
+
+__contact__
+     =--TODO--
+
+Username must be at least 3 characters long.
+     =--TODO--
+
+Invalid email address format.
+     =--TODO--
+
+User with the same name or email exists already.
+     =--TODO--
+
+Failed to create account. Please contact us to solve the problem.
+     =--TODO--
+
+Lyrics were NOT found.
+     =--TODO--
+
+Wrong user name/email or password.
+     =--TODO--
+
+[ViewLyrics] Please reset your password
+     =--TODO--
+
+We heard that you lost your ViewLyrics.com password. Sorry about that!
+     =--TODO--
+
+But don’t worry! You can use the following link to reset your password:
+     =--TODO--
+
+If you don’t use this link within 3 hours, it will expire. To get a new password reset link, visit
+     =--TODO--
+
+Thanks,
+     =--TODO--
+
+Check your email for a link to reset your password. If it doesn’t appear in a few minutes, check your spam folder.
+     =--TODO--
+
+Failed to send email, please contact us to solve this problem.
+     =--TODO--
+
+Can't find that email, sorry.
+     =--TODO--
+
+It looks like you clicked on an invalid password reset link. Please try again.
+     =--TODO--
+
+The link can only be used in 30 minutes, please try again.
+     =--TODO--
+
+Please input new password.
+     =--TODO--
+
+You have reset your password successfully, you can sign in now.
+     =--TODO--
+
+Invalid session information, please sign out, then sign in again.
+     =--TODO--
+
+An account is already associated with the email address: 
+     =--TODO--
+
+Incorrect password.
+     =--TODO--
+
+Email address hasn't been changed.
+     =--TODO--

@@ -1,12 +1,12 @@
-local template = require "resty.template"
 local viewUser = require "ViewUser"
 local viewLyrics = require "ViewLyrics"
 local session = require "Session"
+local utils = require "utils"
 
 local _M = {}
 
 local function home(ctx, user_id)
-    template.render("home.html", ctx)
+    utils.render_template("home.html", ctx)
 end
 
 local uriHandlers = {
@@ -18,6 +18,14 @@ local function starts_with(str, start)
 end
 
 _M.handleAll = function ()
+    if ngx.var.uri == '/d' then
+        -- for debug testing
+        local language = utils.get_language()
+
+        ngx.say(language)
+        return
+    end
+
     local user_id = nil
     local sessionInfo = ngx.var.cookie_session
     if sessionInfo ~= nil then
@@ -28,8 +36,11 @@ _M.handleAll = function ()
     if handler then
         local ctx = {
             error = '',
+            languages = utils.languages,
+            language = utils.get_language(),
         }
-        if (user_id ~= nil) then
+        ngx.language = ctx.language
+        if user_id ~= nil then
             ctx.isSignedIn = 'true'
         else
             ctx.isSignedIn = 'false'

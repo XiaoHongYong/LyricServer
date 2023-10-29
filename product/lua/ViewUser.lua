@@ -2,6 +2,8 @@ local template = require "resty.template"
 local dbUsers = require("db_users")
 local session = require "Session"
 local cjson = require "cjson"
+local utils = require "utils"
+local _TLM = require("locale")._TLM
 
 
 local _M = {}
@@ -27,14 +29,14 @@ _M['/user/signin'] = function (ctx, user_id)
                 ngx.redirect(redirect)
                 return;
             else
-                ctx.error = "Wrong user name/email or password."
+                ctx.error = _TLM("Wrong user name/email or password.")
             end
         end
     else
         ctx.redirect = ngx.req.get_uri_args().redirect or ''
     end
 
-    template.render("user/signin.html", ctx)
+    utils.render_template("user/signin.html", ctx)
 end
 
 _M['/user/Login.aspx'] = _M['/user/signin']
@@ -77,7 +79,7 @@ _M['/user/signup'] = function (ctx, user_id)
         ctx.password = ''
     end
 
-    template.render("user/signup.html", ctx)
+    utils.render_template("user/signup.html", ctx)
 end
 
 _M['/user/signup.aspx'] = _M['/user/signup']
@@ -87,22 +89,18 @@ local function sendPasswordResetEmail(ctx, email, user_id)
 
     local resetKey = session.encryptResetPasswordSession(user_id)
 
-    if mailSender.sendMail(email, 'support@crintsoft.com', '[ViewLyrics] Please reset your password', 
-        string.format([[
-We heard that you lost your ViewLyrics password. Sorry about that!
-
-But don’t worry! You can use the following link to reset your password:
-
-http://viewlyrics.com/user/password_reset?key=%s
-
-If you don’t use this link within 3 hours, it will expire. To get a new password reset link, visit https://viewlyrics.com/user/password_reset
-
-Thanks,
-ViewLyrics.com
-        ]], resetKey)) then
-        ctx.info = 'Check your email for a link to reset your password. If it doesn’t appear in a few minutes, check your spam folder.'
+    if mailSender.sendMail(email, 'support@crintsoft.com', _TLM('[ViewLyrics] Please reset your password'), 
+        '\n' ..
+_TLM('We heard that you lost your ViewLyrics.com password. Sorry about that!') .. '\n\n' ..
+_TLM("But don’t worry! You can use the following link to reset your password:") ..'\n\n' ..
+string.format('https://viewlyrics.com/user/password_reset?key=%s\n\n', resetKey) ..
+_TLM("If you don’t use this link within 3 hours, it will expire. To get a new password reset link, visit") ..
+" https://viewlyrics.com/user/password_reset\n\n" ..
+_TLM("Thanks,") ..
+"\nViewLyrics.com") then
+        ctx.info = _TLM("Check your email for a link to reset your password. If it doesn’t appear in a few minutes, check your spam folder.")
     else
-        ctx.error = 'Failed to send email, please contact us to solve this problem.'
+        ctx.error = _TLM('Failed to send email, please contact us to solve this problem.')
     end
 end
 
@@ -125,7 +123,7 @@ _M['/user/password_reset'] = function (ctx)
                 ctx.email = args.email or ''
                 local info = dbUsers.get_user_by_email(ctx.email)
                 if info == nil then
-                    ctx.error = "Can't find that email, sorry."
+                    ctx.error = _TLM("Can't find that email, sorry.")
                 else
                     sendPasswordResetEmail(ctx, ctx.email, info.id)
                 end
@@ -134,11 +132,11 @@ _M['/user/password_reset'] = function (ctx)
     else
         local info = session.decryptResetPasswordSession(key)
         if info.user_id == nil then
-            ctx.error = 'It looks like you clicked on an invalid password reset link. Please try again.'
+            ctx.error = _TLM('It looks like you clicked on an invalid password reset link. Please try again.')
         else
             local now = os.time()
             if now < info.time or now - info.time > 30 * 60 then
-                ctx.error = 'The link can only be used in 30 minutes, please try again.'
+                ctx.error = _TLM('The link can only be used in 30 minutes, please try again.')
             else
                 -- Key is verifed, OK to proceed to "reset password".
                 -- ！！！ 这里有安全漏洞，因为链接中的验证码 key 可以多次使用，而且是放在 url 中的，很容易通过 referer 泄露到
@@ -152,12 +150,12 @@ _M['/user/password_reset'] = function (ctx)
                         ctx.error = err or "Request body is required."
                     else
                         if args.password == '' or args.password == nil then
-                            ctx.error = 'Please input new password.'
+                            ctx.error = _TLM('Please input new password.')
                         else
                             ctx.error = dbUsers.changePassword(info.user_id, args.password)
                             if ctx.error == '' then
                                 ctx.reset_done = true
-                                ctx.info = 'You have reset your password successfully, you can sign in now.'
+                                ctx.info = _TLM('You have reset your password successfully, you can sign in now.')
                             end
                         end
                     end
@@ -169,13 +167,13 @@ _M['/user/password_reset'] = function (ctx)
     ctx.start_reset = cjson.encode(ctx.start_reset)
     ctx.reset_done = cjson.encode(ctx.reset_done)
 
-    template.render("user/password_reset.html", ctx)
+    utils.render_template("user/password_reset.html", ctx)
 end
 
 _M['/user/profile'] = function (ctx, user_id)
     local info = dbUsers.get_user_by_id(user_id)
     if info == nil then
-        ctx.error = 'Invalid session information, please sign out, then sign in again.'
+        ctx.error = _TLM('Invalid session information, please sign out, then sign in again.')
         ngx.log(ngx.INFO, 'Invalid session:', user_id)
     else
         if ngx.var.request_method == "POST" then
@@ -194,14 +192,14 @@ _M['/user/profile'] = function (ctx, user_id)
                                 if dbUsers.get_user_by_email(args.email) == nil then
                                     ctx.error = dbUsers.changeEmail(user_id, args.email)
                                 else
-                                    ctx.error = "An account is already associated with the email address: " .. args.email
+                                    ctx.error = _TLM("An account is already associated with the email address: ") .. args.email
                                 end
                             else
-                                ctx.error = "Incorrect password."
+                                ctx.error = _TLM("Incorrect password.")
                             end
                         end
                     else
-                        ctx.error = "Email address hasn't been changed."
+                        ctx.error = _TLM("Email address hasn't been changed.")
                     end    
                 end
             end
@@ -221,13 +219,13 @@ _M['/user/profile'] = function (ctx, user_id)
         end
     end
 
-    template.render("user/profile.html", ctx)
+    utils.render_template("user/profile.html", ctx)
 end
 
 _M['/user/change-password'] = function (ctx, user_id)
     local info = dbUsers.get_user_by_id(user_id)
     if info == nil then
-        ctx.error = 'Invalid session information, please sign out, then sign in again.'
+        ctx.error = _TLM('Invalid session information, please sign out, then sign in again.')
     else
         if ngx.var.request_method == "POST" then
             ctx.error = "Invalid input parameters."
@@ -242,7 +240,7 @@ _M['/user/change-password'] = function (ctx, user_id)
 
                         ctx.error = dbUsers.changePassword(user_id, args.password)
                     else
-                        ctx.error = "Incorrect password."
+                        ctx.error = _TLM("Incorrect password.")
                     end
                 end
             end
@@ -262,7 +260,7 @@ _M['/user/change-password'] = function (ctx, user_id)
         end
     end
 
-    template.render("user/change-password.html", ctx)
+    utils.render_template("user/change-password.html", ctx)
 end
 
 _M['/user/uploaded-lyrics'] = function (ctx, user_id)
@@ -293,7 +291,7 @@ _M['/user/uploaded-lyrics'] = function (ctx, user_id)
     ctx.columns = cjson.encode(dbLyrics.getLyricsByUserIdColumns())
     ctx.lyricsBaseLink = 'http://search.crintsoft.com/l/'
 
-    template.render("user/uploaded-lyrics.html", ctx)
+    utils.render_template("user/uploaded-lyrics.html", ctx)
 end
 
 return _M

@@ -1,0 +1,71 @@
+__language__
+     =简体中文
+
+__contact__
+     =showbrave
+
+Username must be at least 3 characters long.
+     =用户名至少需要 3 个字符长。
+
+Invalid email address format.
+     =无效的邮件地址格式。
+
+User with the same name or email exists already.
+     =已经存在相同的用户名、或者邮件地址。
+
+Failed to create account. Please contact us to solve the problem.
+     =创建账号失败，请联系我们解决此问题。
+
+Lyrics were NOT found.
+     =未找到歌词。
+
+Wrong user name/email or password.
+     =错误的用户名/邮件地址，或者密码。
+
+[ViewLyrics] Please reset your password
+     =[ViewLyrics] 请重置您的密码
+
+We heard that you lost your ViewLyrics.com password. Sorry about that!
+     =很抱歉，我们得知您丢失了 ViewLyrics.com 的密码。
+
+But don’t worry! You can use the following link to reset your password:
+     =但是别担心，您可以使用下面的链接重置您的密码：
+
+If you don’t use this link within 3 hours, it will expire. To get a new password reset link, visit
+     =此链接的有效时间为 3 小时。如果要重新获取重置密码的链接，请访问：
+
+Thanks,
+     =谢谢，
+
+Check your email for a link to reset your password. If it doesn’t appear in a few minutes, check your spam folder.
+     =一封重置密码的邮件将发送给您。如果在几分钟内仍然没有收到，请检查一下您的垃圾收件箱。
+
+Failed to send email, please contact us to solve this problem.
+     =发送邮件失败，请联系我们解决此问题。
+
+Can't find that email, sorry.
+     =抱歉，无法找到此邮件。
+
+It looks like you clicked on an invalid password reset link. Please try again.
+     =好像您点击了无效的重置密码链接，请重试。
+
+The link can only be used in 30 minutes, please try again.
+     =此链接的有效期为 30 分钟，请重试。
+
+Please input new password.
+     =请输入新密码。
+
+You have reset your password successfully, you can sign in now.
+     =您已经成功重置密码，您现在可以登录了。
+
+Invalid session information, please sign out, then sign in again.
+     =无效的会话信息，请登出，再重新登录。
+
+An account is already associated with the email address: 
+     =有一个账号已经和此邮件地址关联：
+
+Incorrect password.
+     =密码不正确
+
+Email address hasn't been changed.
+     =邮件地址未更改。

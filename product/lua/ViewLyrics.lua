@@ -1,6 +1,7 @@
 local template = require "resty.template"
 local dbLyrics = require("db_lyrics")
 local cjson = require "cjson"
+local _TLM = require("locale")._TLM
 
 
 local _M = {}
@@ -38,7 +39,7 @@ _M['/api/user/lyrics/delete'] = function (ctx, user_id)
             local args = cjson.decode(data)
             if args ~= nil and args.id ~= nil then
                 if not dbLyrics.deleteLyricsByIdAndUserId(args.id, user_id) then
-                    ctx.error = "Lyrics were NOT found."
+                    ctx.error = _TLM("Lyrics were NOT found.")
                 end
             end
         end

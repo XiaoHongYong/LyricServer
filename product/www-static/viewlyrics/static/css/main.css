@@ -16,3 +16,17 @@
   width: 24px;
   height: 24px;
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#content {
+  flex: 1;
+}
+
+#footer {
+  margin: 10px;
+}

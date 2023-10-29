@@ -1,14 +1,12 @@
 {% layout = "base.html" %}
 
-{-title-}My uploaded lyrics{-title-}
+{-title-}_TLM(My uploaded lyrics){-title-}
 
 {-content-}
 <div id="uploaded_lyrics">
-    <h3>
-    My uploaded lyrics
-    </h3>
-    <p>Please use MiniLyrics client to upload or update lyrics.</p>
-    <p>You have uploaded [[ lyricsCount ]] lyrics.</p>
+    <h3>_TLM(My uploaded lyrics)</h3>
+    <p>_TLM(Please use MiniLyrics client to upload or update lyrics.)</p>
+    <p>_TLM(You have uploaded [[ lyricsCount ]] lyrics.)</p>
 
     <table class="table table-sm table-hover">
         <thead class="thead-light">
@@ -52,14 +50,14 @@ var COUNT_PER_PAGE = 50;
 
 var MAPPED_COLUMNS = {
     related_link: '',
-    artist: 'Artist',
-    title: 'Title',
-    album: 'Album',
-    dl_count: 'Download count',
-    media_length: 'Media length',
-    rate_count: 'Rating count',
-    rate_total: 'Rating',
-    upload_time: 'Upload time',
+    artist: '_TLM(Artist)',
+    title: '_TLM(Title)',
+    album: '_TLM(Album)',
+    dl_count: '_TLM(Download count)',
+    media_length: '_TLM(Media length)',
+    rate_count: '_TLM(Rating count)',
+    rate_total: '_TLM(Rating)',
+    upload_time: '_TLM(Upload time)',
     id: '',
 };
 
@@ -101,7 +99,7 @@ var profileApp = new Vue({
     },
 	methods: {
         deleteLyrics(id, rowIndex) {
-            if (!confirm('Click "OK" to delete the lyrics permanently.')) {
+            if (!confirm('_TLM(Click "OK" to delete the lyrics permanently.)')) {
                 return;
             }
 
@@ -116,7 +114,7 @@ var profileApp = new Vue({
                 if (response.data.error) {
                     toastApp.alert(response.data.error);
                 } else {
-                    toastApp.info('Lyrics was deleted successfully.');
+                    toastApp.info(_TLM('Lyrics was deleted successfully.'));
                     thiz.rows.splice(rowIndex, 1);
                 }
             })

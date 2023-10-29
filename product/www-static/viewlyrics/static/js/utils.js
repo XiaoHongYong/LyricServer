@@ -119,19 +119,6 @@ function newPopper(idPopView, toggleBtn, placement) {
     };
 }
 
-function ValidatePasswordChars(password) {
-    if (password.length < 6) {
-        return 'Password must have 6 characters.';
-    }
-
-    for (var i = 0; i < password.length; i++) {
-        var c = password.charCodeAt(i);
-        if (c <= 32 || c >= 128) {
-            return stringFormat('Invalid character: "{0}" in password.', password.charAt(i));
-        }
-    }
-}
-
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());

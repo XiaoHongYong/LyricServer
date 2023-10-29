@@ -1,6 +1,6 @@
 {% layout = "base.html" %}
 
-{-title-}Sign in{-title-}
+{-title-}_TLM(Profile){-title-}
 
 {-content-}
 <div class="row" id="user_profile">
@@ -9,31 +9,31 @@
     <div class="col-sm-6">
         <form method="POST" v-on:submit.prevent>
             <div class="form-group">
-                <h3>Profile</h3>
+                <h3>_TLM(Profile)</h3>
                 <br>
             </div>
             <div class="form-group row">
-                <label for="inputName" class="col-sm-4 col-form-label">Name</label>
+                <label for="inputName" class="col-sm-4 col-form-label">_TLM(Name)</label>
                 <div class="col-sm-8">
                     <input readonly type="text" class="form-control-plaintext" id="inputName" v-bind:value="name">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputCreateDate" class="col-sm-4 col-form-label">Member since</label>
+                <label for="inputCreateDate" class="col-sm-4 col-form-label">_TLM(Member since)</label>
                 <div class="col-sm-8">
                     <input readonly type="text" class="form-control-plaintext" id="inputCreateDate" v-bind:value="createDate">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail" class="col-sm-4 col-form-label">Email address</label>
+                <label for="inputEmail" class="col-sm-4 col-form-label">_TLM(Email address)</label>
                 <div class="col-sm-8">
-                    <input v-model="email" type="email" class="form-control" id="inputEmail" placeholder="Email address">
+                    <input v-model="email" type="email" class="form-control" id="inputEmail" placeholder="_TLM(Email address)">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">Confirm password</label>
+                <label for="inputPassword" class="col-sm-4 col-form-label">_TLM(Confirm password)</label>
                 <div class="col-sm-8">
-                    <input v-model="password" type="password" class="form-control" id="inputPassword" placeholder="Confirm password to change profile">
+                    <input v-model="password" type="password" class="form-control" id="inputPassword" placeholder="_TLM(Confirm password to change profile)">
                 </div>
             </div>
             <!-- <div class="form-group row">
@@ -50,7 +50,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-4">
-                    <button v-on:click="updateProfile()" class="btn btn-primary">Update profile</button>
+                    <button v-on:click="updateProfile()" class="btn btn-primary">_TLM(Update profile)</button>
                 </div>
             </div>
         </form>
@@ -74,12 +74,12 @@ var profileApp = new Vue({
 	methods: {
         updateProfile(event) {
             if (!validateEmail(this.email)) {
-                this.error = 'Please input valid email address.';
+                this.error = '_TLM(Please input valid email address.)';
                 return false;
             }
 
             if (!this.password) {
-                this.error = 'Please input password.';
+                this.error = '_TLM(Please input password.)';
                 return;
             }
 
@@ -94,7 +94,7 @@ var profileApp = new Vue({
             .then(function (response) {
                 thiz.error = response.data.error;
                 if (!thiz.error) {
-                    thiz.info = 'Profile was updated successfully.';
+                    thiz.info = '_TLM(Profile was updated successfully.)';
                 }
             })
             .catch(function (error) {

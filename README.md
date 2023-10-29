@@ -116,6 +116,20 @@ sudo apt install cmake
 ./build.sh release
 ```
 
+## 多语言支持
+
+* 使用 _TML() 标记需要翻译的字符串
+* 使用 www-templates/translate.py 来
+  * 提取翻译字符串
+    * www-templates/viewlyrics_src, www-templates/crintsoft_src 为原始模板
+    * lua 中的字符串也会被提取
+  * 生成翻译结果
+    * 根据 languages.json 中定义的语言来生成目标语言
+      * www-templates/viewlyrics, www-templates/crintsoft 均为自动生成的
+    * en.json, zh-cn.json 等为 lua 需要的翻译结果（自动生成，不要手动修改）
+    * en.txt, zh-cn.txt 需要翻译的字符串，搜索 todo 查看待翻译的字符串
+    * 需检查生成的翻译结果，注意防范因为翻译引入的攻击字符串
+
 ## 自动化测试
 * 脚本: tests/test-all.sh
   * ./build.sh debug
