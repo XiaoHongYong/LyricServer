@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/css/main.css" />
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/bootstrap.bundle.min.js"></script>
+	<script src="/static/js/vue.min.js"></script>
+	<script src="/static/js/utils.js"></script>
+	<!-- <script src="/static/js/lodash.min.js"></script> -->
+	<script src="/static/js/axios.min.js"></script>
+
+	<!-- <link href="/static/open-iconic/css/open-iconic-bootstrap.css" rel="stylesheet"> -->
+
+	<title>{* blocks.title *}</title>
+	{* blocks.script *}
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav w-100">
+				<template v-for="item in nav_items">
+					<li v-if="item.subMenus" class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="javascript: void(0)" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							[[ item.title ]]
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a v-for="subItem in item.subMenus" class="dropdown-item" v-bind:href="subItem.link">[[ subItem.title ]]</a>
+						</div>
+					</li>
+					<li v-else class="nav-item">
+						<a v-bind:class="getNavItemActive(item)" v-bind:href="item.link">[[ item.title ]]</a>
+					</li>
+				</template>
+
+				<template v-if="isSignedIn">
+					<li class="nav-item dropdown ml-auto">
+						<a class="nav-link dropdown-toggle" href="javascript: void(0)" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							账号
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a v-for="subItem in account_menus" class="dropdown-item" v-bind:href="subItem.link">[[ subItem.title ]]</a>
+						</div>
+					</li>
+				</template>
+				<template v-else>
+					<li class="nav-item ml-auto">
+						<a class="nav-link" href="/user/signin">登录</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/user/signup">注册</a>
+					</li>
+				</template>
+			</ul>
+		</div>
+	</nav>
+
+	{* blocks.navigation *}
+
+	<br>
+
+<div class="content_container" id="content">
+	{* blocks.content *}
+</div>
+
+<div class="position-fixed bottom-0 end-0 p-3">
+	<div id="toast" role="alert" :class="'toast ' + (isAlert ? 'text-bg-danger' : 'text-bg-success')"
+		:data-bs-delay="isAlert ? 5000 : 2000"
+		aria-live="assertive" aria-atomic="true">
+		<div class="d-flex">
+			<div class="toast-body">
+				[[ message ]]
+			</div>
+			<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div id="footer" class="text-center">
+		{* blocks.footer *}
+		{% for name, value in pairs(languages) do %}
+		<a class="btn btn-sm btn-light mx-1" href="//{{ name }}.viewlyrics.com">{{ value }}</a>
+		{% end %}
+	</div>
+</div>
+
+<script type="text/javascript">
+
+function ValidatePasswordChars(password) {
+    if (password.length < 6) {
+        return '密码至少 6 个字符长';
+    }
+
+    for (var i = 0; i < password.length; i++) {
+        var c = password.charCodeAt(i);
+        if (c <= 32 || c >= 128) {
+            return stringFormat('Invalid character: "{0}" in password.', password.charAt(i));
+        }
+    }
+}
+
+var isSignedIn = {{ isSignedIn }};
+
+var navigationApp = new Vue({
+	delimiters: ['[[', ']]'],
+  	el: '#navigation',
+  	data: {
+	  	nav_items: [
+	      	{ link: '/', title: 'ViewLyrics.com' },
+            { link: '/top-lyrics/', title: '歌词排行' },
+	      	{ link: '/top-artist/', title: '歌手排行' },
+            { link: 'http://www.crintsoft.com/', title: 'MiniLyrics' },
+		],
+		account_menus: [
+			{ link: '/user/profile', title: '简介' },
+			{ link: '/user/uploaded-lyrics', title: '我上传的歌词' },
+			{ link: '/user/change-password', title: '修改密码' },
+			{ link: '/user/signout', title: '登出' },
+		],
+		isSignedIn: isSignedIn,
+	},
+	methods: {
+	  	getNavItemActive: function (item) {
+			var pathname = item.link.split('#')[0].split('?')[0];
+	  		if (pathname === location.pathname || (pathname.length > 1 && location.pathname.startsWith(pathname))) {
+				return 'nav-link active';
+			} else {
+				return 'nav-link';
+			}
+		},
+		gotoLink: function (link) {
+			location = link;
+		},
+		signout: function () {
+			if (this.isSignedIn) {
+				location = '/user/signout';
+			} else {
+				location = '/user/signin';
+			}
+		}
+  	}
+});
+
+var toastApp = new Vue({
+	delimiters: ['[[', ']]'],
+  	el: '#toast',
+  	data: {
+		title: '',
+		message: '',
+		isAlert: false,
+	},
+	methods: {
+	  	alert: function (title, message) {
+			if (arguments.length > 1) {
+				var args = Array.prototype.slice.call(arguments, 1);
+				this.message = stringFormat.apply(window, args);
+				this.title = title || '错误';
+			} else {
+				this.message = title;
+				this.title = '错误';
+			}
+			this.isAlert = true;
+
+			console.warn(title, message);
+			$('#toast').toast('show');
+	  	},
+	  	info: function (title, message) {
+			if (arguments.length > 1) {
+				var args = Array.prototype.slice.call(arguments, 1);
+				this.message = stringFormat.apply(window, args);
+				this.title = title || '错误';
+			} else {
+				this.message = title;
+				this.title = '信息';
+			}
+			this.isAlert = false;
+
+			console.info(title, message);
+			$('#toast').toast('show');
+	  	}
+  	}
+});
+
+</script>
+
+
+</body>
+</html>

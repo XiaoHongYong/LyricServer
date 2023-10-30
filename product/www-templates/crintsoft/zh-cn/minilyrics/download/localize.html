@@ -1,0 +1,40 @@
+{% layout = "minilyrics/download/base.html" %}
+
+{-title-}Localize MiniLyrics{-title-}
+
+{-sub_content-}
+
+<div class="well">
+	<h3>Update the translation of MiniLyrics</h3>
+	<p>If your MiniLyrics upgrade to the new version, and there are some additinal strings need to be translated, please use "MiniLyrics Translation Tool 1.6".</p>
+	<ol>
+		<li><a href="/download/mltt.zip">Click here to download MiniLyrics Translation Tool</a>, and 
+		extract it into the MiniLyrics' directory.</li>
+		<li>Run the tool, click menu item: "File" -&gt; "Open Translation File..." to open your old translation.</li>
+		<li>Double click the listed strings to translate.</li>
+		<li>Go to: "View" -&gt; "Only NOT Translated Strings" to list all/NOT translated strings.</li>
+		<li>Go to: "File" -&gt; "Save Translation file" to save your translation.</li>
+	</ol>
+</div>
+<div class="well">
+	<h3>How do I translate MiniLyrics into other languages?</h3>
+	<ol>
+		<li>Download and install the latest version of MiniLyrics, open the 'English.ini' file in the MiniLyrics folder with your text editor.</li>
+		<li>Modify the Language name and Language Code.<br />
+		MiniLyrics will load the suitable default language by the language code.
+		<pre>
+[Info]
+Language=Localized Language Name (Language Name)
+LanguageCode=<a href="languagecode" target="_blank">Language Code</a>
+LanguageCodeFull=<a href="languagecode" target="_blank">Language Code</a>
+</pre>
+</li>
+		<li>Save the file as 'LanguageCodeFull.ini'. Also, please make sure the file encoding is UTF-8</li>
+		<li>Preview your translation.<br />
+		Select the context menu item: 'Tools'-&gt;'Preference', then select the 'Setup' Item in the popup dialog, click the 'Select Language' button to select the translation that you just created.
+		</li>
+		<li>Please contact us to submit your translation, we will send you a registration code as reward.</li>
+	</ol>
+</div>
+
+{-sub_content-}

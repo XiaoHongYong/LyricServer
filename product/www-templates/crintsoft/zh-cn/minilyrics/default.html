@@ -1,0 +1,112 @@
+{% layout = "minilyrics/base.html" %}
+
+{-title-}MiniLyrics - 迷你歌词在 iTunes, Windows Media Player, Winamp 等中显示歌词。{-title-}
+
+{-script-}
+<script type="text/javascript" src="/static/js/fade.js"></script>
+<link href="/static/css/fade_o.css" type="text/css" rel="stylesheet" />
+{-script-}
+
+{-content-}
+
+<div class="row">
+        <div class="col-sm-6">
+            <h3 class="indent">为您喜欢的音乐显示歌词！免费！</h3>
+            <ul>
+                <li>支持 iTunes,  Windows Media Player, Winamp 等的歌词插件。您不需要改变你欣赏音乐的习惯。</li>
+                <li>显示滚动歌词，您可以跟着歌手捕捉到每一个单词。</li>
+                <li>自动搜索和下载歌词。</li>
+                <li>巨大的歌词库，而且还在每天更新。</li>
+                <li>下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone 上查看。</li>
+                <li>惊人的半透明外观。</li>
+                <li>跨平台，支持 Windows, Mac OS X, Android.</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <div id="imageContainer">
+                <img src="/static/img/screenshot4.png" width="460" height="309" alt="MiniLyrics screenshot"/> 
+                <img src="/static/img/screenshot1.jpg" width="460" height="309" alt="MiniLyrics screenshot" style="display:none;"/>
+                <img src="/static/img/screenshot3.jpg" width="460" height="309" alt="MiniLyrics screenshot" style="display:none;"/> 
+                <img src="/static/img/screenshot5.jpg" width="460" height="309" alt="MiniLyrics screenshot" style="display:none;"/> 
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <hr />
+        <h3>MiniLyrics 支持</h3>
+    
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/iTunes-lyrics"><img src="/static/players/iTunes.jpg" class="playerImage" alt="iTunes Lyrics"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/Windows-Media-Player-lyrics"><img src="/static/players/Windows-Media-Player.jpg" class="playerImage" alt="Windows Media Player Lyrics"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/Winamp-lyrics"> <img src="/static/players/Winamp.jpg" class="playerImage" alt="Winamp Lyrics"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/MediaMonkey-lyrics"> <img src="/static/players/MediaMonkey.jpg" class="playerImage" alt="MediaMonkey Lyrics"></a>
+            </div>
+            <!-- <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="Spotify-lyrics"> <img src="/static/players/Spotify.jpg" class="playerImage" alt="Spotify"></a>
+            </div> -->
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/Spotify-lyrics"> <img src="/static/players/Zune.jpg" class="playerImage" alt="Zune"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/Foobar2000.jpg" class="playerImage" alt="Foobar2000"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/vlc-lyrics"> <img src="/static/players/VLC-Media-Player.jpg" class="playerImage" alt="VLC Media Player"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/Songbird.jpg" class="playerImage" alt="Songbird"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/AIMP2.jpg" class="playerImage" alt="AIMP2"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/Spotify-lyrics"> <img src="/static/players/Media-Player-Classic.jpg" class="playerImage" alt="Media Player Classic Home Cinema"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/The-KMPlayer.jpg" class="playerImage" alt="The KMPlayer"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/Yahoo!-Music-Engine.jpg" class="playerImage" alt="Yahoo! Music Engine"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/J.-River-Media-Center.jpg" class="playerImage" alt="J. River Media Center"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/J.-River-Media-Jukebox.jpg" class="playerImage" alt="J. River Media Jukebox"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/XMPlay-lyrics"> <img src="/static/players/XMPlay.jpg" class="playerImage" alt="XMPlay"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/Spotify-lyrics"> <img src="/static/players/JetAudio.jpg" class="playerImage" alt="JetAudio"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/Quintessential-Player.jpg" class="playerImage" alt="Quintessential Player"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/Spotify-lyrics"> <img src="/static/players/AlbumPlayer.jpg" class="playerImage" alt="AlbumPlayer"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/BSPlayer.jpg" class="playerImage" alt="BSPlayer"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/foobar2000-lyrics"> <img src="/static/players/Silverjuke.jpg" class="playerImage" alt="Silverjuke"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/Spotify-lyrics"> <img src="/static/players/Helium-Music-Manager.jpg" class="playerImage" alt="Helium Music Manager"></a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <a href="faq/MusicBee-lyrics"> <img src="/static/players/MusicBee.jpg" class="playerImage" alt="MusicBee"></a>
+            </div>
+        </div>
+    
+    </div>
+{-content-}

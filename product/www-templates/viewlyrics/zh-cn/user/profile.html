@@ -1,0 +1,110 @@
+{% layout = "base.html" %}
+
+{-title-}简介{-title-}
+
+{-content-}
+<div class="row" id="user_profile">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
+        <form method="POST" v-on:submit.prevent>
+            <div class="form-group">
+                <h3>简介</h3>
+                <br>
+            </div>
+            <div class="form-group row">
+                <label for="inputName" class="col-sm-4 col-form-label">名字</label>
+                <div class="col-sm-8">
+                    <input readonly type="text" class="form-control-plaintext" id="inputName" v-bind:value="name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputCreateDate" class="col-sm-4 col-form-label">加入时间</label>
+                <div class="col-sm-8">
+                    <input readonly type="text" class="form-control-plaintext" id="inputCreateDate" v-bind:value="createDate">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail" class="col-sm-4 col-form-label">邮件地址</label>
+                <div class="col-sm-8">
+                    <input v-model="email" type="email" class="form-control" id="inputEmail" placeholder="邮件地址">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">确认密码</label>
+                <div class="col-sm-8">
+                    <input v-model="password" type="password" class="form-control" id="inputPassword" placeholder="输入密码以修改自我介绍">
+                </div>
+            </div>
+            <!-- <div class="form-group row">
+                <label for="inputLocation" class="col-sm-4 col-form-label">Location</label>
+                <div class="col-sm-8">
+                    <input name="location" type="text" class="form-control" id="inputLocation" placeholder="Location">
+                </div>
+            </div> -->
+            <div v-if="error" class="form-group alert alert-danger" role="alert">
+                [[ error ]]
+            </div>
+            <div v-if="info" class="form-group alert alert-info" role="alert">
+                [[ info ]]
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <button v-on:click="updateProfile()" class="btn btn-primary">更新自我介绍</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3">
+    </div>
+</div>
+
+<script type="text/javascript">
+
+var profile = {* profile *};
+
+profile.password = '';
+profile.error = '';
+profile.info = '';
+
+var profileApp = new Vue({
+	delimiters: ['[[', ']]'],
+  	el: '#user_profile',
+  	data: profile,
+	methods: {
+        updateProfile(event) {
+            if (!validateEmail(this.email)) {
+                this.error = '请输入有效邮件地址。';
+                return false;
+            }
+
+            if (!this.password) {
+                this.error = '请输入密码。';
+                return;
+            }
+
+            this.error = '';
+            this.info = '';
+
+            var thiz = this;
+            axios.post('/user/profile', {
+                email: this.email,
+                password: this.password,
+            })
+            .then(function (response) {
+                thiz.error = response.data.error;
+                if (!thiz.error) {
+                    thiz.info = '自我介绍更新成功。';
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+		},
+  	}
+});
+
+</script>
+
+{-content-}
+

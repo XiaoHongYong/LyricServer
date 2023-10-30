@@ -1,0 +1,43 @@
+{% layout = "minilyrics/base.html" %}
+
+
+{-content-}
+
+<div class="row">
+    <div class="list-group col-xs-4 col-sm-3" id="download_tab">
+        <a v-for="item in nav_items"
+            v-bind:class="'list-group-item' + (curPath == item.link ? ' active' : '')"
+            v-bind:href="item.link">[[ item.title ]]
+        </a>
+    </div>
+
+    <script>
+        var downloadTabApp = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#download_tab',
+            data: {
+                nav_items: [
+                    // { link: '/minilyrics/faq/', title: 'Premium Services' },
+                    { link: '/minilyrics/faq/#install', title: '安装和启动' },
+                    { link: '/minilyrics/faq/#internet', title: 'Internet 连接' },
+                    { link: '/minilyrics/faq/#ipod', title: '在 iPod 和其他设备上查看歌词' },
+                    { link: '/minilyrics/faq/#scroll_lyr', title: '滚动歌词' },
+                    { link: '/minilyrics/faq/#lyr_editor', title: '歌词编辑器和上传歌词' },
+                    { link: '/minilyrics/faq/#players', title: '支持的播放器' },
+                    { link: '/contactus', title: '联系我们' },
+                ],
+            },
+            computed: {
+                curPath: function () {
+                    return location.pathname;
+                },
+            },
+        });
+    </script>
+
+    <div class="col-xs-8 col-sm-9">
+        {* blocks.sub_content *}
+    </div>
+</div>
+
+{-content-}

@@ -1,0 +1,88 @@
+<?php 
+include 'utils.php';
+$title = _("Online feeback results");
+include 'minilyrics_help_template.php';
+
+require_once "Mail;
+
+
+//error handler function
+function silent($errno, $errstr, $errfile, $errline)
+{
+}
+
+function isNotEmpty($input)
+{
+	$strTemp = $input;
+	$strTemp = trim($strTemp);
+
+	return ($strTemp != '');
+}
+
+function sendMail($from, $to, $subject, $body)
+{
+	$host = "smtp.1and1.com";
+	$username = "auto@crintsoft.com";
+	$password = "auto@crintsoft.com#$";
+	
+	$headers = array ('From' => $from,
+			'To' => $to,
+			'Subject' => $subject);
+	
+	$smtp = Mail::factory('smtp',
+			array ('host' => $host,
+					'auth' => true,
+					'username' => $username,
+					'password' => $password));
+	
+	$mail = $smtp->send($to, $headers, $body);
+	$content = "";
+	
+	if (PEAR::isError($mail)) {
+		$msg_title = _("Failed to send out message.");
+		$result = $mail->getMessage();
+	} else {
+		$msg_title = _("Your feedback was sent out successuflly");
+		$result = _("We will contact you as soon as possible.");
+	}
+	$content = <<<PLAYERS
+<div class="well">
+<h3>$msg_title</h3>
+<p>$result</p>
+</div>
+PLAYERS;
+	return $content;
+}
+
+//set error handler
+set_error_handler("silent");
+
+$first_name = $_POST['givenname'];
+$last_name = $_POST['name'];
+$email = $_POST['email'];
+$comments = $_POST['comment'];
+
+$from = $_POST['email'];
+$to = "support@crintsoft.com";
+$subject = $_POST['subject'];
+$body = sprintf ("First Name: %s\nLast Name: %s\nE-mail: %s\nCountry: %s\nComments: %s", 
+		$first_name, $last_name, $email, $_POST['country'], $comments);
+
+if (isNotEmpty($email) && isNotEmpty($first_name) && isNotEmpty($comments)) {
+	$content = sendMail($from, $to, $subject, $body);
+} else {
+	$msg_title = _("Failed to send out message.");
+	$result = _("Please enter your name, email address and comments to continue.");
+	
+	$content = <<<PLAYERS
+	<div class="well">
+	<h3>$msg_title</h3>
+	<p>$result</p>
+	</div>
+PLAYERS;
+}
+
+echo $content;
+
+include 'foot.php';
+?>

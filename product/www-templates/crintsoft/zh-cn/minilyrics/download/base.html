@@ -1,0 +1,42 @@
+{% layout = "minilyrics/base.html" %}
+
+
+{-content-}
+
+<div class="row">
+    <div class="list-group col-xs-4 col-sm-3" id="download_tab">
+        <a v-for="item in nav_items"
+            v-bind:class="'list-group-item' + (curPath == item.link ? ' active' : '')"
+            v-bind:href="item.link">[[ item.title ]]
+        </a>
+    </div>
+
+    <script>
+        var downloadTabApp = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#download_tab',
+            data: {
+                nav_items: [
+                    { link: '/minilyrics/download/', title: 'MiniLyrics Windows 版本' },
+                    { link: '/minilyrics/download/mac', title: 'MiniLyrics Mac OS X 版本' },
+                    { link: '/minilyrics/download/android', title: 'MiniLyrics Android 版本' },
+                    { link: '/minilyrics/download/skins', title: '外观' },
+                    { link: '/minilyrics/download/languages', title: '语言包和本地化' },
+                    // { link: '/minilyrics/download/lyrics-output-plugins', title: 'Lyrics output Plug-ins' },
+                    // { link: '/minilyrics/download/older', title: 'Older version of MiniLyrics for Windows' },
+                ],
+            },
+            computed: {
+                curPath: function () {
+                    return location.pathname;
+                },
+            },
+        });
+    </script>
+
+    <div class="col-xs-8 col-sm-9">
+        {* blocks.sub_content *}
+    </div>
+</div>
+
+{-content-}

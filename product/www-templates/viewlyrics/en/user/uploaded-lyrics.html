@@ -1,0 +1,181 @@
+{% layout = "base.html" %}
+
+{-title-}My uploaded lyrics{-title-}
+
+{-content-}
+<div id="uploaded_lyrics">
+    <h3>My uploaded lyrics</h3>
+    <p>Please use MiniLyrics client to upload or update lyrics.</p>
+    <p>You have uploaded [[ lyricsCount ]] lyrics.</p>
+
+    <table class="table table-sm table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th v-for="col in columns" scope="col">[[ col ]]</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(row, index) in rows">
+                <th scope="row">[[ index + offset + 1 ]]</th>
+                <td v-for="(col, indexCol) in row">
+                    <a v-if="indexCol === indexLink" v-bind:href="lyricsBaseLink + row[indexLink]" :download="row.fileName"
+                        class="btn download-btn">
+                    </a>
+                    <button v-else-if="indexCol === indexId" type="button" class="btn remove-btn"
+                        v-on:click="deleteLyrics(row[indexId], index)">
+                    </button>
+                    <template v-else>
+                    [[ col ]]
+                    </template>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{(pagination.html)}
+
+<script type="text/javascript">
+
+var fieldHeaders = {* columns *};
+var pageCount = {* pageCount *};
+var lyricsCount = {* lyricsCount *};
+var curPage = {* curPage *};
+var offset = {* offset *};
+var rows = {* rows *};
+var lyricsBaseLink = "{* lyricsBaseLink *}";
+var COUNT_PER_PAGE = 50;
+
+var MAPPED_COLUMNS = {
+    related_link: '',
+    artist: 'Artist',
+    title: 'Title',
+    album: 'Album',
+    dl_count: 'Download count',
+    media_length: 'Media length',
+    rate_count: 'Rating count',
+    rate_total: 'Rating',
+    upload_time: 'Upload time',
+    id: '',
+};
+
+var indexLink = fieldHeaders.indexOf('related_link');
+var indexRateCount = fieldHeaders.indexOf('rate_count');
+var indexRating = fieldHeaders.indexOf('rate_total');
+var indexId = fieldHeaders.indexOf('id');
+var indexTime = fieldHeaders.indexOf('upload_time');
+var indexMediaLength = fieldHeaders.indexOf('media_length');
+var indexArtist = fieldHeaders.indexOf('artist');
+var indexTitle = fieldHeaders.indexOf('title');
+assert(indexLink !== -1);
+assert(indexRateCount !== -1);
+assert(indexRating !== -1);
+assert(indexId !== -1);
+assert(indexTime !== -1);
+assert(indexMediaLength !== -1);
+assert(indexTitle !== -1);
+assert(indexArtist !== -1);
+
+renameFieldHeaders(fieldHeaders);
+preprocessRows(rows);
+
+paginationApp.setPages(pageCount, curPage, '/user/uploaded-lyrics?page=');
+
+var profileApp = new Vue({
+	delimiters: ['[[', ']]'],
+  	el: '#uploaded_lyrics',
+  	data: {
+        columns: fieldHeaders,
+        rows: rows,
+        error: '',
+        info: '',
+        offset: offset,
+        indexLink: indexLink,
+        indexId: indexId,
+        lyricsBaseLink: '/lyrics/',
+        lyricsCount: lyricsCount,
+    },
+	methods: {
+        deleteLyrics(id, rowIndex) {
+            if (!confirm('Click "OK" to delete the lyrics permanently.')) {
+                return;
+            }
+
+            this.error = '';
+            this.info = '';
+
+            var thiz = this;
+            axios.post('/api/user/lyrics/delete', {
+                id: id,
+            })
+            .then(function (response) {
+                if (response.data.error) {
+                    toastApp.alert(response.data.error);
+                } else {
+                    toastApp.info('Lyrics was deleted successfully.');
+                    thiz.rows.splice(rowIndex, 1);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+  	}
+});
+
+function paddingZero(n, width) {
+    let str = String(Math.floor(n));
+    while (str.length < width) {
+        str = '0' + str;
+    }
+    return str;
+}
+
+function formatDuration(n) {
+    if (n == 0) {
+        return '';
+    }
+
+    var str = ':' + paddingZero(n % 60, 2); // Seconds
+    n /= 60;
+    if (n >= 1) {
+        str = paddingZero(n % 60, 2) + str; // Minutes
+        n /= 60;
+    } else {
+        // Minutes: 0
+        str = '0' + str;
+    }
+    return str;
+}
+
+function preprocessRows(rows) {
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        if (row[indexRateCount]) {
+            row[indexRating] = (row[indexRating] / row[indexRateCount]).toFixed(1);
+        }
+        row[indexTime] = new Date(row[indexTime] * 1000).toLocaleString();
+        row[indexMediaLength] = formatDuration(row[indexMediaLength]);
+
+        var fileName;
+        if (row[indexArtist]) {
+            fileName = row[indexArtist] + ' - ' + row[indexTitle];
+        } else {
+            fileName = row[indexTitle];
+        }
+        row.fileName = fileName + row[indexLink].substring(row[indexLink].lastIndexOf('.'));
+    }
+}
+
+function renameFieldHeaders(fieldHeaders) {
+    for (var i = 0; i < fieldHeaders.length; i++) {
+        fieldHeaders[i] = MAPPED_COLUMNS[fieldHeaders[i]];
+    }
+}
+
+</script>
+
+{-content-}
+

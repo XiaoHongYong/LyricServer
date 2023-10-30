@@ -33,6 +33,4 @@ product/logs
 product/lyrics
 *.db-journal
 test_env
-product/www-templates/crintsoft
-product/www-templates/viewlyrics
 product/tool-status.txt

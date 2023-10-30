@@ -1,0 +1,39 @@
+<nav id="pagination">
+    <ul class="pagination">
+        <template v-for="page in pages">
+            <li v-if="page[2] !== ''" v-bind:class="(curPage === page[1]) ? 'page-item active': 'page-item'">
+                <a class="page-link" v-bind:href="page[2]">[[ page[0] ]]
+                </a>
+            </li>
+        </template>
+    </ul>
+</nav>
+
+<script>
+
+var paginationApp = new Vue({
+	delimiters: ['[[', ']]'],
+  	el: '#pagination',
+  	data: {
+        curPage: 0,
+        pages: [],
+	},
+	methods: {
+	  	setPages: function (countPages, curPage, baseLink) {
+              this.curPage = curPage;
+            var pages = createPaginationNumbers(countPages, curPage);
+            for (var i = 0; i < pages.length; i++) {
+                if (pages[i][1] !== '') {
+                    pages[i][2] = baseLink + pages[i][1];
+                } else {
+                    pages[i][2] = '';
+                }
+            }
+
+            this.pages = pages;
+            console.log(this.pages);
+        },
+  	}
+});
+
+</script>
