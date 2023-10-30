@@ -118,6 +118,9 @@ sudo apt install cmake
 
 ## 多语言支持
 
+* 依赖库:
+  * pip install polib
+  * https://poedit.net/
 * 使用 _TML() 标记需要翻译的字符串
 * 使用 www-templates/translate.py 来
   * 提取翻译字符串

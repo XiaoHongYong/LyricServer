@@ -4,6 +4,7 @@ import os
 import re
 import json
 import shutil
+import polib
 
 from collections import OrderedDict
 
@@ -222,12 +223,26 @@ def expand_global_translate(path_src):
             if v1 is None or v1 == NOT_TRANSLATED:
                 global_trans[k] = v
 
+def extract_global_po_file(fn):
+    po = polib.pofile(fn)
+
+    lang = 'zh-cn'
+    global_trans = global_language_trans.get(lang)
+    if global_trans is None:
+        global_trans = global_language_trans[lang] = {}
+
+    for entry in po:
+        v1 = global_trans.get(entry.msgid)
+        if v1 is None or v1 == NOT_TRANSLATED:
+            global_trans[entry.msgid] = entry.msgstr
+
 if __name__ == '__main__':
     path = os.path.dirname(os.path.abspath(__file__))
 
     # 提取全局的翻译字符串，用于合并翻译结果.
     expand_global_translate(os.path.join(path, 'viewlyrics_src'))
     expand_global_translate(os.path.join(path, 'crintsoft_src'))
+    extract_global_po_file(os.path.join(path, 'crintsoft.po'))
 
     make_translation(os.path.join(path, 'viewlyrics'))
     make_translation(os.path.join(path, 'crintsoft'))

@@ -21,7 +21,11 @@ local translates = load_translates()
 _M._TLM = function (text)
     local language = ngx.language
 
-    return translates[ngx.language][text] or text
+    local v = translates[ngx.language][text]
+    if v == '--TODO--' then
+        v = text
+    end
+    return v
 end
 
 return _M

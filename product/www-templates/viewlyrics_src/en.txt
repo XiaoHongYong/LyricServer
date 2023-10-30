@@ -70,6 +70,9 @@ Incorrect password.
 Email address hasn't been changed.
      =--TODO--
 
+Thanks, your message has been sent.
+     =--TODO--
+
 Home
      =--TODO--
 

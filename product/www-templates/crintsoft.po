@@ -1,0 +1,1659 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CrintSoft_Web\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-26 11:52+0800\n"
+"PO-Revision-Date: 2023-10-30 11:11+0800\n"
+"Last-Translator: Henry Xiao <support@crintsoft.com>\n"
+"Language-Team: Crintsoft <support@crintsoft.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_L\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-SearchPath-0: F:/Web/Crintsoft.com_PHP\n"
+
+#: F:\Web\Crintsoft.com_PHP/contactus.php:3
+#: F:\Web\Crintsoft.com_PHP/contactus.php:15
+#: F:\Web\Crintsoft.com_PHP/foot.php:15
+#: F:\Web\Crintsoft.com_PHP/help-find-code.php:4
+#: F:\Web\Crintsoft.com_PHP/help-premium-feedback.php:4
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:30
+msgid "Contact us"
+msgstr "联系我们"
+
+#: F:\Web\Crintsoft.com_PHP/contactus.php:16
+msgid "Feedback"
+msgstr "回馈"
+
+#: F:\Web\Crintsoft.com_PHP/contactus_form.php:5
+msgid "You can contact us by writing an email to "
+msgstr "您可以通过电子邮件联系"
+
+#: F:\Web\Crintsoft.com_PHP/contactus_form.php:8
+msgid "Or you can fill an online feedback form below"
+msgstr "或者您可以填一封在线反馈"
+
+#: F:\Web\Crintsoft.com_PHP/contactus_form.php:13
+msgid "First name:"
+msgstr "名："
+
+#: F:\Web\Crintsoft.com_PHP/contactus_form.php:16
+msgid "Last name:"
+msgstr "姓："
+
+#: F:\Web\Crintsoft.com_PHP/contactus_form.php:20
+msgid "E-mail:"
+msgstr "电子邮件："
+
+#: F:\Web\Crintsoft.com_PHP/contactus_form.php:25
+msgid "Country:"
+msgstr "国家："
+
+#: F:\Web\Crintsoft.com_PHP/contactus_form.php:30
+msgid "Your comments:"
+msgstr "您的意见："
+
+#: F:\Web\Crintsoft.com_PHP/foobar2000-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/iTunes-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/MusicBee-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/Spotify-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/vlc-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/Winamp-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/Windows-Media-Player-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/XMPlay-lyrics.php:3
+msgid "Lyrics"
+msgstr "歌词"
+
+#: F:\Web\Crintsoft.com_PHP/foobar2000-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/iTunes-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/MusicBee-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/Spotify-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/vlc-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/Winamp-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/Windows-Media-Player-lyrics.php:3
+#: F:\Web\Crintsoft.com_PHP/XMPlay-lyrics.php:3
+msgid "lyrics plugin"
+msgstr "歌词插件"
+
+#: F:\Web\Crintsoft.com_PHP/foobar2000-lyrics.php:23
+#: F:\Web\Crintsoft.com_PHP/Spotify-lyrics.php:8
+msgid "Other Players"
+msgstr "其他播放器"
+
+#: F:\Web\Crintsoft.com_PHP/foobar2000-lyrics.php:29
+#: F:\Web\Crintsoft.com_PHP/Spotify-lyrics.php:22
+msgid "Run MiniLyrics"
+msgstr "运行 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/foobar2000-lyrics.php:30
+msgid ""
+"When you start Foobar2000, Songbird, AIMP2, The KMPlayer, J. River Media "
+"Center, \n"
+"\t\tJ. River Media Jukebox, Quintessential Player, BSPlayer, Silverjuke, "
+"MiniLyrics will start with them automatically."
+msgstr ""
+"当您启动 Foobar2000, Songbird, AIMP2, The KMPlayer, J. River Media Center, \n"
+"\t\tJ. River Media Jukebox, Quintessential Player, BSPlayer, Silverjuke, "
+"MiniLyrics 会自动跟随他们启动。"
+
+#: F:\Web\Crintsoft.com_PHP/header_crintsoft.php:7
+msgid "Top Lyrics"
+msgstr "歌词排行"
+
+#: F:\Web\Crintsoft.com_PHP/header_crintsoft.php:8
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: F:\Web\Crintsoft.com_PHP/header_minilyrics.php:11
+msgid "What is MiniLyrics"
+msgstr "什么是 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/header_minilyrics.php:12
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_older.php:20
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:24
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:33
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:42
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:14
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:20
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:26
+msgid "Download"
+msgstr "下载"
+
+#: F:\Web\Crintsoft.com_PHP/header_minilyrics.php:13
+msgid "Buy Now"
+msgstr "立即购买"
+
+#: F:\Web\Crintsoft.com_PHP/header_minilyrics.php:14
+msgid "Help"
+msgstr "帮助"
+
+#: F:\Web\Crintsoft.com_PHP/help-find-code.php:8
+#: F:\Web\Crintsoft.com_PHP/help-find-code.php:9
+msgid "Find back activation code"
+msgstr "找回激活码"
+
+#: F:\Web\Crintsoft.com_PHP/help-install.php:3
+#: F:\Web\Crintsoft.com_PHP/help-install.php:7
+msgid "Installation Problems"
+msgstr "安装问题"
+
+#: F:\Web\Crintsoft.com_PHP/help-install.php:9
+msgid "Error Opening file for writing"
+msgstr "写文件失败"
+
+#: F:\Web\Crintsoft.com_PHP/help-install.php:11
+msgid ""
+"If you got this error message below, please close your player or restart "
+"your computer, then try to install MiniLyrics again."
+msgstr ""
+"如果您遇到下面的问题，请关闭您的播放器或者重新启动您的电脑，然后再重试安装 "
+"MiniLyrics。"
+
+#: F:\Web\Crintsoft.com_PHP/help-install.php:12
+msgid ""
+"If this problem still can't be resolved, please uninstall MiniLyrics, then "
+"restart your computer, and install MiniLyrics again."
+msgstr ""
+"如果此问题不能解决，请卸载 MiniLyrics，然后重新启动您的电脑，再次安装 "
+"MiniLyrics。"
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:4
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:11
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:38
+msgid "Lyrics Downloader for iPod"
+msgstr "iPod 歌词下载"
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:10
+msgid "Show lyrics on iPod Touch using Lyrics Downloader for iPod"
+msgstr "使用 iPod 歌词下载程序在 iPod 上显示歌词"
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:11
+msgid ""
+"MiniLyrics could save lyrics in song files in bulk, then you can use iTunes "
+"to sync them to your iPod Touch or iPhone."
+msgstr ""
+"MiniLyrics 可以批量下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone "
+"上查看。"
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:13
+msgid ""
+"Switch to 'Lyrics Downloader for iPod' by clicking right mouse button on "
+"MiniLyrics window."
+msgstr "在 MiniLyrics 窗口中，通过点击鼠标右键，切换到 iPod 歌词下载。"
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:15
+msgid ""
+"In Lyrics Downloader for iPod, click menu item '<b>Import iTunes Library</"
+"b>'."
+msgstr "在 iPod 歌词下载程序中，点击菜单项‘<b>导入 iTunes 媒体库</b>’。"
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:18
+msgid ""
+"Then click menu item '<b>Download All Lyrics for iPod</b>'. MiniLyrics will "
+"save all lyrics in media files."
+msgstr ""
+"然后点击菜单 &quot;<b>为 iPod 下载所有歌词</b>&quot;. MiniLyrics 会保存所有歌"
+"词到媒体文件中."
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:19
+msgid ""
+"Or you can click menu item '<b>Advanced > Download All Lyrics...</b>', there "
+"are more advanced options to download lyrics."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/help-iPod-Lyrics-Downloader.php:21
+msgid ""
+"Plug in your iPod, and all the changed media files with lyrics will be "
+"synchronized to your iPod."
+msgstr "插入您的 iPod，然后所有改变的媒体文件和歌词会自动被同步到 iPod 中。"
+
+#: F:\Web\Crintsoft.com_PHP/help-logitech-lcd.php:3
+#: F:\Web\Crintsoft.com_PHP/help-logitech-lcd.php:8
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:44
+msgid "How do I display lyrics on Logitech G15 keyboard LCD?"
+msgstr "如果在 Logitech G15 键盘的 LCD 上显示歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/help-logitech-lcd.php:9
+msgid ""
+"MiniLyrics supports display lyrics on Logitech G15 \n"
+"\tLCD, just install MiniLyrics, and press the button below to switch to "
+"MiniLyrics."
+msgstr ""
+"MiniLyrics 支持在 Logitech G15 键盘的 LCD 上显示歌词，只要您安装 MiniLyrics，"
+"然后按下如下图所示的按钮切换到 MiniLyrics。"
+
+#: F:\Web\Crintsoft.com_PHP/help-lyrscrollaction.php:3
+#: F:\Web\Crintsoft.com_PHP/help-lyrscrollaction.php:9
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:52
+msgid "How do I control the scrolling of text lyrics?"
+msgstr "如果控制文本歌词的滚动？"
+
+#: F:\Web\Crintsoft.com_PHP/help-lyrscrollaction.php:10
+msgid ""
+"MiniLyrics could record and replay the scrolling action of text lyrics. You "
+"can just scroll lyrics with your keyboard or mouse wheel, and MiniLyrics "
+"will record them and replay them next time."
+msgstr ""
+"MiniLyrics 能够记录和重放文本歌词的滚动动作。您只要使用键盘或者鼠标滚轮滚动歌"
+"词，MiniLyrics 就会记录他们，然后在下次重放。"
+
+#: F:\Web\Crintsoft.com_PHP/help-lyrscrollaction.php:11
+msgid "The UI below will be showed up when you have .TXT lyrics opened."
+msgstr "当您打开.txt 歌词时，下面的界面会显示出来。"
+
+#: F:\Web\Crintsoft.com_PHP/help-preference-lyrics-download.php:4
+#: F:\Web\Crintsoft.com_PHP/help-preference-lyrics-download.php:10
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:39
+msgid "Save embedded lyrics in song files by default"
+msgstr "缺省将歌词保存为歌曲文件中的嵌入歌词"
+
+#: F:\Web\Crintsoft.com_PHP/help-preference-lyrics-download.php:11
+msgid ""
+"You can turn on saving embedded lyrics in song files by default in "
+"MiniLyrics preferences."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/help-preference-lyrics-download.php:13
+msgid ""
+"Open MiniLyrics Preferences window by clicking right mouse button on "
+"MiniLyrics window."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/help-preference-lyrics-download.php:14
+msgid "Click 'Lyrics' tab."
+msgstr "点击‘歌词’页面。"
+
+#: F:\Web\Crintsoft.com_PHP/help-preference-lyrics-download.php:17
+msgid "Check 'Save lyrics in song file'."
+msgstr "单击‘保存歌词到歌曲文件’。"
+
+#: F:\Web\Crintsoft.com_PHP/help-premium-feedback.php:8
+msgid "Premium tech support service"
+msgstr "额外的技术支持服务"
+
+#: F:\Web\Crintsoft.com_PHP/help-premium-feedback.php:9
+msgid "Premium service - Feedback"
+msgstr "额外服务 - 反馈"
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:3
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:7
+msgid "Uninstall MiniLyrics"
+msgstr "卸载 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:9
+msgid "Uninstall MiniLyrics on Windows"
+msgstr "卸载 MiniLyrics 的 Windows 版本"
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:11
+msgid ""
+"Click Windows start menu, then click 'All Programs' > 'MiniLyrics' > "
+"'Uninstall MiniLyrics'."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:12
+msgid ""
+"Click 'Uninstall' button in the popped up window to uninstall MiniLyrics."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:17
+msgid "Uninstall MiniLyrics on Mac"
+msgstr "卸载 MiniLyrics 的 Mac 版本"
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:19
+msgid "Click Finder menu: 'Go' > 'Go to folder...'"
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:20
+msgid "Input '~/Library/iTunes/iTunes Plug-ins', then click 'Go'."
+msgstr "输入 '~/Library/iTunes/iTunes Plug-ins'，然后点击“Go”。"
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:21
+msgid "Move files to trash:"
+msgstr "把文件移除到垃圾桶："
+
+#: F:\Web\Crintsoft.com_PHP/help-uninstall.php:22
+msgid "Move MiniLyrics.app to trash in Applications folder."
+msgstr "从应用程序文件夹移除 MiniLyrics.app 到垃圾桶。"
+
+#: F:\Web\Crintsoft.com_PHP/iTunes-lyrics.php:14
+msgid ""
+"Save ID3v2 unsynchronized lyrics in song file, so you can view it in iTunes, "
+"iPod touch."
+msgstr "下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone 上查看。"
+
+#: F:\Web\Crintsoft.com_PHP/iTunes-lyrics.php:24
+msgid "Embed MiniLyrics in iTunes Window."
+msgstr "嵌入 MiniLyrics 到 iTunes 窗口中。"
+
+#: F:\Web\Crintsoft.com_PHP/iTunes-lyrics.php:25
+msgid "MiniLyrics can be embedded in iTunes window."
+msgstr "MiniLyrics 可以被嵌入到 iTunes 窗口中。"
+
+#: F:\Web\Crintsoft.com_PHP/iTunes-lyrics.php:27
+msgid ""
+"Click iTunes menu item: 'View' &gt; 'Visualizer' &gt; 'MiniLyrics "
+"Visualizer', set MiniLyrics as default visualizer."
+msgstr ""
+"点击菜单：&quot;View&quot; &gt; &quot;Visualizer&quot; &gt; &quot;MiniLyrics "
+"Visualizer&quot;, 设置 MiniLyrics 为缺省的视觉效果。"
+
+#: F:\Web\Crintsoft.com_PHP/iTunes-lyrics.php:28
+msgid ""
+"Click iTunes menu item: 'View' &gt; 'Show Visualizer', then MiniLyrics will "
+"be embedded in iTunes window as below."
+msgstr ""
+"点击 iTunes 菜单：&quot;View&quot; &gt; &quot;Show Visualizer&quot;, 然后 "
+"MiniLyrics 会被嵌入到如下所示的 iTunes 窗口中。"
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:20
+msgid "Embed MiniLyrics in MediaMonkey Window."
+msgstr "嵌入 MiniLyrics 到 MediaMonkey 窗口中。"
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:21
+msgid ""
+"MiniLyrics can be embedded as a panel in MediaMonkey Window, please follow "
+"the instructions below:"
+msgstr ""
+"MiniLyrics 可以作为一个面板被嵌入到 MediaMonkey 窗口中，请参照下面的步骤："
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:23
+msgid ""
+"Download and install 'Embedded MiniLyrics' plugin from MediaMonkey Forum."
+msgstr "从 MediaMonkey 论坛下载和安装 &quot;Embedded MiniLyrics&quot; 插件。"
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:26
+msgid ""
+"If MiniLyrics panel isn't embedded in MediaMonkey Window, please click "
+"MediaMonkey menu item: 'View' &gt; 'MiniLyrics Panel'."
+msgstr ""
+"如果 MiniLyrics 面板没有被嵌入到 MediaMonkey 窗口中，请点击 MediaMonkey 菜"
+"单：&quot;View&quot; &gt; &quot;MiniLyrics Panel&quot;。"
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:27
+msgid ""
+"If it's a blank white window in MiniLyrics panel, please use 'Plain' skin of "
+"MiniLyrics."
+msgstr ""
+"如果是一个空白的窗口中 MiniLyrics 面板中，请使用 MiniLyrics 的&quot;"
+"Plain&quot; 外观。"
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:28
+msgid "If you got some other errors,"
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:28
+msgid "please download this file"
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:30
+msgid "Extract the downloaded file."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:31
+msgid "Open folder:"
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:32
+msgid "Remove file:"
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/MediaMonkey-lyrics.php:33
+msgid "Replace file:"
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics-payment-received.php:3
+msgid "Your payment was received"
+msgstr "我们已经收到您的付款"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics-payment-received.php:12
+msgid "Thank you for purchasing MiniLyrics"
+msgstr "谢谢您购买 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics-payment-received.php:13
+msgid ""
+"We are processing your order and will send your activation code to your "
+"email box, it may take a few minutes."
+msgstr ""
+"我们正在处理您的订单，然后会把激活码发送到您的电子邮箱，可能需要几分钟。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics-payment-received.php:15
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:43
+msgid "If you haven't received your activation code in 15 minutes,"
+msgstr "如果您在 15 分钟内没有收到激活码，"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics-payment-received.php:16
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:44
+msgid "please contact us with your order information."
+msgstr "请提供您的订单信息联系我们。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics-payment-received.php:19
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:54
+msgid "Refund"
+msgstr "退款"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics-payment-received.php:20
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:55
+msgid ""
+"If you’re not satisfied, for any reason, within 60 days you get a full "
+"refund, period, no questions asked. We don’t want your money if you’re not "
+"amazingly happy."
+msgstr ""
+"如果您不满意，不管任何原因，在60天之内，不要任何原因，您可以全额退款。如果您"
+"不满意，我们不想要您的钱。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:4
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:4
+msgid "Show lyrics in iTunes, Windows Media Player, Winamp, etc."
+msgstr "迷你歌词在 iTunes, Windows Media Player, Winamp 等中显示歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:19
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:19
+msgid "Display lyrics for your favorite music! Free!"
+msgstr "为您喜欢的音乐显示歌词！免费！"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:21
+msgid ""
+
+"Lyrics plugin software for iTunes, Windows Media Player, Winamp, etc. You "
+"needn't change the way of enjoying music."
+msgstr ""
+"支持 iTunes,  Windows Media Player, Winamp 等的歌词插件。您不需要改变你欣赏音"
+"乐的习惯。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:22
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:22
+msgid ""
+"Display scrolling lyrics, you can follow along with the artist and catch "
+"every word."
+msgstr "显示滚动歌词，您可以跟着歌手捕捉到每一个单词。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:23
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:23
+msgid "Automatically search and download lyrics."
+msgstr "自动搜索和下载歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:24
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:24
+msgid "Huge lyrics database, and it is expanding every day."
+msgstr "巨大的歌词库，而且还在每天更新。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:25
+msgid ""
+"Download and save lyrics in your song files, you can view these lyrics on "
+"your iPod or iPhone."
+msgstr "下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone 上查看。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:26
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:26
+msgid "Amazing translucency skins."
+msgstr "惊人的半透明外观。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:27
+msgid "Cross-platform, support Windows, Mac and Android."
+msgstr "跨平台，支持 Windows, Mac OS X, Android."
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics.php:46
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:47
+msgid "MiniLyrics supports"
+msgstr "MiniLyrics 支持"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:21
+msgid ""
+"Lyrics plugin software for iTunes, Windows Media Player, Winamp, etc. You do "
+"not need to change the way you enjoy music."
+msgstr ""
+"支持 iTunes,  Windows Media Player, Winamp 等的歌词插件。您不需要改变你欣赏音"
+"乐的习惯。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:25
+msgid ""
+"Download and save lyrics in your song files, you can view it on your iPod or "
+"iPhone."
+msgstr "下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone 上查看。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics1.php:27
+msgid "Cross-platform, support Windows, Mac OS X, Android."
+msgstr "跨平台，支持 Windows, Mac OS X, Android."
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:3
+msgid "Buy and activate MiniLyrics"
+msgstr "购买和激活 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:13
+msgid "Buy MiniLyrics Now"
+msgstr "立即购买 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:14
+msgid "If you like MiniLyrics, or think it's valuable, please do buy it."
+msgstr "如果您喜欢 MiniLyrics，或者您认为它有价值，请一定要购买。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:20
+msgid "MiniLyrics 1 Year License for up to 3 PCs"
+msgstr "MiniLyrics 3台电脑1年授权"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:30
+msgid "MiniLyrics Lifetime License for up to 3 PCs"
+msgstr "MiniLyrics 3台电脑終身授权"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:46
+msgid "How do I input activation code?"
+msgstr "如何输入激活码？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:48
+msgid ""
+"Right-click on the MiniLyrics window, and go to: 'Help and Support'-"
+"&gt;''Activate MiniLyrics'."
+msgstr ""
+"右键点击 MiniLyrics 的窗口，然后到：'帮助和支持'-&gt;&#39;'激活 MiniLyrics'。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:49
+msgid ""
+"In the window that pops up, copy and paste the name and code fields from the "
+"activation code email."
+msgstr "从激活码邮件中复制并粘帖名字和激活码到弹出的窗口中。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_buy.php:50
+msgid "Then click 'Activate' button."
+msgstr "然后点击‘激活’按钮。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:4
+#: F:\Web\Crintsoft.com_PHP/mlwhatsnew.php:4
+msgid "Download MiniLyrics free for Windows"
+msgstr "免费下载 MiniLyrics Windows 版本"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:7
+#, php-format
+msgid "Download from %s"
+msgstr "从 %s 下载"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:11
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:15
+msgid "MiniLyrics for Windows"
+msgstr "MiniLyrics Windows 版本"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:12
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_older.php:10
+msgid "MiniLyrics for windows XP, Windows 7, etc."
+msgstr "MiniLyrics 支持 Windows XP，Windows 7，等。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:17
+msgid "Local Server"
+msgstr "本地服务器"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:20
+msgid "See update history"
+msgstr "查看更新历史"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:24
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_mac.php:19
+msgid "Installation instructions"
+msgstr "安装步骤"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:25
+msgid ""
+"MiniLyrics is the most easy-to-use lyrics plugin software. It's very easy to "
+"install and use."
+msgstr "MiniLyrics 是 最简单易用的歌词插件，它非常容易安装和使用。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:27
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_mac.php:23
+msgid "Download MiniLyrics"
+msgstr "下载 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:28
+msgid "Install MiniLyrics"
+msgstr "安装 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:29
+msgid "Run your player and play your favorite tracks"
+msgstr "运行您的播放器，然后播放您喜欢的歌曲"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:30
+msgid "Lyrics will be showed up automatically"
+msgstr "歌词会自动显示出来"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:32
+msgid ""
+"If you are using Zune, Spotify, Album Player, Helium Music Manager, "
+"JetAudio, you need to start MiniLyrics manually. Please click Windows "
+"'Start' button &gt;' 'All Programs' &gt;' 'MiniLyrics' &gt;' 'MiniLyrics'."
+msgstr ""
+"当您使用 Spotify, Zune, Album Player, Helium Music Manager, JetAudio，您需要"
+"手动启动 MiniLyrics，请点击 Windows ‘开始’菜单按钮，然后点击‘所有的程序’ "
+"&gt; ‘MiniLyrics’ &gt; ‘MiniLyrics’来启动。"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:34
+msgid "Specific setting for VLC Media Player"
+msgstr "针对 VLC Media Player 的特殊设置"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:35
+msgid "Specific setting for XMPlay"
+msgstr "针对 XMPlay 的特殊设置"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_download.php:37
+msgid ""
+"If you got problems when you install or update MiniLyrics, please see Help."
+msgstr "如果您在安装或者升级 MiniLyrics 时遇到问题，请查看帮助。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_android.php:9
+msgid "MiniLyrics for Android devices"
+msgstr "MiniLyrics Android 版本"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_android.php:10
+msgid "MiniLyrics for Android is free, Download from Local Server."
+msgstr "MiniLyrics Android 版本是免费的，从本地服务器下载。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_mac.php:9
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:16
+msgid "MiniLyrics for Mac OS X"
+msgstr "MiniLyrics Mac OS X 版本"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_mac.php:24
+msgid "Install MiniLyrics.pkg"
+msgstr "安装 MiniLyrics.pkg"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_mac.php:25
+msgid "Run MiniLyrics from Application folder."
+msgstr "从应用程序文件夹启动 MiniLyrics。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_mac.php:26
+msgid "You will be asked to install MiniLyrics plugin for iTunes, click YES."
+msgstr "你会被询问安装 MiniLyrics 的 iTunes 插件，点击“是”."
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_mac.php:27
+msgid "Start iTunes, and play a few tracks, MiniLyrics will display lyrics."
+msgstr "启动 iTunes，并且播放一些歌曲，MiniLyrics 会自动显示歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_older.php:9
+msgid "Older MiniLyrics for Windows"
+msgstr "Windows 下老版本的MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_older.php:12
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_older.php:13
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_older.php:14
+#, php-format
+msgid "Download %s"
+msgstr "下载 %s"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_older.php:21
+msgid "Download Cab"
+msgstr "下载 Cab 包"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:8
+msgid "Download skins for MiniLyrics"
+msgstr "下载 MiniLyrics 的外观"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:9
+msgid "Please contact us to submit and share your skins."
+msgstr "请联系我们提交或者共享您创建的外观。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:12
+msgid "How to install new skins"
+msgstr "如何安装新外观"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:14
+msgid "Download the skin package"
+msgstr "下载外观包"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:15
+msgid ""
+"Extract it to the skin directory of MiniLyrics. For example: 'C:\\Program "
+"Files\\MiniLyrics\\Skins'"
+msgstr ""
+"把它解压到 MiniLyrics 的外观目录下。例如：C:\\Program "
+"Files\\MiniLyrics\\Skins"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_skins.php:16
+msgid ""
+"Click right mouse button on MiniLyrics window, change to new skin in skins "
+"menu."
+msgstr "请在 MiniLyrics 窗口上单击鼠标右键，在外观菜单中选择新的外观。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:12
+msgid "Downloads"
+msgstr "下载"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:17
+msgid "MiniLyrics for Android"
+msgstr "MiniLyrics Android 版本"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:18
+msgid "Skins"
+msgstr "外观"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:19
+msgid "Language packs &amp; Localization"
+msgstr "语言包和本地化"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:20
+msgid "Lyrics output Plug-ins"
+msgstr "歌词插件"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_download_template.php:21
+msgid "Older version of MiniLyrics for Windows"
+msgstr "Windows 下老版本的MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:7
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:23
+msgid "Premium Services"
+msgstr "额外服务"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:8
+msgid "If you have bought MiniLyrics, you can get the premium services below:"
+msgstr "如果您已经购买 MiniLyrics，您有下面的额外服务："
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:10
+msgid "1 business day customer service response"
+msgstr "一个工作日的客户服务响应"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:12
+msgid "Find back activation code free"
+msgstr "免费找回您的激活码"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:17
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:24
+msgid "Installation and Startup"
+msgstr "安装和启动"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:19
+msgid "Installation problem 'Error Opening file for writing'"
+msgstr "安装问题‘写文件失败’"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:20
+msgid "How do I uninstall MiniLyrics?"
+msgstr "如何卸载 MiniLyrics?"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:21
+#: F:\Web\Crintsoft.com_PHP/mlfaq-disable.php:3
+#: F:\Web\Crintsoft.com_PHP/mlfaq-disable.php:8
+msgid "How do I disable MiniLyrics to start with my Players?"
+msgstr "如何禁止 MiniLyrics 随我的播放器启动？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:22
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:3
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:8
+msgid "How do I backup and restore MiniLyrics settings?"
+msgstr "如何备份和恢复 MiniLyrics 的设置？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:27
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:25
+msgid "Internet connection"
+msgstr "Internet 连接"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:29
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:3
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:8
+msgid "How do I solve internet connection errors?"
+msgstr "如何解决 Internet 连接错误？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:30
+#: F:\Web\Crintsoft.com_PHP/mlfaq-firewall.php:3
+#: F:\Web\Crintsoft.com_PHP/mlfaq-firewall.php:8
+msgid "How do I setup the windows firewall settings?"
+msgstr "如何设置 Windows 防火墙？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:31
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:8
+msgid "No lyrics are displayed in MiniLyrics, why?"
+msgstr "在 MiniLyrics 中没有歌词显示，为什么？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:36
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:26
+msgid "View lyrics on iPod and other devices"
+msgstr "在 iPod 和其他设备上查看歌词"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:40
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:3
+msgid "View Lyrics in Windows Media Player, iTunes, or on iPod"
+msgstr "在 Windows Media Player，iTunes，或 iPod 上查看歌词"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:41
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:3
+msgid ""
+"What are ID3v2 synchronized lyrics, ID3v2 unsynchronized lyrics, Lyrics3v2 "
+"Lyrics and M4A lyrics?"
+msgstr "什么是 ID3v2 同步歌词，ID3v2 异步歌词，Lyrics3v2 歌词和 M4A 歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:42
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:3
+msgid "How do I save, load and remove embedded lyrics in song file?"
+msgstr "如何保存，加载和删除嵌入到歌曲文件中的歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:43
+#: F:\Web\Crintsoft.com_PHP/mlfaq-leadsinger.php:3
+msgid ""
+"Why the lyrics get cut off half way through the song when playing them on "
+"the Leadsinger Mic?"
+msgstr "为何在 Leadsinger Mic 中的歌词会被切断一半？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:49
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:27
+msgid "Scrolling Lyrics"
+msgstr "滚动歌词"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:51
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:3
+msgid "What is LRC lyrics format, scrolling lyrics?"
+msgstr "什么是 LRC 歌词格式，滚动歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:57
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:28
+msgid "Lyrics Editor and Upload Lyrics"
+msgstr "歌词编辑器和上传歌词"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:59
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:3
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:8
+msgid "How do I use the Lyrics Editor to create LRC lyrics?"
+msgstr "如何使用歌词编辑器创建 LRC 歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:60
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:3
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:8
+msgid "How do I upload lyrics and expand the lyrics database?"
+msgstr "如何上传和扩展歌词库？"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:65
+#: F:\Web\Crintsoft.com_PHP/players.php:3
+#: F:\Web\Crintsoft.com_PHP/players.php:8
+msgid "Supported Players"
+msgstr "支持的播放器"
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:66
+#: F:\Web\Crintsoft.com_PHP/players.php:9
+msgid "MiniLyrics supports almost all the popular players, including:"
+msgstr "MiniLyrics 支持几乎所有流行的播放器，包括："
+
+#: F:\Web\Crintsoft.com_PHP/MiniLyrics_help.php:89
+msgid "If your favorite player isn't supported, please contact us."
+msgstr "如果您喜欢的播放器没有被支持，请联系我们。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:3
+msgid "MiniLyrics help and FAQ"
+msgstr "MiniLyrics 帮助和常见问题"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:9
+#, php-format
+msgid "and it supports all most all popular %s."
+msgstr "并且它支持几乎所有流行的%s。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:9
+msgid "players"
+msgstr "播放器"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:10
+#, php-format
+msgid "MiniLyrics is a lyrics plugin software for %s,"
+msgstr "MiniLyrics 是 %s 的歌词插件，"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:11
+#: F:\Web\Crintsoft.com_PHP/Spotify-lyrics.php:18
+msgid "It can download and display lyrics automatically."
+msgstr "它可以自动下载和显示歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:12
+#, php-format
+msgid "Display Lyrics with %s"
+msgstr "随 %s 显示歌词"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:13
+#, php-format
+msgid "Run MiniLyrics with %s"
+msgstr "随 %s 运行 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:14
+#, php-format
+msgid "When you start %s, MiniLyrics will run with it automatically."
+msgstr "当您启动 %s，MiniLyrics会跟随它自动运行。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:21
+msgid "Index"
+msgstr "索引"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_help_template.php:29
+msgid "Supported players"
+msgstr "支持的播放器"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:9
+msgid "Language packs and Localization"
+msgstr "语言包和本地化"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:10
+msgid ""
+"Download the language packs below to your MiniLyrics 'lang' folder, and "
+"localize your MiniLyrics."
+msgstr "下载下面的语言包到您的 'lang' 目录，然后本地化您的 MiniLyrics。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:13
+msgid "Language"
+msgstr "语言"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:14
+msgid "Full Language Code"
+msgstr "完整语言代码"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:15
+msgid "Translator"
+msgstr "翻译者"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:16
+msgid "Update Date"
+msgstr "更新日期"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:120
+msgid ""
+"If you want to help us to localize MiniLyrics, please follow this guide."
+msgstr "如果您想帮助我们本地化 MiniLyrics，请根据此指南。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:120
+#: F:\Web\Crintsoft.com_PHP/minilyrics_localization.php:121
+msgid "And you can get an activation code free."
+msgstr "您可以得到免费的激活码."
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:4
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:9
+msgid "Download Lyrics Output Plug-ins for MiniLyrics"
+msgstr "下载 MiniLyrics 歌词输出插件"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:10
+msgid ""
+"The Lyrics Output Plug-ins of MiniLyrics could output lyrics to other "
+"devices or applications."
+msgstr "MiniLyrics 的歌词输出插件可以把歌词输出到其他设备或者应用程序中。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:13
+msgid "Name"
+msgstr "名字"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:15
+msgid "Author"
+msgstr "作者"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:16
+msgid "Description"
+msgstr "描述"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:22
+msgid "This plug-in will display lyrics on Logitech G15 keyboard screen."
+msgstr "此插件会显示歌词到 Logitech G15 键盘的屏幕上。"
+
+#: F:\Web\Crintsoft.com_PHP/minilyrics_lyrics_output_plugins.php:35
+msgid "Install"
+msgstr "安装"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-disable.php:10
+msgid "Please right mouse button on MiniLyrics window"
+msgstr "请在 MiniLyrics 窗口上单击鼠标右键"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-disable.php:11
+msgid "Click menu item: 'Preferences...'"
+msgstr "点击菜单：&quot;参数设置...&quot;"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-disable.php:12
+msgid ""
+"In the popup window, click 'System' &gt; 'Startup' tab, choose the player "
+"you want MiniLyrics to start with."
+msgstr ""
+"在弹出的窗口中，点击&quot;系统&quot; &gt; &quot;启动&quot; 页面，选择您想要 "
+"MiniLyrics 随之启动的播放器。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:9
+msgid ""
+"Lyrics Editor will help you to create or edit the synchronized lyrics."
+msgstr "‘歌词编辑器’会帮助您创建或者编辑同步歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:11
+msgid ""
+"Get plain text lyrics. You can search and download text lyrics with "
+"MiniLyrics or Google."
+msgstr "下载纯文本歌词。您可以使用 MiniLyrics 或者 Google 搜索和下载文本歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:12
+msgid "Open the plain text lyrics file."
+msgstr "打开文本歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:13
+msgid ""
+"Open '<b>Lyrics Editor</b>'. Please click the context menu item: '<b>Lyrics "
+"Editor</b>', and MiniLyrics will open the 'Lyrics Editor' window."
+msgstr ""
+"打开 ‘<b>歌词编辑器</b>’。请点击右键菜单：‘<b>歌词编辑器</b>’，MiniLyrics 会"
+"打开‘歌词编辑器’窗口。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:16
+msgid "Playing the song file."
+msgstr "播放器歌曲文件。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:17
+msgid "Click button: "
+msgstr "点击按钮："
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:17
+msgid "Synchronize the current line and move down one line"
+msgstr "同步当前行歌词，并移动到下一行"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:19
+msgid "Repeat step 5 until all the lyrics lines are synchronized."
+msgstr "重复步骤 5 直到所有歌词行都被同步。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:20
+msgid "Save the lyrics file as '.lrc' file."
+msgstr "保存歌词文件为‘.lrc’文件。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:23
+msgid ""
+"Windows Media Player, foobar2000 is suggested to be used, when you create "
+"synchronized lyrics. If you use Winamp, please don't seek or jump music, or "
+"the timeline will become imprecise."
+msgstr ""
+"建议您使用 Windows Media Player, foobar2000 来创建同步 LRC 歌词，如果您使用 "
+"Winamp，请不要快进或者后退音乐，否则时间线可能会不精确。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:27
+msgid "Share lyrics with other people using MiniLyrics"
+msgstr "和 MiniLyrics 的用户分享歌词"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:28
+msgid "You can upload the lyrics to MiniLyrics server."
+msgstr "您可以上传歌词到 MiniLyrics 服务器。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:30
+msgid "Clicking menu item: 'File' -&gt; 'Upload Lyrics' -&gt; 'Upload Lyrics'."
+msgstr "点击菜单：‘文件’ -&gt; ‘上传歌词’ -&gt; ‘上传歌词’。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:31
+msgid "Then follow the instructions in the popup window."
+msgstr "请参照弹出窗口中的指示操作。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-editlrc.php:32
+msgid "If you don't have account, please sign up free."
+msgstr "如果您没有帐号，请免费注册。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:8
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:8
+msgid "MiniLyrics supports embedded lyrics in MP3 and M4A files."
+msgstr "MiniLyrics 支持嵌入到 MP3 和 M4A 文件中的歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:9
+msgid ""
+"MiniLyrics supports to save and load embedded lyrics in MP3 and M4A files."
+msgstr "MiniLyrics 支持保存和加载嵌入到 MP3 和 M4A 文件中的歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:11
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:11
+msgid ""
+"ID3v2 synchronized lyrics, ID3v2 unsynchronized lyrics and Lyrics3v2 lyrics "
+"are for MP3 files."
+msgstr "ID3v2 同步歌词，ID3v2 异步歌词和 Lyrics3v2 歌词是给 MP3 文件用的。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:12
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:12
+msgid "M4A lyrics are for apple M4A(AAC) files."
+msgstr "M4A 歌词是给 apple M4A(AAC) 文件用的。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:17
+msgid "ID3v2 unsynchronized lyrics"
+msgstr "ID3v2 异步歌词"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:18
+msgid ""
+"iPod, iPad, iTunes, Windows Media Player, MediaMonkey, and many other "
+"players support ID3v2 unsynchronized lyrics. "
+msgstr ""
+"iPod, iPad, iTunes, Windows Media Player, MediaMonkey, 和其他播放器支持 "
+"ID3v2 异步歌词。 "
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:18
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:23
+msgid "It's defined in ID3v2 specification."
+msgstr "它被定义在 ID3v2 规范中。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:22
+msgid "ID3v2 synchronized lyrics"
+msgstr "ID3v2 同步歌词"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:23
+msgid "Only Windows Media Player supports ID3v2 synchronized lyrics. "
+msgstr "仅仅 Windows Media Player 支持 ID3v2 同步歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:27
+msgid "Lyrics3v2 synchronized lyrics"
+msgstr "Lyrics3v2 同步歌词"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:28
+msgid "It is an old specification, only MiniLyrics supports this format. "
+msgstr "这是一个老的规范，基本上只有 MiniLyrics 支持此歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-embedlyrics.php:28
+msgid "It's defined in Lyrics3v2.00 specification."
+msgstr "它定义在 Lyrics3v2.00 规范中。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:10
+msgid "Make sure your PC is connected to Internet."
+msgstr "确保您的电脑已经联网。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:11
+msgid "Click here to check if our server is OK."
+msgstr "点击这里确保我们的服务器正在运行。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:12
+msgid ""
+"Check if you have firewall installed. If You are under the Firewall, you "
+"will be warned of the following messages:<br />\n"
+"<b>10057, A request to send or receive data was disallowed because ...<br /"
+">\n"
+"10013, An attempt was made to access a socket in a way forbidden ...<br />\n"
+"10061, No connection could be made because the target machine actively "
+"refused it.<br />\n"
+"</b>...<br />\n"
+"You will need to allow MiniLyrics.exe to access internet."
+msgstr ""
+"检查您是否安装了防火墙。如果您在防火墙之后，您可能会收到下面的消息：<br />\n"
+"<b>10057, A request to send or receive data was disallowed because ...<br /"
+">\n"
+"10013, An attempt was made to access a socket in a way forbidden ...<br />\n"
+"10061, No connection could be made because the target machine actively "
+"refused it.<br />\n"
+"</b>...<br />\n"
+"您需要允许 MiniLyrics.exe 访问 Internet。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:18
+msgid "Here's the detailed instructions for windows firewall settings."
+msgstr "下面是设置 Windows 防火墙的详细步骤."
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:19
+msgid "MiniLyrics can be located at:"
+msgstr "MiniLyrics 一般位于："
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-ineterror.php:20
+msgid ""
+"If you are using proxy, please make sure MiniLyrics' proxy setting is "
+"correct."
+msgstr "如果您使用代理，请确保 MiniLyrics 的代理服务器设置是正确的。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:9
+msgid ""
+"You could view embedded lyrics in iTunes, iPod, iPad and Windows Media "
+"Player."
+msgstr "您可以在 iTunes，iPod 和 Windows Media Player中查看歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:17
+msgid "How do I save embedded lyrics?"
+msgstr "如何保存嵌入的歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:19
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:31
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:41
+msgid "Please click context menu item"
+msgstr "请点击右键菜单"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:20
+msgid "Then click 'Lyrics' -&gt; 'Save Lyrics in Song File'."
+msgstr "然后单击‘歌词’-&gt;‘保存歌词到歌曲文件’。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:21
+msgid "In the popup dialog, choose the embedded lyrics format to save."
+msgstr "在弹出的窗口中，选择要保存的嵌入歌词格式。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:22
+msgid "Then click OK."
+msgstr "然后点击‘确定’。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:29
+msgid "How do I load embedded lyrics?"
+msgstr "如何加载嵌入歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:32
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:42
+msgid "Then click 'Search Lyrics'."
+msgstr "然后点击‘搜索歌词’。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:33
+msgid "Select Embedded lyrics for iPod, iTunes..."
+msgstr "选择支持 iPod，iTunes 的嵌入歌词……"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:34
+msgid "In the popup dialog, then click 'More &gt;&gt;'."
+msgstr "在弹出的窗口中，单击‘更多 &gt;&gt;’。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:34
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:45
+msgid ""
+"If there hasn't Embedded lyrics in list , no embedded lyrics is in the song "
+"file."
+msgstr "如果没有嵌入歌词中列表中，那么歌曲文件中就没有嵌入歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:39
+msgid "How do I remove embedded lyrics?"
+msgstr "如何删除嵌入歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:43
+msgid "In the popup dialog, choose the embedded lyrics."
+msgstr "在弹出的窗口中，选择要保存的嵌入歌词格式。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:44
+msgid "Then click 'More &gt;&gt;'."
+msgstr "然后点击‘更多 &gt;&gt;’。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-loadembeddedlyrics.php:45
+msgid "Then click 'Delete File' menu item to delete the lyrics."
+msgstr "然后点击‘删除文件’菜单来删除歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:8
+msgid "Why can some lyrics scroll, whereas others can't?"
+msgstr "为何有些歌词可以滚动，然而其他的却不能？"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:9
+msgid "If lyrics contain time-stamps, they can scroll, or they can not scroll."
+msgstr "如果歌词保护时间戳，他们就可以滚动，否则就不能滚动。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:11
+msgid "LRC lyrics format (.lrc files) contains time-stamps, it can scroll."
+msgstr "LRC 歌词格式(.lrc 文件)包含时间戳，它可以滚动。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:12
+msgid ""
+"Plain Text lyrics format (.txt files) doesn't contain time-stamps, it can "
+"NOT scroll."
+msgstr "纯文本歌词格式(.txt 文件)不包含时间戳，它不能滚动。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:17
+msgid "Why are some scrolling lyrics not synchronized with music?"
+msgstr "为何有些滚动歌词不能和歌曲同步？"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:19
+msgid ""
+"Use the 'up' or 'down' key to move the lyrics forward or backward 1/2 "
+"second, respectively."
+msgstr "使用键盘的‘上’或者‘下’键来使歌词分别前进或者后天 1/2 秒。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:20
+msgid "Try to download other lyrics."
+msgstr "试着下载其他歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:25
+msgid "Why does MiniLyrics give me the wrong lyrics?"
+msgstr "为何 MiniLyrics 给我错误的歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:27
+msgid ""
+"This is most probably caused by the wrong file name and wrong file tag of "
+"your music file. Make sure that the artist and title of your song file is "
+"correct, modify them in your player."
+msgstr ""
+"这可能是由于您的歌曲文件的文件名或者标签是错误的。确保您的歌曲文件的歌手和标"
+"题是正确的，您可以在播放器中修改。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyrics.php:28
+msgid ""
+"Try to search for the lyrics manually. Please click the '<b>Search Lyrics</"
+"b>' menu item in the context menu, and input the correct artist and title, "
+"then click 'Search' button."
+msgstr ""
+"试着手动搜索歌词，请中上下文菜单中点击‘<b>搜索歌词</b>’菜单，然后输入正确的作"
+"者和标题，点击‘搜索’按钮。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:8
+msgid "Save Lyrics in song files with MiniLyrics."
+msgstr "使用 MiniLyrics 保存歌词到歌曲文件中."
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:10
+msgid ""
+"On the context menu, point to <b>Lyrics</b>, and then click <b>Save Lyrics "
+"in song File</b>."
+msgstr "在右键菜单中，指到<b>歌词</b>，然后点击<b>保存歌词到歌曲文件中</b>。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:11
+msgid "Check Embedded lyrics for iTunes, iPod (ID3v2 unsynchronized lyrics)"
+msgstr "选择给 iTunes，iPod (ID3v2 异步歌词)的嵌入歌词"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:11
+msgid "and then click <b>OK</b>."
+msgstr "然后点击<b>确定</b>。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:17
+msgid "View Lyrics in iTunes."
+msgstr "在 iTunes 中查看歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:19
+msgid "Select the song file in iTunes."
+msgstr "中 iTunes 中选择歌曲文件。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:20
+msgid "Click the <b>File</b> menu, and then click <b>Get Info</b>."
+msgstr "点击<b>文件</b>菜单，然后点击<b>Get Info</b>。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:21
+msgid ""
+"Click <b>lyrics</b> tab in the popup dialog. The lyrics will be displayed in "
+"the dialog."
+msgstr "在弹出的窗口中点击<b>歌词</b>页面，歌词将会被显示在窗口中。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:26
+msgid "View Lyrics on iPod."
+msgstr "在 iPod 上查看歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:28
+msgid ""
+"A simple solution is to use Lyrics downloader for iPod to download lyrics."
+msgstr "一个简单的解决方案就是使用 iPod 歌词下载程序来下载歌词。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-lyricsinplayer.php:29
+msgid ""
+"After save lyrics in media files, plugin your iPod to sync your media "
+"library."
+msgstr "当在媒体文件中保存好歌词后，插入您的 iPod 同步您的媒体库。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:3
+msgid "There's no lyrics displaying, why?"
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:9
+msgid "MiniLyrics searches lyrics by the artist and title name of songs."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:9
+msgid "If no lyrics are displayed in MiniLyrics:"
+msgstr "如果在 MiniLyrics 中没有歌词显示："
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:11
+msgid ""
+"Please make sure that the artist and title name of your song are correct."
+msgstr "确保标题，作者和专辑名称都是正确的。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:12
+msgid "You can click 'Search Lyrics' button, and search lyrics manaully."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:13
+msgid ""
+"Sometimes, there are no lyrics on MiniLyrics server, and if you have them, "
+"you could upload these lyrics to MiniLyrics server and share with other "
+"users."
+msgstr ""
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-search-lyrics-suggestions.php:14
+msgid "If you got any error messagess, please contact us for helping."
+msgstr "如果您收到任何错误消息，请联系我们。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:9
+msgid ""
+"If you transfer MiniLyrics to another PC or reinstall your OS, you can "
+"backup those setting files and lyrics, after the installation, then restore "
+"them back."
+msgstr ""
+"如果您想把您的 MiniLyrics 转移到另外的电脑，或者重新安装系统，您可以备份这些"
+"文件和歌词，当安装文昌，您可以恢复他们。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:13
+msgid "MiniLyrics local settings folder"
+msgstr "MiniLyrics 本地设置文件夹"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:14
+msgid "MiniLyrics save all its settings in the folder below:"
+msgstr "MiniLyrics 会在下面的目录中保存它的设置："
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:16
+msgid "First Try to save in: C:\\Program files\\MiniLyrics"
+msgstr "首先会试着保存在：C:\\Program files\\MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:23
+msgid "MiniLyrics have following setting files:"
+msgstr "MiniLyrics 有下面的设置文件："
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:34
+msgid "Default lyrics folder"
+msgstr "缺省的歌词目录"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-setting-files.php:35
+msgid ""
+"MiniLyrics will save lyrics in the folder below (You can change it in "
+"MiniLyrics preferences window):"
+msgstr ""
+"MiniLyrics 会保存歌词到下面的目录（您可以在 MiniLyrics 的设置偏好中修改）："
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:9
+msgid ""
+"If you have made a .LRC or text lyrics file, and you want to share it with "
+"all the users of MiniLyrics, you can upload it to MiniLyrics lyrics server."
+msgstr ""
+"如果您创建了 .LRC 或者文本歌词文件，并且您想和其他的 MiniLyrics 用户分享，您"
+"可以上传到 MiniLyrics 的歌词服务器。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:10
+msgid "To upload lyrics, please follow the steps below:"
+msgstr "请参考下面的步骤上传歌词："
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:12
+msgid ""
+"Click 'Lyrics' &gt; 'Upload lyrics' &gt; 'Upload Lyrics' to open 'Upload "
+"Lyrics' window."
+msgstr "点击‘歌词’  &gt; 上传歌词 &gt; 上传来打开上传歌词窗口。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:13
+msgid "<b>Browse</b> the folder where your lyrics file are stored."
+msgstr "<b>浏览</b> 您保存歌词的目录。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:14
+msgid "Click onto the lyrics file you want to submit."
+msgstr "点击您要上传的歌词文件。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:15
+msgid "Make sure the title, artist and album name are correct."
+msgstr "确保标题，作者和专辑名称都是正确的。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-upload.php:16
+msgid "Click on <b>Upload </b>button."
+msgstr "点击<b>上传</b>按钮。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-wmp.php:3
+#: F:\Web\Crintsoft.com_PHP/mlfaq-wmp.php:8
+msgid ""
+"Show lyrics in Windows Media Player or Windows Media Center Visualization "
+"area?"
+msgstr ""
+"在 Windows Media Player 或者 Windows Media Center 视觉效果区域显示歌词？"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-wmp.php:10
+msgid ""
+"Click right mouse button on Windows Media Player, make sure 'MiniLyrics "
+"Plugin for WMP' menu item in is <b>NOT</b> checked as the screen shot below."
+msgstr ""
+"在 Windows Media Player 窗口上点击鼠标右键，如下图所示，确保‘MiniLyrics "
+"Plugin for WMP’菜单项<b>没有</b> 被选中。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-wmp.php:13
+msgid "Switch to Windows Media Player 'Now Playing' view as below."
+msgstr "如下图所示，切换到 Windows Media Player 'Now Playing' 模式."
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-wmp.php:16
+msgid ""
+"Then check MiniLyrics menu item in the context menu item of Windows Media "
+"Player Visualization area."
+msgstr ""
+"然后在 Windows Media Player 的视觉效果区域的右键菜单中选中 MiniLyrics 菜单。"
+
+#: F:\Web\Crintsoft.com_PHP/mlfaq-wmp.php:18
+msgid ""
+"Then you will see MiniLyrics embedded in Windows Media Player, see screen "
+"shot below."
+msgstr ""
+"如下图所示，然后您会看到 MiniLyrics 会被嵌入到 Windows Media Player中。"
+
+#: F:\Web\Crintsoft.com_PHP/MusicBee-lyrics.php:15
+#: F:\Web\Crintsoft.com_PHP/vlc-lyrics.php:15
+msgid "Setup MiniLyrics"
+msgstr "设置 MiniLyrics"
+
+#: F:\Web\Crintsoft.com_PHP/MusicBee-lyrics.php:17
+msgid ""
+"Open MusicBee preferences window: Click MusicBee menu: 'Edit' &gt; "
+"'Preferences'"
+msgstr "打开 MusicBee 偏好设置窗口：点击 MusicBee 菜单：‘编辑’ &gt; ‘偏好设置’"
+
+#: F:\Web\Crintsoft.com_PHP/MusicBee-lyrics.php:18
+msgid "Enable MiniLyrics plugin as below:"
+msgstr "如下所示，允许 MiniLyrics 插件："
+
+#: F:\Web\Crintsoft.com_PHP/players.php:38
+msgid "My favorite player isn't supported"
+msgstr "我喜欢的播放器未被支持"
+
+#: F:\Web\Crintsoft.com_PHP/players.php:39
+msgid ""
+"The table below listed the players that isn't supported. If the SDK of your "
+"favorite player can be found, and it's popular enough (Google search must "
+"return more than 500,000 results), "
+msgstr ""
+"下面的表格列出了不能被支持的播放器。如果您喜欢的播放器没有 SDK，或者还不够流"
+"行（Google 的搜索必须要返回至少 50万的结果），"
+
+#: F:\Web\Crintsoft.com_PHP/players.php:39
+msgid "please contact us"
+msgstr "请联系我们"
+
+#: F:\Web\Crintsoft.com_PHP/players.php:44
+msgid "Player Name"
+msgstr "播放器名字"
+
+#: F:\Web\Crintsoft.com_PHP/players.php:46
+msgid "The reason of unsupported"
+msgstr "不能被支持的原因"
+
+#: F:\Web\Crintsoft.com_PHP/players.php:51
+#: F:\Web\Crintsoft.com_PHP/players.php:55
+#: F:\Web\Crintsoft.com_PHP/players.php:63
+#: F:\Web\Crintsoft.com_PHP/players.php:67
+msgid "Can't get the SDK of the player"
+msgstr "不能找到播放器的 SDK"
+
+#: F:\Web\Crintsoft.com_PHP/players.php:59
+msgid "SDK doesn't provide enough information to make a MiniLyrics plugin."
+msgstr "播放器提供的信息不足，无法做 MiniLyrics 插件。"
+
+#: F:\Web\Crintsoft.com_PHP/send_mail.php:3
+msgid "Online feeback results"
+msgstr "在线反馈结果"
+
+#: F:\Web\Crintsoft.com_PHP/send_mail.php:42
+#: F:\Web\Crintsoft.com_PHP/send_mail.php:74
+msgid "Failed to send out message."
+msgstr "发送消息失败。"
+
+#: F:\Web\Crintsoft.com_PHP/send_mail.php:45
+msgid "Your feedback was sent out successuflly"
+msgstr "您的反馈已经成功发送"
+
+#: F:\Web\Crintsoft.com_PHP/send_mail.php:46
+msgid "We will contact you as soon as possible."
+msgstr "我们会尽快联系您。"
+
+#: F:\Web\Crintsoft.com_PHP/send_mail.php:75
+msgid "Please enter your name, email address and comments to continue."
+msgstr "请输入您的名字，电子邮件地址和您的意见。"
+
+#: F:\Web\Crintsoft.com_PHP/Spotify-lyrics.php:9
+msgid "MiniLyrics is a lyrics plugin for:"
+msgstr "MiniLyrics 是歌词插件："
+
+#: F:\Web\Crintsoft.com_PHP/Spotify-lyrics.php:23
+msgid ""
+"When you start Spotify, Zune, Album Player, Helium Music Manager, JetAudio,\n"
+"MiniLyrics won't run with it, you need to click Windows 'Start' menu button, "
+"then \n"
+"click 'All program files' &gt; 'MiniLyrics' &gt; 'MiniLyrics' to run "
+"MiniLyrics."
+msgstr ""
+"当您启动 Spotify, Zune, Album Player, Helium Music Manager, JetAudio,\n"
+"MiniLyrics 不会自动随之启动，您需要点击 Windows ‘开始’菜单按钮，然后点击‘所有"
+"的程序’ &gt; ‘MiniLyrics’ &gt; ‘MiniLyrics’来启动。"
+
+#: F:\Web\Crintsoft.com_PHP/vlc-lyrics.php:16
+msgid "You need to configure MiniLyrics in VLC Media Player Preferences."
+msgstr "您需要在 VLC Media Player 偏好设置中配置 MiniLyrics。"
+
+#: F:\Web\Crintsoft.com_PHP/vlc-lyrics.php:18
+msgid "Click VLC menu item: 'Tools' &gt; 'Preferences'."
+msgstr "点击 VLC 菜单：‘工具’ &gt; ‘参数设置’。"
+
+#: F:\Web\Crintsoft.com_PHP/vlc-lyrics.php:19
+msgid ""
+"In the popup window, show all settings, and open control interface, then "
+"check 'MiniLyrics-Auto display lyrics....'."
+msgstr ""
+"在弹出的窗口中，显示所有设置，并且打开 control interface，然后选"
+"中‘MiniLyrics-Auto display lyrics....’。"
+
+#: F:\Web\Crintsoft.com_PHP/vlc-lyrics.php:22
+msgid "Restart your VLC player, and MiniLyrics will auto start with VLC now."
+msgstr "重启您的 VLC 播放器，MiniLyrics会自动随 VLC 启动。"
+
+#: F:\Web\Crintsoft.com_PHP/Windows-Media-Player-lyrics.php:17
+msgid "MiniLyrics can be embedded in Windows Media Player window"
+msgstr "MiniLyrics 可以嵌入到 Windows Media Player 窗口中"
+
+#: F:\Web\Crintsoft.com_PHP/XMPlay-lyrics.php:16
+msgid "You need to configure MiniLyrics in XMPlay Options."
+msgstr "您需要在 XMPlay 选项中配置 MiniLyrics。"
+
+#: F:\Web\Crintsoft.com_PHP/XMPlay-lyrics.php:18
+msgid "Please click the context menu item 'Options and stuff' of XMPlay"
+msgstr "请在 XMPlay 中，点击上下文菜单‘Options and stuff’"
+
+#: F:\Web\Crintsoft.com_PHP/XMPlay-lyrics.php:19
+msgid "Then click 'DSP' item in the popup window"
+msgstr "然后在弹出的窗口中点击‘DSP’项"
+
+#: F:\Web\Crintsoft.com_PHP/XMPlay-lyrics.php:20
+msgid "Next add DSP plug-in 'MiniLyrics for XMPlay'."
+msgstr "接下来，添加 DSP 插件‘ MiniLyrics for XMPlay’。"
+
+#~ msgid "MiniLyrics Perpetual License for up to 3 PCs"
+#~ msgstr "MiniLyrics 3 台电脑终身授权"
+
+#~ msgid "premium_services"
+#~ msgstr "额外服务"
+
+#~ msgid "premium_services_desc"
+#~ msgstr "如果您购买了 MiniLyrics, 您可以获得下面的服务："
+
+#~ msgid "ps_1_day_response"
+#~ msgstr "一个工作日的客户服务回应"
+
+#~ msgid ""
+#~ "How do I show lyrics in Windows Media Player or Windows Media Center "
+#~ "Visualization area?"
+#~ msgstr ""
+#~ "如何在 Windows Media Player 或者 Windows Media Center 视觉区域显示歌词？"
+
+#~ msgid "MiniLyrics can save embedded lyrics in MP3 and M4A files."
+#~ msgstr "MiniLyrics 可以保存嵌入歌词到 MP3 和 M4A 文件中。"
+
+#~ msgid ""
+#~ "Click Start, click Run, type wscui.cpl in the Open box, and then click OK."
+#~ msgstr ""
+#~ "Click Start, click Run, type wscui.cpl in the Open box, and then click OK."
+
+#~ msgid "MiniLyrics now supports almost all popular players, including "
+#~ msgstr "MiniLyrics 现在支持几乎所有流行的播放器包括："
+
+#~ msgid "If you haven&#39;t received your registration code in 1 hour, "
+#~ msgstr "如果您在1小时内没有收到激活码，"
+
+#, fuzzy
+#~ msgid ""
+#~ "If you haven&#39;t received your activation code in 15 minutes, please "
+#~ "contact us with your email and name."
+#~ msgstr "如果您的 15 分钟内没有收到激活码，请联系我们。"
+
+#~ msgid "Welcome to My PHP Application"
+#~ msgstr "欢迎"
+
+#~ msgid "Have a nice day"
+#~ msgstr "欢迎2"

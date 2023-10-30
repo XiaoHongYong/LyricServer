@@ -1,8 +1,13 @@
 local utils = require "utils"
 local autoStaticUris = require "crintsoftStaticUris"
+local contactus = require "contactus"
 
 local staticPages = {
     ["/"] = 'minilyrics/default.html',
+}
+
+local urlHandlers = {
+    ["/contactus"] = contactus,
 }
 
 local _M = {}
@@ -12,12 +17,24 @@ local function starts_with(str, start)
 end
 
 _M.handleAll = function ()
+    local ctx = {
+        error = '',
+        languages = utils.languages,
+        language = utils.get_language(),
+    }
+    ngx.language = ctx.language
+
+    local handler = urlHandlers[ngx.var.uri]
+    if handler then
+        handler(ctx)
+        return
+    end
 
     local templateFn = staticPages[ngx.var.uri]
     if templateFn then
         utils.render_template(templateFn, ctx)
     else
-        ngx.say('404 not found: ' .. ngx.var.uri)
+        utils.render_template(ngx.var.uri, ctx)
     end
 end
 

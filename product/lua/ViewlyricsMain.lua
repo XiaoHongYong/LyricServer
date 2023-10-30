@@ -18,14 +18,6 @@ local function starts_with(str, start)
 end
 
 _M.handleAll = function ()
-    if ngx.var.uri == '/d' then
-        -- for debug testing
-        local language = utils.get_language()
-
-        ngx.say(language)
-        return
-    end
-
     local user_id = nil
     local sessionInfo = ngx.var.cookie_session
     if sessionInfo ~= nil then

@@ -32,6 +32,14 @@ local function read_file(path)
     return content, err
 end
 
+local function append_file(path, data)
+    local file, err = io.open(path, "a+")
+    if not file then return nil, err end
+    local err = file:write(data)
+    file:close()
+    return err
+end
+
 local function read_json_file(path)
     local content, err = read_file(path)
     if not content then return nil, err end
@@ -41,6 +49,16 @@ end
 
 _M.read_file = read_file
 _M.read_json_file = read_json_file
+_M.append_file = append_file
+
+local function get_fn(name)
+    local root = ngx.config.prefix()
+    if string.byte(root, -1) ~= string.byte('/') then
+        root = root .. '/'
+    end
+    return root .. name
+end
+_M.get_fn = get_fn
 
 local function get_template_fn(name)
     local root = (ngx.config.prefix()) .. ngx.var.template_root

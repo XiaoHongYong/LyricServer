@@ -70,6 +70,9 @@ Incorrect password.
 Email address hasn't been changed.
      =邮件地址未更改。
 
+Thanks, your message has been sent.
+     =谢谢，您的消息已经送达。
+
 Home
      =主页
 

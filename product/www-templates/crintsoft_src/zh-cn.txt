@@ -69,3 +69,276 @@ Incorrect password.
 
 Email address hasn't been changed.
      =邮件地址未更改。
+
+Thanks, your message has been sent.
+     =谢谢，您的消息已经送达。
+
+Contact us
+     =联系我们
+
+Reply to email
+     =回复到邮件
+
+Title
+     =标题
+
+Message
+     =消息
+
+Send
+     =发送
+
+Show lyrics in iTunes, Windows Media Player, Winamp, etc.
+     =迷你歌词在 iTunes, Windows Media Player, Winamp 等中显示歌词。
+
+Display lyrics for your favorite music! Free!
+     =为您喜欢的音乐显示歌词！免费！
+
+Lyrics plugin software for iTunes, Windows Media Player, Winamp, etc. You needn't change the way of enjoying music.
+     =支持 iTunes,  Windows Media Player, Winamp 等的歌词插件。您不需要改变你欣赏音乐的习惯。
+
+Display scrolling lyrics, you can follow along with the artist and catch every word.
+     =显示滚动歌词，您可以跟着歌手捕捉到每一个单词。
+
+Automatically search and download lyrics.
+     =自动搜索和下载歌词。
+
+Huge lyrics database, and it is expanding every day.
+     =巨大的歌词库，而且还在每天更新。
+
+Download and save lyrics in your song files, you can view these lyrics on your iPod or iPhone.
+     =下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone 上查看。
+
+Amazing translucency skins.
+     =惊人的半透明外观。
+
+Cross-platform, support Windows, Mac and Android.
+     =跨平台，支持 Windows, Mac OS X, Android.
+
+MiniLyrics supports
+     =MiniLyrics 支持
+
+What is MiniLyrics
+     =什么是 MiniLyrics
+
+Download
+     =下载
+
+Buy Now
+     =立即购买
+
+Help
+     =帮助
+
+Installation and Startup
+     =安装和启动
+
+Installation problem 'Error Opening file for writing'
+     =安装问题‘写文件失败’
+
+How do I uninstall MiniLyrics?
+     =如何卸载 MiniLyrics?
+
+How do I disable MiniLyrics to start with my Players?
+     =如何禁止 MiniLyrics 随我的播放器启动？
+
+How do I backup and restore MiniLyrics settings?
+     =如何备份和恢复 MiniLyrics 的设置？
+
+Internet connection
+     =Internet 连接
+
+How do I solve internet connection errors?
+     =如何解决 Internet 连接错误？
+
+How do I setup the windows firewall settings?
+     =如何设置 Windows 防火墙？
+
+No lyrics are displayed in MiniLyrics, why?
+     =在 MiniLyrics 中没有歌词显示，为什么？
+
+View lyrics on iPod and other devices
+     =在 iPod 和其他设备上查看歌词
+
+Lyrics Downloader for iPod
+     =iPod 歌词下载
+
+Save embedded lyrics in song files by default
+     =缺省将歌词保存为歌曲文件中的嵌入歌词
+
+View Lyrics in Windows Media Player, iTunes, or on iPod
+     =在 Windows Media Player，iTunes，或 iPod 上查看歌词
+
+What are ID3v2 synchronized lyrics, ID3v2 unsynchronized lyrics, Lyrics3v2 Lyrics and M4A lyrics?
+     =什么是 ID3v2 同步歌词，ID3v2 异步歌词，Lyrics3v2 歌词和 M4A 歌词？
+
+How do I save, load and remove embedded lyrics in song file?
+     =如何保存，加载和删除嵌入到歌曲文件中的歌词？
+
+Why the lyrics get cut off half way through the song when playing them on the Leadsinger Mic?
+     =为何在 Leadsinger Mic 中的歌词会被切断一半？
+
+How do I display lyrics on Logitech G15 keyboard LCD?
+     =如果在 Logitech G15 键盘的 LCD 上显示歌词？
+
+Scrolling Lyrics
+     =滚动歌词
+
+What is LRC lyrics format, scrolling lyrics?
+     =什么是 LRC 歌词格式，滚动歌词？
+
+How do I control the scrolling of text lyrics?
+     =如果控制文本歌词的滚动？
+
+Lyrics Editor and Upload Lyrics
+     =歌词编辑器和上传歌词
+
+How do I use the Lyrics Editor to create LRC lyrics?
+     =如何使用歌词编辑器创建 LRC 歌词？
+
+How do I upload lyrics and expand the lyrics database?
+     =如何上传和扩展歌词库？
+
+MiniLyrics supports almost all the popular players, including:
+     =MiniLyrics 支持几乎所有流行的播放器，包括：
+
+MiniLyrics supported players
+     =MiniLyrics 支持的播放器
+
+Supported Players
+     =支持的播放器
+
+Supported players
+     =支持的播放器
+
+Lyrics Editor will help you to create or edit the synchronized lyrics.
+     =‘歌词编辑器’会帮助您创建或者编辑同步歌词。
+
+Get plain text lyrics. You can search and download text lyrics with MiniLyrics or Google.
+     =下载纯文本歌词。您可以使用 MiniLyrics 或者 Google 搜索和下载文本歌词。
+
+Open the plain text lyrics file.
+     =打开文本歌词。
+
+Open '<b>Lyrics Editor</b>'. Please click the context menu item: '<b>Lyrics Editor</b>', and MiniLyrics will open the 'Lyrics Editor' window.
+     =打开 ‘<b>歌词编辑器</b>’。请点击右键菜单：‘<b>歌词编辑器</b>’，MiniLyrics 会打开‘歌词编辑器’窗口。
+
+Playing the song file.
+     =播放器歌曲文件。
+
+Click button: 
+     =点击按钮：
+
+Synchronize the current line and move down one line
+     =同步当前行歌词，并移动到下一行
+
+Repeat step 5 until all the lyrics lines are synchronized.
+     =重复步骤 5 直到所有歌词行都被同步。
+
+Save the lyrics file as '.lrc' file.
+     =保存歌词文件为‘.lrc’文件。
+
+Windows Media Player, foobar2000 is suggested to be used, when you create synchronized lyrics. If you use Winamp, please don't seek or jump music, or the timeline will become imprecise.
+     =建议您使用 Windows Media Player, foobar2000 来创建同步 LRC 歌词，如果您使用 Winamp，请不要快进或者后退音乐，否则时间线可能会不精确。
+
+Share lyrics with other people using MiniLyrics
+     =和 MiniLyrics 的用户分享歌词
+
+You can upload the lyrics to MiniLyrics server.
+     =您可以上传歌词到 MiniLyrics 服务器。
+
+Clicking menu item: 'File' -&gt; 'Upload Lyrics' -&gt; 'Upload Lyrics'.
+     =点击菜单：‘文件’ -&gt; ‘上传歌词’ -&gt; ‘上传歌词’。
+
+Then follow the instructions in the popup window.
+     =请参照弹出窗口中的指示操作。
+
+If you don't have account, please sign up free.
+     =如果您没有帐号，请免费注册。
+
+Please right mouse button on MiniLyrics window
+     =请在 MiniLyrics 窗口上单击鼠标右键
+
+Click menu item: 'Preferences...'
+     =点击菜单：&quot;参数设置...&quot;
+
+In the popup window, click 'System' &gt; 'Startup' tab, choose the player you want MiniLyrics to start with.
+     =在弹出的窗口中，点击&quot;系统&quot; &gt; &quot;启动&quot; 页面，选择您想要 MiniLyrics 随之启动的播放器。
+
+Download MiniLyrics free for windows
+     =下载 MiniLyrics windows 版
+
+MiniLyrics for Windows
+     =MiniLyrics Windows 版本
+
+MiniLyrics for windows XP, Windows 7, etc.
+     =MiniLyrics 支持 Windows XP，Windows 7，等。
+
+Download MiniLyrics for Windows
+     =下载 MiniLyrics windows 版
+
+See update history
+     =查看更新历史
+
+Installation instructions
+     =安装步骤
+
+MiniLyrics is the most easy-to-use lyrics plugin software. It's very easy to install and use.
+     =MiniLyrics 是 最简单易用的歌词插件，它非常容易安装和使用。
+
+Download MiniLyrics
+     =下载 MiniLyrics
+
+Install MiniLyrics
+     =安装 MiniLyrics
+
+Run your player and play your favorite tracks
+     =运行您的播放器，然后播放您喜欢的歌曲
+
+Lyrics will be showed up automatically
+     =歌词会自动显示出来
+
+If you are using Zune, Spotify, Album Player, Helium Music Manager, JetAudio, you need to start MiniLyrics manually. Please click Windows 'Start' button &gt;' 'All Programs' &gt;' 'MiniLyrics' &gt;' 'MiniLyrics'.
+     =当您使用 Spotify, Zune, Album Player, Helium Music Manager, JetAudio，您需要手动启动 MiniLyrics，请点击 Windows ‘开始’菜单按钮，然后点击‘所有的程序’ &gt; ‘MiniLyrics’ &gt; ‘MiniLyrics’来启动。
+
+Specific setting for VLC Media Player
+     =针对 VLC Media Player 的特殊设置
+
+Specific setting for XMPlay
+     =针对 XMPlay 的特殊设置
+
+If you got problems when you install or update MiniLyrics, please see Help.
+     =如果您在安装或者升级 MiniLyrics 时遇到问题，请查看帮助。
+
+MiniLyrics for Mac OS X
+     =MiniLyrics Mac OS X 版本
+
+MiniLyrics for Android
+     =MiniLyrics Android 版本
+
+Skins
+     =外观
+
+Language packs & Localization
+     =语言包和本地化
+
+Download MiniLyrics free for Mac OS X
+     =下载 MiniLyrics Mac OS X 版
+
+Download MiniLyrics for Mac OS X
+     =下载 MiniLyrics Mac OS X 版
+
+MiniLyrics is a lyrics plugin for iTunes.
+     =MiniLyrics 是 iTunes 的插件。
+
+Install MiniLyrics.pkg
+     =安装 MiniLyrics.pkg
+
+Run MiniLyrics from Application folder.
+     =从应用程序文件夹启动 MiniLyrics。
+
+You will be asked to install MiniLyrics plugin for iTunes, click YES.
+     =你会被询问安装 MiniLyrics 的 iTunes 插件，点击“是”.
+
+Start iTunes, and play a few tracks, MiniLyrics will display lyrics.
+     =启动 iTunes，并且播放一些歌曲，MiniLyrics 会自动显示歌词。

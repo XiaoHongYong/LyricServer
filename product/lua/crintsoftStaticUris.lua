@@ -4,7 +4,6 @@ local staticPages = {
     
     ["/wifikeyboard"] = "wifikeyboard.html",
     ["/wifi-keyboard_header"] = "wifi-keyboard_header.html",
-    ["/contactus"] = "contactus.html",
     ["/minilyrics/default"] = "minilyrics/default.html",
     ["/minilyrics/"] = "minilyrics/default.html",
     ["/minilyrics/buy_lifetime"] = "minilyrics/buy_lifetime.html",
