@@ -111,6 +111,8 @@ port=8000
 
 ## Ubuntu 下编译
 
+sudo mount -t vboxsf -o uid=1000,gid=1000 Mp3Player /home/xhy/Mp3Player
+
 ```
 sudo apt install cmake
 ./build.sh release

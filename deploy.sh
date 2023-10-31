@@ -139,6 +139,6 @@ cd -
 
 echo "配置成功，需要手动在 /etc/openresty/nginx.conf 中包含 mlserver.conf"
 echo "sudo vi /etc/openresty/nginx.conf"
-echo "inchulde /mlserver/conf/mlserver.conf;"
+echo "include /mlserver/conf/mlserver.conf;"
 
 openresty -s reload

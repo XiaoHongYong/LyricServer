@@ -89,7 +89,7 @@ echo "/mlserver/lyrics.bin /mlserver/lyrics ext4 defaults 0 1" >> /etc/fstab
 * https 支持
     * https://certbot.eff.org/lets-encrypt/ubuntubionic-other
       * sudo certbot certonly --webroot
-        * 配置域名 viewlyrics.com,www.viewlyrics.com,crintsoft.com,www.crintsoft.com,minilyrics.com,www.minilyrics.com
+        * 配置域名 viewlyrics.com,www.viewlyrics.com,en.viewlyrics.com,zh-cn.viewlyrics.com,crintsoft.com,www.crintsoft.com,en.crintsoft.com,zh-cn.crintsoft.com,minilyrics.com,www.minilyrics.com,en.minilyrics.com,zh-cn.minilyrics.com
         * 配置保存路径: /mlserver/www-static
     * Add crontab:
         sudo crontab -e

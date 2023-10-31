@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C08AA9452AF0E5F500F5DE2D /* LyrTimestamps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C08AA9442AF0E5F500F5DE2D /* LyrTimestamps.cpp */; };
 		C0A27D142ACE2EC600D248A4 /* LyricsServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27CFE2ACE2EC600D248A4 /* LyricsServer.cpp */; };
 		C0A27D152ACE2EC600D248A4 /* SpamLyricsFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D012ACE2EC600D248A4 /* SpamLyricsFilter.cpp */; };
 		C0A27D162ACE2EC600D248A4 /* UserDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A27D052ACE2EC600D248A4 /* UserDB.cpp */; };
@@ -109,6 +110,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C08AA9432AF0E5F500F5DE2D /* LyrTimestamps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LyrTimestamps.h; path = ../../MediaTags/LyrTimestamps.h; sourceTree = "<group>"; };
+		C08AA9442AF0E5F500F5DE2D /* LyrTimestamps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LyrTimestamps.cpp; path = ../../MediaTags/LyrTimestamps.cpp; sourceTree = "<group>"; };
 		C0A27CF12ACE2E3B00D248A4 /* LyricsServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LyricsServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A27CFE2ACE2EC600D248A4 /* LyricsServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LyricsServer.cpp; sourceTree = "<group>"; };
 		C0A27D012ACE2EC600D248A4 /* SpamLyricsFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpamLyricsFilter.cpp; sourceTree = "<group>"; };
@@ -513,6 +516,8 @@
 		C0A27D8B2ACE2F4300D248A4 /* media-tags */ = {
 			isa = PBXGroup;
 			children = (
+				C08AA9442AF0E5F500F5DE2D /* LyrTimestamps.cpp */,
+				C08AA9432AF0E5F500F5DE2D /* LyrTimestamps.h */,
 				C0A27DF42ACE514300D248A4 /* LrcParser.cpp */,
 				C0A27DF32ACE514300D248A4 /* LrcParser.h */,
 				C0A27DF52ACE514300D248A4 /* LrcParserHelper.h */,
@@ -902,6 +907,7 @@
 				C0A27E722AD7ACC700D248A4 /* gtest-all.cc in Sources */,
 				C0A27E4F2AD6440800D248A4 /* aes.c in Sources */,
 				C0A27D142ACE2EC600D248A4 /* LyricsServer.cpp in Sources */,
+				C08AA9452AF0E5F500F5DE2D /* LyrTimestamps.cpp in Sources */,
 				C0A27E8E2AD7B2D700D248A4 /* HttpResponse.cpp in Sources */,
 				C0A27D7B2ACE2F1D00D248A4 /* IdString.cpp in Sources */,
 			);

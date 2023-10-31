@@ -61,7 +61,10 @@ end
 _M.get_fn = get_fn
 
 local function get_template_fn(name)
-    local root = (ngx.config.prefix()) .. ngx.var.template_root
+    local root = ngx.var.template_root
+    if string.byte(root, 1) ~= string.byte('/') then
+        root = (ngx.config.prefix()) .. ngx.var.template_root
+    end
     if string.byte(root, -1) ~= string.byte('/') then
         root = root .. '/'
     end
