@@ -73,6 +73,9 @@ Email address hasn't been changed.
 Thanks, your message has been sent.
      =谢谢，您的消息已经送达。
 
+Contact Us
+     =联系我们
+
 Contact us
      =联系我们
 
