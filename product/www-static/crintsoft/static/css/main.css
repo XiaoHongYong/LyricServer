@@ -28,6 +28,16 @@ h3 {
 
 ul {list-style-type:none}
 
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+#content {
+	flex: 1;
+}
+
 #content ul {
 	padding: 0px 10px 10px 10px;
 }

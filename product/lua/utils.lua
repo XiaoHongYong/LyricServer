@@ -1,4 +1,4 @@
-local template = require "resty.template"
+local template = require "template"
 local cjson = require 'cjson';
 
 local _M = {}
