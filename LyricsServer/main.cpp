@@ -133,11 +133,11 @@ int main(int argc, char *argv[]) {
     google::SetLogDestination(google::ERROR, "");
     google::EnableLogCleaner(30);
     google::InstallFailureSignalHandler();
-    google::InstallFailureWriter([](const char* data, int size) {
+    google::InstallFailureWriter([](const char* data, size_t size) {
         LOG(INFO).write(data, size);
     });
 
-    fLI::FLAGS_max_log_size = 10;
+    fLU::FLAGS_max_log_size = 10;
     fLI::FLAGS_logbuflevel = -1; // 不要内存缓存，直接输出到日志文件
 
 #ifdef _MAC_OS

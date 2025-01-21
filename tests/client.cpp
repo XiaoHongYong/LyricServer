@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
     google::SetLogDestination(google::ERROR, "");
     google::EnableLogCleaner(30);
     google::InstallFailureSignalHandler();
-    google::InstallFailureWriter([](const char* data, int size) {
+    google::InstallFailureWriter([](const char* data, size_t size) {
         LOG(INFO).write(data, size);
     });
 

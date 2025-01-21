@@ -14,8 +14,8 @@
 #include "apis/DataSyncHandler.hpp"
 
 
-CProfile g_profile;
-CLog g_log;
+// CProfile g_profile;
+// CLog g_log;
 
 const int SAME_LYR_EXISTS_MAX = 8;
 
@@ -161,7 +161,7 @@ int LyricsServer::init() {
     dirStringAddSep(g_conf.lyricsDir);
     dirStringAddSep(g_conf.uploadDirName);
 
-    CLyricsKeywordFilter::init();
+    CLyricsKeywordFilter::init(dirStringJoin(g_conf.rootDir, "data/LyrKeywordFilter.xml").c_str());
 
     int ret = _dbLyrics.init(g_conf.rootDir);
     if (ret != ERR_OK) {

@@ -30,7 +30,7 @@ VecStrings listDir(const string &path) {
 }
 
 int LyricsTool::start() {
-    CLyricsKeywordFilter::init();
+    CLyricsKeywordFilter::init(dirStringJoin(g_conf.rootDir, "data/LyrKeywordFilter.xml").c_str());
 
     int ret = _dbLyrics.init(g_conf.rootDir);
     if (ret != ERR_OK) {
