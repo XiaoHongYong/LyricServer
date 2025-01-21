@@ -114,7 +114,8 @@ port=8000
 sudo mount -t vboxsf -o uid=1000,gid=1000 Mp3Player /home/xhy/Mp3Player
 
 ```
-sudo apt install cmake
+sudo apt install cmake -y
+sudo apt install build-essential -y
 ./build.sh release
 ```
 

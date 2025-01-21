@@ -26,14 +26,26 @@ echo "/mlserver/lyrics.bin /mlserver/lyrics ext4 defaults 0 1" >> /etc/fstab
 
 ### 第一次部署
 
+* 编译环境 
+* sudo apt install cmake -y
+* sudo apt install build-essential -y
+
 * 代码放在 /home/ubuntu/Mp3Player 目录下
   * 取最新代码，使用 build.sh release 编译
+    * cd /home/ubuntu
+    * git clone git@gitee.com:xiaohongyong/Mp3Player.git
+    * cd /home/ubuntu/Mp3Player
+    * git clone git@gitee.com:xiaohongyong/LyrServer.git ServerNgx
+    * git clone git@gitee.com:xiaohongyong/mp3player-third-parties.git third-parties
+    * git clone git@gitee.com:xiaohongyong/TinyJs.git TinyJS
+    * ServerNgx/build.sh release
 * Install openresty
     * https://openresty.org/en/linux-packages.html
     * 安装插件
       * sudo opm get bungle/lua-resty-template
       * sudo opm get GUI/lua-resty-mail
       * opm get ledgetech/lua-resty-http
+* 将 database 目录复制到 server: /mlserver/database
 * 运行
   * deploy.sh
 
@@ -42,7 +54,7 @@ echo "/mlserver/lyrics.bin /mlserver/lyrics ext4 defaults 0 1" >> /etc/fstab
         * 在 root 下添加
           pid        /usr/local/openresty/nginx/logs/nginx.pid;
         * 在 http 下添加
-          include /mlserver/mlserver.conf;
+          include /mlserver/conf/mlserver.conf;
         * Optimize for performance: https://gist.github.com/denji/8359866
             worker_processes auto;
             worker_rlimit_nofile 100000;
@@ -86,10 +98,15 @@ echo "/mlserver/lyrics.bin /mlserver/lyrics ext4 defaults 0 1" >> /etc/fstab
                 keepalive_timeout 10;
             }
 
+      #第一次部署时不include /mlserver/conf/mlserver.conf，在 root server 下添加，并创建目录 /mlserver/www-static/.well-known
+      location /.well-known {
+          alias /mlserver/www-static/.well-known;
+      }
+
 * https 支持
-    * https://certbot.eff.org/lets-encrypt/ubuntubionic-other
+    * https://certbot.eff.org/instructions?ws=nginx&os=pip&commit=%3E
       * sudo certbot certonly --webroot
-        * 配置域名 viewlyrics.com,www.viewlyrics.com,en.viewlyrics.com,zh-cn.viewlyrics.com,crintsoft.com,www.crintsoft.com,en.crintsoft.com,zh-cn.crintsoft.com,minilyrics.com,www.minilyrics.com,en.minilyrics.com,zh-cn.minilyrics.com
+        * 配置域名 viewlyrics.com,www.viewlyrics.com,en.viewlyrics.com,zh-cn.viewlyrics.com,crintsoft.com,www.crintsoft.com,en.crintsoft.com,zh-cn.crintsoft.com,v.crintsoft.com,minilyrics.com,www.minilyrics.com,en.minilyrics.com,zh-cn.minilyrics.com
         * 配置保存路径: /mlserver/www-static
     * Add crontab:
         sudo crontab -e

@@ -67,7 +67,7 @@ if ! test -d .git ; then
 fi
 
 # 创建数据库文件
-mkdir -p database logs logs/lyrics-server lyrics lyrics/lu8 temp data-sync-log
+mkdir -p database logs logs/lyrics-server lyrics/lu8 temp data-sync-log
 
 if ! test -f database/lyrics.db ; then
     echo "Create databases..."
