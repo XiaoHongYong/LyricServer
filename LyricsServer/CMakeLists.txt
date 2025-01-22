@@ -19,7 +19,9 @@ elseif (LINUX)
     add_definitions(-D_LINUX)
 endif (APPLE)
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
+endif()
 
 PROJECT(lyrics-server)
 

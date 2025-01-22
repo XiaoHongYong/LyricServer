@@ -88,6 +88,10 @@ string setLyricsId(const StringView &data, const string &lyricsId, bool isLrcTag
         if (isLrcTag) {
             int end1 = data.strchr(']', pos);
             int end2 = data.strchr('\n', pos + 1);
+            if (end2 == -1) {
+                // id 在最后一行
+                end2 = (int)data.len;
+            }
             if (end1 != -1 && end1 < end2) {
                 // 结束的 ']' 必须在此行内
                 pos += LRC_ID.len;
@@ -95,12 +99,15 @@ string setLyricsId(const StringView &data, const string &lyricsId, bool isLrcTag
             }
         } else {
             end = data.strchr('\n', pos);
-            if (end != -1) {
-                pos += LRC_ID.len;
+            if (end == -1) {
+                // id 在最后一行
+                end = (int)data.len;
             }
+            pos += LRC_ID.len;
         }
 
-        if (end != -1) {
+        const int MAX_ID_LENGTH = 15;
+        if (end != -1 && end - pos < MAX_ID_LENGTH) {
             string lyrics;
 
             lyrics.append(data.data, pos);

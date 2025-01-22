@@ -18,9 +18,34 @@ function clean() {
     rm -rf build
 }
 
+function create_lyrics_server_ini() {
+    # lyrics-server
+    # master port: 8101
+    if ! test -f $build_dir/lyrics-server.ini ; then
+        # lyrics-server.ini
+        echo "Creating $build_dir/lyrics-server.ini ..."
+
+        SYNC_KEYS=$(python3 -c "import random, string;print(''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32)))")
+        exit_if_err "Failed to generate SYNC-KEY."
+
+        echo "[main]
+root-dir=${CUR_DIR}/product
+upload-dir-name=lu8
+http-lyrics-url-base=http://search.crintsoft.com/l/
+port=8101
+sync-duration=60
+sync-master-url=http://search.crintsoft.com/api-i/data-sync
+aes-key=${SYNC_KEYS}
+master=${is_master}" > $build_dir/lyrics-server.ini
+        exit_if_err "Failed to create lyrics-server.ini."
+        echo "OK"
+    fi
+}
+
 target=release
 is_clean=false
 ut=OFF
+is_master=1
 
 while (($# > 0)); do
     case "$1" in
@@ -52,7 +77,7 @@ if [ "$is_clean" == "true" ]; then
     clean
 fi
 
-build_dir="build/$target"
+build_dir="${CUR_DIR}/build/$target"
 
 mkdir -p $build_dir
 cd $build_dir
@@ -61,3 +86,5 @@ exit_if_err "Failed to generate cmake file of LyricsServer."
 
 make -j `grep -c processor /proc/cpuinfo`
 exit_if_err "Failed to make LyricsServer."
+
+create_lyrics_server_ini

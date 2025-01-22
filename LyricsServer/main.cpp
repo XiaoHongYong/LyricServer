@@ -137,6 +137,7 @@ int main(int argc, char *argv[]) {
         LOG(INFO).write(data, size);
     });
 
+    fLI::FLAGS_minloglevel = google::INFO;
     fLU::FLAGS_max_log_size = 10;
     fLI::FLAGS_logbuflevel = -1; // 不要内存缓存，直接输出到日志文件
 
