@@ -105,7 +105,9 @@ _M.get_language = function ()
         language = get_accept_language()
     end
 
-    language = string.lower(language)
+    if language ~= nil then
+        language = string.lower(language)
+    end
 
     if language == nil or _M.languages[language] == nil then
         language = 'en'

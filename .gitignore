@@ -34,3 +34,4 @@ product/lyrics
 *.db-journal
 test_env
 product/tool-status.txt
+product/lua/conf.lua
