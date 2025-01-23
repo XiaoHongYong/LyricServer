@@ -114,6 +114,9 @@ _M.server = '127.0.0.1'
 _M.port = 8101
 _M.ut_enabled = false
 
+_M.smtp_username = ""
+_M.smtp_password = ""
+
 return _M" >> lua/conf.lua
     exit_if_err "Failed to config lua database-api config."
     echo "OK"

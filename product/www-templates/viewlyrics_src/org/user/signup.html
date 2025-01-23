@@ -61,11 +61,11 @@ var profileApp = new Vue({
 	delimiters: ['[[', ']]'],
   	el: '#signup',
   	data: {
-        username: '{{ username }}',
-        email: '{{ email }}',
-        password: '{{ password }}',
-        password_confirm: '{{ password }}',
-        error: '{{ error }}',
+        username: decodeHtml('{{ username }}'),
+        email: decodeHtml('{{ email }}'),
+        password: decodeHtml('{{ password }}'),
+        password_confirm: decodeHtml('{{ password }}'),
+        error: decodeHtml('{{ error }}'),
     },
 	methods: {
         signupCheck: function (event) {

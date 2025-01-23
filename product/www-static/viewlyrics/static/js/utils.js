@@ -183,3 +183,9 @@ function createPaginationNumbers(pageCount, curPage) {
 
     return pages;
 }
+
+function decodeHtml(html) {
+    const textArea = document.createElement('textarea');
+    textArea.innerHTML = html;
+    return textArea.value;
+}

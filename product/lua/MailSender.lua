@@ -1,4 +1,5 @@
 local mail = require "resty.mail"
+local conf = require 'conf'
 
 local _M = {}
 function _M.sendMail(toAddress, fromAddress, subject, text)
@@ -6,8 +7,8 @@ function _M.sendMail(toAddress, fromAddress, subject, text)
         host = "email-smtp.us-west-2.amazonaws.com",
         port = 587,
         starttls = true,
-        username = "AKIA3Y6DGYOKWJTDRU4N",
-        password = "BOJk/LrlVyZXT667gjWpHYgseKmKpfKq9/3+qVqI7LsK",
+        username = conf.smtp_username,
+        password = conf.smtp_password,
     })
 
     if err then

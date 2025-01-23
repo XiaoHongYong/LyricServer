@@ -122,3 +122,4 @@ echo "/mlserver/lyrics.bin /mlserver/lyrics ext4 defaults 0 1" >> /etc/fstab
     * ./build.sh release && sudo ./deploy.sh release
     * sudo openresty -s reload
     * systemctl start lyrics-server
+    * /home/ubuntu/Mp3Player/ServerNgx/build.sh release && sudo /home/ubuntu/Mp3Player/ServerNgx/deploy.sh release
