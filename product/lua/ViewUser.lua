@@ -85,7 +85,7 @@ end
 _M['/user/signup.aspx'] = _M['/user/signup']
 
 local function sendPasswordResetEmail(ctx, email, user_id)
-    mailSender = require "MailSender"
+    local mailSender = require "MailSender"
 
     local resetKey = session.encryptResetPasswordSession(user_id)
 

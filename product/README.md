@@ -48,6 +48,10 @@ echo "/mlserver/lyrics.bin /mlserver/lyrics ext4 defaults 0 1" >> /etc/fstab
 * 将 database 目录复制到 server: /mlserver/database
 * 运行
   * deploy.sh
+  * 配置 /mlserver/lua/conf.lua 中
+  * 生成密码 https://us-west-2.console.aws.amazon.com/ses/home#/smtp
+    _M.smtp_username = "",
+    _M.smtp_password = "",
 
 * 配置 openresty/nginx 
     * sudo vi /usr/local/openresty/nginx/conf/nginx.conf
