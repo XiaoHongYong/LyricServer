@@ -73,6 +73,9 @@ Email address hasn't been changed.
 Thanks, your message has been sent.
      =--TODO--
 
+MusicPlayer
+     =--TODO--
+
 Contact Us
      =--TODO--
 
@@ -91,13 +94,10 @@ Message
 Send
      =--TODO--
 
-Show lyrics in iTunes, Windows Media Player, Winamp, etc.
+Lite Music Player for Windows, Mac OS.
      =--TODO--
 
-Display lyrics for your favorite music! Free!
-     =--TODO--
-
-Lyrics plugin software for iTunes, Windows Media Player, Winamp, etc. You needn't change the way of enjoying music.
+Enjoy Music along with lyrics! Free! Open Source!
      =--TODO--
 
 Display scrolling lyrics, you can follow along with the artist and catch every word.
@@ -109,10 +109,37 @@ Automatically search and download lyrics.
 Huge lyrics database, and it is expanding every day.
      =--TODO--
 
-Download and save lyrics in your song files, you can view these lyrics on your iPod or iPhone.
+Amazing translucency skins.
      =--TODO--
 
-Amazing translucency skins.
+Cross-platform, support Windows, Mac.
+     =--TODO--
+
+MusicPlayer for Windows, Mac OS
+     =--TODO--
+
+Download MusicPlayer for Windows
+     =--TODO--
+
+Download MusicPlayer for Mac OS
+     =--TODO--
+
+Download
+     =--TODO--
+
+Help
+     =--TODO--
+
+Show lyrics in iTunes, Windows Media Player, Winamp, etc.
+     =--TODO--
+
+Display lyrics for your favorite music! Free!
+     =--TODO--
+
+Lyrics plugin software for iTunes, Windows Media Player, Winamp, etc. You needn't change the way of enjoying music.
+     =--TODO--
+
+Download and save lyrics in your song files, you can view these lyrics on your iPod or iPhone.
      =--TODO--
 
 Cross-platform, support Windows, Mac and Android.
@@ -124,13 +151,7 @@ MiniLyrics supports
 What is MiniLyrics
      =--TODO--
 
-Download
-     =--TODO--
-
 Buy Now
-     =--TODO--
-
-Help
      =--TODO--
 
 Installation and Startup

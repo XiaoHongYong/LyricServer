@@ -3,7 +3,7 @@ local autoStaticUris = require "crintsoftStaticUris"
 local contactus = require "contactus"
 
 local staticPages = {
-    ["/"] = 'minilyrics/default.html',
+    ["/"] = 'music-player/default.html',
 }
 
 local urlHandlers = {

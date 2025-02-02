@@ -1,0 +1,42 @@
+{% layout = "basect.html" %}
+
+{-navigation-}
+
+<nav id="nav_music-player" class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li v-for="item in nav_items" v-bind:class="activeClass(item)">
+                    <a v-bind:href="item.link">[[ item.title ]]</a>
+                </li>
+            </ul>
+        </div>
+	</div>
+</nav>
+
+<script>
+
+var navigationApp = new Vue({
+	delimiters: ['[[', ']]'],
+  	el: '#nav_music-player',
+  	data: {
+	  	nav_items: [
+	      	{ link: '/music-player/', title: '音乐播放器' },
+            // { link: '/music-player/download/', title: '下载' },
+            // { link: '/music-player/faq/', title: '帮助' },
+        ],
+    },
+    methods: {
+        activeClass: function (item) {
+            if (location.pathname == item.link || 
+            location.pathname.startsWith(item.link) && item.link != '/music-player/') {
+                return 'active'
+            }
+            return ''
+        },
+    },
+});
+
+</script>
+{-navigation-}

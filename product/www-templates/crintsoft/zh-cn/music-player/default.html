@@ -1,0 +1,79 @@
+{% layout = "music-player/base.html" %}
+
+{-title-}MusicPlayer - Windows, Mac OS 下的轻量级音乐播放器{-title-}
+
+{-script-}
+<script type="text/javascript" src="/static/js/fade.js"></script>
+<link href="/static/css/fade_o.css" type="text/css" rel="stylesheet" />
+{-script-}
+
+{-content-}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>享受边听音乐边看歌词！免费！开源！</h3>
+        <ul>
+            <li><a href="https://github.com/XiaoHongYong/MusicPlayer">Source Code on github</a></li>
+            <li><a href="https://gitee.com/xiaohongyong/MusicPlayer">Source Code on gitee</a></li>
+            <li>显示滚动歌词，您可以跟着歌手捕捉到每一个单词。</li>
+            <li>自动搜索和下载歌词。</li>
+            <li>巨大的歌词库，而且还在每天更新。</li>
+            <li>惊人的半透明外观。</li>
+            <li>跨平台，支持 Windows, Mac OS</li>
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        <div id="imageContainer">
+            <img src="/static/img/music-player-screenshot1.jpg" width="600" height="331" alt="MusicPlayer screenshot"/> 
+            <img src="/static/img/music-player-screenshot2.jpg" width="600" height="375" alt="MusicPlayer screenshot" style="display:none;"/>
+            <img src="/static/img/music-player-screenshot3.jpg" width="600" height="365" alt="MusicPlayer screenshot" style="display:none;"/> 
+        </div>
+    </div>
+</div>
+
+<div class="row indent">
+    <div class="col">
+        <h3>Windows, Mac OS 下的音乐播放器</h3>
+        <div class="indent">
+            <p>
+                <a id="download_windows" href="/download/MusicPlayer.exe" class="btn btn-md" role="button">下载 Windows 版本的音乐播放器</a>
+            </p>
+            <p>
+                <a id="download_mac" href="/download/MusicPlayer.dmg" class="btn btn-md" role="button">下载 Mac OS 版本的音乐播放器</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+function getOSName() {
+  const userAgent = navigator.userAgent;
+
+  if (userAgent.indexOf("Win") !== -1) {
+    return "windows";
+  } else if (userAgent.indexOf("Mac") !== -1) {
+    return "mac";
+  } else if (userAgent.indexOf("X11") !== -1 || userAgent.indexOf("Linux") !== -1) {
+    return "linux";
+  } else if (userAgent.indexOf("Android") !== -1) {
+    return "android";
+  } else if (userAgent.indexOf("iOS") !== -1) {
+    return "iOS";
+  } else {
+    return "Unknown";
+  }
+}
+
+function setActiveDownloadButton() {
+    var name = getOSName();
+    var e = document.getElementById('download_' + name);
+    if (e) {
+        e.setAttribute('class', e.getAttribute('class') + ' btn-primary');
+    }
+}
+
+setActiveDownloadButton();
+
+</script>
+
+{-content-}

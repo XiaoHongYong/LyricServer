@@ -1,0 +1,79 @@
+{% layout = "music-player/base.html" %}
+
+{-title-}MusicPlayer - _TLM(Lite Music Player for Windows, Mac OS.){-title-}
+
+{-script-}
+<script type="text/javascript" src="/static/js/fade.js"></script>
+<link href="/static/css/fade_o.css" type="text/css" rel="stylesheet" />
+{-script-}
+
+{-content-}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>_TLM(Enjoy Music along with lyrics! Free! Open Source!)</h3>
+        <ul>
+            <li><a href="https://github.com/XiaoHongYong/MusicPlayer">Source Code on github</a></li>
+            <li><a href="https://gitee.com/xiaohongyong/MusicPlayer">Source Code on gitee</a></li>
+            <li>_TLM(Display scrolling lyrics, you can follow along with the artist and catch every word.)</li>
+            <li>_TLM(Automatically search and download lyrics.)</li>
+            <li>_TLM(Huge lyrics database, and it is expanding every day.)</li>
+            <li>_TLM(Amazing translucency skins.)</li>
+            <li>_TLM(Cross-platform, support Windows, Mac.)</li>
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        <div id="imageContainer">
+            <img src="/static/img/music-player-screenshot1.jpg" width="600" height="331" alt="MusicPlayer screenshot"/> 
+            <img src="/static/img/music-player-screenshot2.jpg" width="600" height="375" alt="MusicPlayer screenshot" style="display:none;"/>
+            <img src="/static/img/music-player-screenshot3.jpg" width="600" height="365" alt="MusicPlayer screenshot" style="display:none;"/> 
+        </div>
+    </div>
+</div>
+
+<div class="row indent">
+    <div class="col">
+        <h3>_TLM(MusicPlayer for Windows, Mac OS)</h3>
+        <div class="indent">
+            <p>
+                <a id="download_windows" href="/download/MusicPlayer.exe" class="btn btn-md" role="button">_TLM(Download MusicPlayer for Windows)</a>
+            </p>
+            <p>
+                <a id="download_mac" href="/download/MusicPlayer.dmg" class="btn btn-md" role="button">_TLM(Download MusicPlayer for Mac OS)</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+function getOSName() {
+  const userAgent = navigator.userAgent;
+
+  if (userAgent.indexOf("Win") !== -1) {
+    return "windows";
+  } else if (userAgent.indexOf("Mac") !== -1) {
+    return "mac";
+  } else if (userAgent.indexOf("X11") !== -1 || userAgent.indexOf("Linux") !== -1) {
+    return "linux";
+  } else if (userAgent.indexOf("Android") !== -1) {
+    return "android";
+  } else if (userAgent.indexOf("iOS") !== -1) {
+    return "iOS";
+  } else {
+    return "Unknown";
+  }
+}
+
+function setActiveDownloadButton() {
+    var name = getOSName();
+    var e = document.getElementById('download_' + name);
+    if (e) {
+        e.setAttribute('class', e.getAttribute('class') + ' btn-primary');
+    }
+}
+
+setActiveDownloadButton();
+
+</script>
+
+{-content-}

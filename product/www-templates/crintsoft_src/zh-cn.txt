@@ -73,6 +73,9 @@ Email address hasn't been changed.
 Thanks, your message has been sent.
      =谢谢，您的消息已经送达。
 
+MusicPlayer
+     =音乐播放器
+
 Contact Us
      =联系我们
 
@@ -91,14 +94,11 @@ Message
 Send
      =发送
 
-Show lyrics in iTunes, Windows Media Player, Winamp, etc.
-     =迷你歌词在 iTunes, Windows Media Player, Winamp 等中显示歌词。
+Lite Music Player for Windows, Mac OS.
+     =Windows, Mac OS 下的轻量级音乐播放器
 
-Display lyrics for your favorite music! Free!
-     =为您喜欢的音乐显示歌词！免费！
-
-Lyrics plugin software for iTunes, Windows Media Player, Winamp, etc. You needn't change the way of enjoying music.
-     =支持 iTunes,  Windows Media Player, Winamp 等的歌词插件。您不需要改变你欣赏音乐的习惯。
+Enjoy Music along with lyrics! Free! Open Source!
+     =享受边听音乐边看歌词！免费！开源！
 
 Display scrolling lyrics, you can follow along with the artist and catch every word.
      =显示滚动歌词，您可以跟着歌手捕捉到每一个单词。
@@ -109,11 +109,38 @@ Automatically search and download lyrics.
 Huge lyrics database, and it is expanding every day.
      =巨大的歌词库，而且还在每天更新。
 
-Download and save lyrics in your song files, you can view these lyrics on your iPod or iPhone.
-     =下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone 上查看。
-
 Amazing translucency skins.
      =惊人的半透明外观。
+
+Cross-platform, support Windows, Mac.
+     =跨平台，支持 Windows, Mac OS
+
+MusicPlayer for Windows, Mac OS
+     =Windows, Mac OS 下的音乐播放器
+
+Download MusicPlayer for Windows
+     =下载 Windows 版本的音乐播放器
+
+Download MusicPlayer for Mac OS
+     =下载 Mac OS 版本的音乐播放器
+
+Download
+     =下载
+
+Help
+     =帮助
+
+Show lyrics in iTunes, Windows Media Player, Winamp, etc.
+     =迷你歌词在 iTunes, Windows Media Player, Winamp 等中显示歌词。
+
+Display lyrics for your favorite music! Free!
+     =为您喜欢的音乐显示歌词！免费！
+
+Lyrics plugin software for iTunes, Windows Media Player, Winamp, etc. You needn't change the way of enjoying music.
+     =支持 iTunes,  Windows Media Player, Winamp 等的歌词插件。您不需要改变你欣赏音乐的习惯。
+
+Download and save lyrics in your song files, you can view these lyrics on your iPod or iPhone.
+     =下载并且保存歌词到您的 MP3 文件中，您可以在iPod 和 iPhone 上查看。
 
 Cross-platform, support Windows, Mac and Android.
      =跨平台，支持 Windows, Mac OS X, Android.
@@ -124,14 +151,8 @@ MiniLyrics supports
 What is MiniLyrics
      =什么是 MiniLyrics
 
-Download
-     =下载
-
 Buy Now
      =立即购买
-
-Help
-     =帮助
 
 Installation and Startup
      =安装和启动
