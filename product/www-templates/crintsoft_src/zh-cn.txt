@@ -130,6 +130,54 @@ Download
 Help
      =帮助
 
+How do I use the Lyrics Editor to create LRC lyrics?
+     =如何使用歌词编辑器创建 LRC 歌词？
+
+Lyrics Editor will help you to create or edit the synchronized lyrics.
+     =‘歌词编辑器’会帮助您创建或者编辑同步歌词。
+
+Get plain text lyrics. You can search and download text lyrics with MusicPlayer or Google.
+     =下载纯文本歌词。您可以使用 MusicPlayer 或者 Google 搜索和下载文本歌词。
+
+Open the plain text lyrics file.
+     =打开文本歌词。
+
+Open '<b>Lyrics Editor</b>'. Please click the context menu item: '<b>Lyrics Editor</b>', and MusicPlayer will open the 'Lyrics Editor' window.
+     =打开 ‘<b>歌词编辑器</b>’。请点击右键菜单：‘<b>歌词编辑器</b>’，MusicPlayer 会打开‘歌词编辑器’窗口。
+
+Playing the song file.
+     =播放器歌曲文件。
+
+Click button: 
+     =点击按钮：
+
+Synchronize the current line and move down one line
+     =同步当前行歌词，并移动到下一行
+
+Repeat step 5 until all the lyrics lines are synchronized.
+     =重复步骤 5 直到所有歌词行都被同步。
+
+Save the lyrics file as '.lrc' file.
+     =保存歌词文件为‘.lrc’文件。
+
+Windows Media Player, foobar2000 is suggested to be used, when you create synchronized lyrics. If you use Winamp, please don't seek or jump music, or the timeline will become imprecise.
+     =建议您使用 Windows Media Player, foobar2000 来创建同步 LRC 歌词，如果您使用 Winamp，请不要快进或者后退音乐，否则时间线可能会不精确。
+
+Share lyrics with other people using MusicPlayer
+     =和 MusicPlayer 的用户分享歌词
+
+You can upload the lyrics to MusicPlayer server.
+     =您可以上传歌词到 MusicPlayer 服务器。
+
+Clicking menu item: 'File' -&gt; 'Upload Lyrics' -&gt; 'Upload Lyrics'.
+     =点击菜单：‘文件’ -&gt; ‘上传歌词’ -&gt; ‘上传歌词’。
+
+Then follow the instructions in the popup window.
+     =请参照弹出窗口中的指示操作。
+
+If you don't have account, please sign up free.
+     =如果您没有帐号，请免费注册。
+
 Show lyrics in iTunes, Windows Media Player, Winamp, etc.
      =迷你歌词在 iTunes, Windows Media Player, Winamp 等中显示歌词。
 
@@ -217,9 +265,6 @@ How do I control the scrolling of text lyrics?
 Lyrics Editor and Upload Lyrics
      =歌词编辑器和上传歌词
 
-How do I use the Lyrics Editor to create LRC lyrics?
-     =如何使用歌词编辑器创建 LRC 歌词？
-
 How do I upload lyrics and expand the lyrics database?
      =如何上传和扩展歌词库？
 
@@ -235,50 +280,17 @@ Supported Players
 Supported players
      =支持的播放器
 
-Lyrics Editor will help you to create or edit the synchronized lyrics.
-     =‘歌词编辑器’会帮助您创建或者编辑同步歌词。
-
 Get plain text lyrics. You can search and download text lyrics with MiniLyrics or Google.
      =下载纯文本歌词。您可以使用 MiniLyrics 或者 Google 搜索和下载文本歌词。
 
-Open the plain text lyrics file.
-     =打开文本歌词。
-
 Open '<b>Lyrics Editor</b>'. Please click the context menu item: '<b>Lyrics Editor</b>', and MiniLyrics will open the 'Lyrics Editor' window.
      =打开 ‘<b>歌词编辑器</b>’。请点击右键菜单：‘<b>歌词编辑器</b>’，MiniLyrics 会打开‘歌词编辑器’窗口。
-
-Playing the song file.
-     =播放器歌曲文件。
-
-Click button: 
-     =点击按钮：
-
-Synchronize the current line and move down one line
-     =同步当前行歌词，并移动到下一行
-
-Repeat step 5 until all the lyrics lines are synchronized.
-     =重复步骤 5 直到所有歌词行都被同步。
-
-Save the lyrics file as '.lrc' file.
-     =保存歌词文件为‘.lrc’文件。
-
-Windows Media Player, foobar2000 is suggested to be used, when you create synchronized lyrics. If you use Winamp, please don't seek or jump music, or the timeline will become imprecise.
-     =建议您使用 Windows Media Player, foobar2000 来创建同步 LRC 歌词，如果您使用 Winamp，请不要快进或者后退音乐，否则时间线可能会不精确。
 
 Share lyrics with other people using MiniLyrics
      =和 MiniLyrics 的用户分享歌词
 
 You can upload the lyrics to MiniLyrics server.
      =您可以上传歌词到 MiniLyrics 服务器。
-
-Clicking menu item: 'File' -&gt; 'Upload Lyrics' -&gt; 'Upload Lyrics'.
-     =点击菜单：‘文件’ -&gt; ‘上传歌词’ -&gt; ‘上传歌词’。
-
-Then follow the instructions in the popup window.
-     =请参照弹出窗口中的指示操作。
-
-If you don't have account, please sign up free.
-     =如果您没有帐号，请免费注册。
 
 Please right mouse button on MiniLyrics window
      =请在 MiniLyrics 窗口上单击鼠标右键

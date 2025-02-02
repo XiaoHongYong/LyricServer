@@ -130,6 +130,54 @@ Download
 Help
      =--TODO--
 
+How do I use the Lyrics Editor to create LRC lyrics?
+     =--TODO--
+
+Lyrics Editor will help you to create or edit the synchronized lyrics.
+     =--TODO--
+
+Get plain text lyrics. You can search and download text lyrics with MusicPlayer or Google.
+     =--TODO--
+
+Open the plain text lyrics file.
+     =--TODO--
+
+Open '<b>Lyrics Editor</b>'. Please click the context menu item: '<b>Lyrics Editor</b>', and MusicPlayer will open the 'Lyrics Editor' window.
+     =--TODO--
+
+Playing the song file.
+     =--TODO--
+
+Click button: 
+     =--TODO--
+
+Synchronize the current line and move down one line
+     =--TODO--
+
+Repeat step 5 until all the lyrics lines are synchronized.
+     =--TODO--
+
+Save the lyrics file as '.lrc' file.
+     =--TODO--
+
+Windows Media Player, foobar2000 is suggested to be used, when you create synchronized lyrics. If you use Winamp, please don't seek or jump music, or the timeline will become imprecise.
+     =--TODO--
+
+Share lyrics with other people using MusicPlayer
+     =--TODO--
+
+You can upload the lyrics to MusicPlayer server.
+     =--TODO--
+
+Clicking menu item: 'File' -&gt; 'Upload Lyrics' -&gt; 'Upload Lyrics'.
+     =--TODO--
+
+Then follow the instructions in the popup window.
+     =--TODO--
+
+If you don't have account, please sign up free.
+     =--TODO--
+
 Show lyrics in iTunes, Windows Media Player, Winamp, etc.
      =--TODO--
 
@@ -217,9 +265,6 @@ How do I control the scrolling of text lyrics?
 Lyrics Editor and Upload Lyrics
      =--TODO--
 
-How do I use the Lyrics Editor to create LRC lyrics?
-     =--TODO--
-
 How do I upload lyrics and expand the lyrics database?
      =--TODO--
 
@@ -235,49 +280,16 @@ Supported Players
 Supported players
      =--TODO--
 
-Lyrics Editor will help you to create or edit the synchronized lyrics.
-     =--TODO--
-
 Get plain text lyrics. You can search and download text lyrics with MiniLyrics or Google.
      =--TODO--
 
-Open the plain text lyrics file.
-     =--TODO--
-
 Open '<b>Lyrics Editor</b>'. Please click the context menu item: '<b>Lyrics Editor</b>', and MiniLyrics will open the 'Lyrics Editor' window.
-     =--TODO--
-
-Playing the song file.
-     =--TODO--
-
-Click button: 
-     =--TODO--
-
-Synchronize the current line and move down one line
-     =--TODO--
-
-Repeat step 5 until all the lyrics lines are synchronized.
-     =--TODO--
-
-Save the lyrics file as '.lrc' file.
-     =--TODO--
-
-Windows Media Player, foobar2000 is suggested to be used, when you create synchronized lyrics. If you use Winamp, please don't seek or jump music, or the timeline will become imprecise.
      =--TODO--
 
 Share lyrics with other people using MiniLyrics
      =--TODO--
 
 You can upload the lyrics to MiniLyrics server.
-     =--TODO--
-
-Clicking menu item: 'File' -&gt; 'Upload Lyrics' -&gt; 'Upload Lyrics'.
-     =--TODO--
-
-Then follow the instructions in the popup window.
-     =--TODO--
-
-If you don't have account, please sign up free.
      =--TODO--
 
 Please right mouse button on MiniLyrics window
