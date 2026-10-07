@@ -306,8 +306,59 @@ int LyricsServer::saveLyricsFile(LyricsInfo &lyrInfo, string &strLyrContentUtf8)
     return ERR_OK;
 }
 
+// 规范化相对路径并判断它是否全部落在 baseDir 内。
+// 用于拦截 related_link 等相对路径中的目录穿越（../）与绝对路径访问。
+// 安全时返回 true，并输出完整路径；否则返回 false。
+static bool isSafeRelativeLink(cstr_t rel, const string &baseDir, string &fullPathOut) {
+    if (!rel || !*rel || rel[0] == '/' || rel[0] == '\\' || strchr(rel, ':')) {
+        // 空、绝对路径，或含 Windows 盘符冒号，一律拒绝。
+        return false;
+    }
+
+    VecStrings stack;
+    string seg;
+    for (const char *p = rel; ; p++) {
+        char ch = *p;
+        if (ch == '/' || ch == '\\' || ch == '\0') {
+            if (!seg.empty()) {
+                if (seg == "..") {
+                    if (stack.empty()) {
+                        // 越出 baseDir 之外
+                        return false;
+                    }
+                    stack.pop_back();
+                } else if (seg != ".") {
+                    stack.push_back(seg);
+                }
+                seg.clear();
+            }
+            if (ch == '\0') {
+                break;
+            }
+        } else {
+            seg += ch;
+        }
+    }
+
+    fullPathOut = baseDir;
+    dirStringAddSep(fullPathOut);
+    for (size_t i = 0; i < stack.size(); i++) {
+        if (i) {
+            fullPathOut += PATH_SEP_CHAR;
+        }
+        fullPathOut += stack[i];
+    }
+
+    return true;
+}
+
 int LyricsServer::deleteLyricsFile(const string &relatedLink) {
-    string fn = dirStringJoin(g_conf.lyricsDir, relatedLink);
+    string fn;
+    if (!isSafeRelativeLink(relatedLink.c_str(), g_conf.lyricsDir, fn)) {
+        LOG(INFO) << "Refuse to delete lyrics file, unsafe relative link: " << relatedLink;
+        return ERR_NOT_FOUND;
+    }
+
     if (isFileExist(fn.c_str())) {
         deleteFile(fn.c_str());
 
