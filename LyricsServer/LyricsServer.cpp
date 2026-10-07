@@ -430,7 +430,7 @@ bool LyricsServer::executeDataSync(const StringView &line) {
             DLOG(INFO) << "executeDataSync, delete lyrics file successfully:" << fn;
         } else {
             assert(0);
-            LOG(ERROR) << "Unkown action:" << action;
+            LOG(ERROR) << "Unknown action:" << action;
             return false;
         }
         return true;
@@ -449,7 +449,7 @@ bool LyricsServer::executeDataSync(const StringView &line) {
         int64_t idReturned = -1;
         return dbModifier.executeAction(ctx, action, fields, args, idReturned);
     } else {
-        LOG(ERROR) << "Unkown type:" << type;
+        LOG(ERROR) << "Unknown type:" << type;
         return false;
     }
 }

@@ -71,7 +71,7 @@ bool parseCmdLine(int argc, char *argv[], CmdOptions &optsOut) {
 
             optsOut.isQuit = true;
         } else {
-            printf("Unkown parameter: %s\n", argv[i]);
+            printf("Unknown parameter: %s\n", argv[i]);
             return false;
         }
     }
